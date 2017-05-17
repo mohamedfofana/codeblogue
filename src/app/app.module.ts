@@ -9,6 +9,10 @@ import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ContactComponent } from './contact/contact.component';
+import { FooterComponent } from './footer/footer.component';
+import { RightMenuComponent } from './right-menu/right-menu.component';
+import { ArticleComponent } from './article/article.component';
+import { CommentComponent } from './comment/comment.component';
 
 
 @NgModule({
@@ -16,7 +20,11 @@ import { ContactComponent } from './contact/contact.component';
     AppComponent,
     HomeComponent,
     NavbarComponent,
-    ContactComponent
+    ContactComponent,
+    FooterComponent,
+    RightMenuComponent,
+    ArticleComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,
