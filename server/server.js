@@ -29,7 +29,7 @@ app.use(function(req, res, next) {
       next();
     }
 });
-
+console.log("test");
 //On se connecte à mongodb
 mongoose.connect(mongodbServer)
 var db = mongoose.connection;

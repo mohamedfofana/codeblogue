@@ -3,12 +3,12 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-  <a class="navbar-brand" [routerLink]="['']">Codeblogue.com</a>
+  <a class="navbar-brand" routerLink=''>Codeblogue.com</a>
 
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/home']">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" routerLink='/home'>Home <span class="sr-only">(current)</span></a>
       </li>
 
       <li class="nav-item dropdown">
@@ -17,9 +17,9 @@
           Jeu
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" [routerLink]="['/demineur']">Jeu du démineur</a>
-          <a class="dropdown-item" [routerLink]="['/morpion']">Jeu du morpion</a>
-          <a class="dropdown-item" [routerLink]="['/all?cat=Jeu']">Plus ...</a>
+          <a class="dropdown-item" routerLink='/article/demineur'>Jeu du démineur</a>
+          <a class="dropdown-item" routerLink='/article/morpion'>Jeu du morpion</a>
+          <a class="dropdown-item" [routerLink]="['/articles', {cat: 'Jeu'}]">Plus ...</a>
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -27,9 +27,9 @@
           Système
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" [routerLink]="['/windows']">Windows</a>
-          <a class="dropdown-item" [routerLink]="['/linux']">Linux</a>
-          <a class="dropdown-item" [routerLink]="['/all?cat=Système']">Plus ...</a>
+          <a class="dropdown-item" routerLink='/article/windows'>Windows</a>
+          <a class="dropdown-item" routerLink='/article/linux'>Linux</a>
+          <a class="dropdown-item" [routerLink]="['/articles', {cat: 'Système'}]">Plus ...</a>
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -37,13 +37,13 @@
           Langages
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" [routerLink]="['/sql']">SQL</a>
-          <a class="dropdown-item" [routerLink]="['/oracle']">Oracle</a>
-          <a class="dropdown-item" [routerLink]="['/all?cat=SGBD']">Plus ...</a>
+          <a class="dropdown-item" routerLink='/article/sql'>SQL</a>
+          <a class="dropdown-item" routerLink='/article/oracle'>Oracle</a>
+          <a class="dropdown-item" [routerLink]="['/articles', {cat: 'Langages'}]">Plus ...</a>
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/contact']">Contact</a>
+        <a class="nav-link" routerLink='/contact'>Contact</a>
       </li>
     </ul>
       <!-- <li class="nav-item" style="padding-top: 6px;">-->

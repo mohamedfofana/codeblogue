@@ -11,9 +11,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ContactComponent } from './contact/contact.component';
 import { FooterComponent } from './footer/footer.component';
 import { RightMenuComponent } from './right-menu/right-menu.component';
-import { ArticleComponent } from './article/article.component';
-import { CommentComponent } from './comment/comment.component';
 
+import { ArticleModule } from './article/article.module';
+
+import { ArticleService } from './services/article.service';
 
 @NgModule({
   declarations: [
@@ -22,18 +23,17 @@ import { CommentComponent } from './comment/comment.component';
     NavbarComponent,
     ContactComponent,
     FooterComponent,
-    RightMenuComponent,
-    ArticleComponent,
-    CommentComponent
+    RightMenuComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     RouterModule,
+    ArticleModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ArticleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

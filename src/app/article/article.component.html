@@ -1,3 +1,58 @@
-<p>
-  article works!
-</p>
+<div class='card'>
+    <div class='card-header'>
+        Liste des articles de la catégorie {{categoryArticles}}
+    </div>
+    <div class='card-block'>
+        <div class='row'>
+            <div class='col-md-2'>Filtre :</div>
+            <div class='col-md-4'>
+                <input type='text' [(ngModel)]='listFilter' />
+            </div>
+        </div>
+        <!--<div class='row'>
+            <div class='col-md-6'>
+                <h3>Filtre : {{listFilter}} </h3>
+            </div>
+        </div>-->
+        <div class='table-responsive'>
+            <table class='table'
+                   *ngIf='articles && articles.length'>
+                <thead>
+                    <tr>
+                        <th>
+                            <button class='btn btn-primary'
+                                (click)='toggleImage()'>
+                                {{showImage ? 'Hide' : 'Show'}} Image
+                            </button>
+                        </th>
+                        <th>Article</th>
+                        <th>Auteur</th>
+                        <th>Creation</th>
+                        <!--<th>5 Star Rating</th>-->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let article of articles | articleFilter:listFilter'>
+                        <td>
+                            <img *ngIf='showImage'
+                                [src]='article.imageUrl'
+                                [title]='article.titre'
+                                [style.width.px]='imageWidth'
+                                [style.margin.px]='imageMargin'>
+                        </td>
+                        <td><a [routerLink]="['/article', article.titre]">
+                            {{article.titre}}
+                        </a></td>
+                        <td>{{ article.auteur}}</td>
+                        <td>{{ article.creation | date:'shortDate'}}</td>
+                       <!-- <td>
+                            <ai-star [rating]='article.starRating'
+                                (ratingClicked)='onRatingClicked($event)'>
+                            </ai-star>
+                        </td>-->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

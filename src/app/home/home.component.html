@@ -1,3 +1,29 @@
-<p>
-  Accueil
-</p>
+<div class="row">
+  <div class="col-lg-12 text-center">
+    <h2 class="brand-before">
+      <small>Bienvenu sur mon blog</small>
+    </h2>
+    <h1 class="brand-name">Code Blogue</h1>
+    <hr class="tagline-divider">
+    <h2>
+      <small>Par
+        <strong>****</strong>
+      </small>
+    </h2>
+  </div>
+</div>
+
+<div class="row" *ngFor="let article of articles">
+    <div class="col-lg-12">
+    <hr>
+    <h2 class="intro-text text-center">{{article.titre}}
+      <!--<strong>worth visiting</strong>-->
+    </h2>
+    <hr>
+    <img class="img-responsive img-rounded img-left" src="assets/images/demineur.png" alt="">
+    <hr class="visible-xs">
+    <p class="trunc-text">{{article.description}}.</p>
+    <p><a href="#/demineur"><small>[Plus...]</small></a>
+    </p>
+  </div>
+</div>
