@@ -1,4 +1,4 @@
-export class Comment {
+export interface IComment {
      _id: Number; 
     article_titre: String; 
     contenu: String;

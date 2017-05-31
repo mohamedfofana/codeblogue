@@ -1,0 +1,130 @@
+<div class="text-right">
+  <br/>
+  <br/>
+  <button class="btn btn-default btn-sm"><i class="glyphicon glyphicon-eye-open" aria-hidden="true"></i> {{article.views}} Vues</button>  &nbsp;&nbsp; <button class="btn btn-default btn-sm" (click)="likeArticle()"><i class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></i> {{article.likes}} J'aime</button>
+</div>
+
+<h2 class="page-header">Commentaires({{comments? comments.length : '0'}})</h2>
+  <div class="commentAddSection" id="commentAddSection">
+    <form class="form-horizontal" [formGroup]="commentForm" (ngSubmit)="saveComment()">
+      <div class="form-group">
+        <div class="col-sm-12">
+          <textarea class="form-control commentTextArea" rows="1" id="comment" formControlName="contenu" required placeholder="Ajouter un commentaire ..."></textarea>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-5 col-sm-7">
+          <input type="text" class="form-control col-xs-3 commentAuteur" id="auteur" formControlName="auteur" placeholder="Entrer votre nom ....">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-12">
+          <button type="submit" class="btn btn-success green float-right" [disabled]="commentForm.invalid"><i class="fa fa-share"></i> Publier</button>
+        </div>
+      </div>
+    </form>
+  </div>
+<section>
+  <div *ngFor="let comment of comments">
+    <article class="row">
+      <!-- Comment -->
+      <div class="col-md-2 col-sm-2 hidden-xs">
+        <figure class="thumbnail">
+          <img class="figure-img img-fluid" src="http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg"
+          />
+        </figure>
+      </div>
+      <div class="col-md-10 col-sm-10">
+        <div class="card arrow left">
+          <div class="card-block card-block-comment">
+            <header class="text-left">
+              <div class="comment-user"><i class="fa fa-user"></i> {{comment.auteur}}</div>
+              <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> {{comment.creation | date: "medium"}}</time>
+            </header>
+            <div class="comment-post">
+              <p>
+                {{comment.contenu}}
+              </p>
+            </div>
+            <div class="text-right">
+              <button class="btn btn-default btn-sm" (click)="likeComment(comment.auteur, comment.creation)"><i class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></i> {{comment.likes}} J'aime</button>
+              <button class="btn btn-default btn-sm" (click)="showHideReply('replyNum' + comment._id)"><i class="fa fa-reply"></i> Répondre</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+    <!-- Reply -->
+    <div class="replyAddSection" id="{{'replyNum' + comment._id}}" style="display:none;">
+      <form class="form-horizontal" [formGroup]="replyForm" (ngSubmit)="saveReply()">
+        <div class="form-group">
+          <div class="col-md-offset-3 col-sm-9">
+            <textarea class="form-control replyTextArea" rows="5" id="comment" formControlName="contenu" required placeholder="Ajouter un commentaire ..."></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-5 col-sm-7">
+            <input type="text" class="form-control col-xs-3 replyAuteur" id="auteur" formControlName="auteur" maxlength="50" required
+              placeholder="Entrer votre nom ....">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-offset-3 col-sm-9">
+            <button type="submit" class="btn btn-success green float-right" [disabled]="replyForm.invalid"><i class="fa fa-share"></i> Publier</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    
+    <div *ngFor="let reply of replies | replyFilter:comment.auteur:comment.creation">
+      <article class="row">
+      <!-- Replies -->
+        <div class="col-md-2 col-sm-2 col-md-offset-1 col-sm-offset-0 hidden-xs">
+          <figure class="thumbnail">
+            <img class="figure-img img-fluid" src="http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg"
+            />
+          </figure>
+        </div>
+
+        <div class="col-md-9 col-sm-9">
+          <div class="card arrow left">
+            <div class="card-block card-block-comment">
+              <header class="text-left">
+                <div class="comment-user"><i class="fa fa-user"></i>{{reply.auteur}}</div>
+                <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> {{reply.creation | date: "medium"}}</time>
+              </header>
+              <div class="comment-post">
+                <p>
+                  {{reply.contenu}}
+                </p>
+              </div>
+              <div class="text-right">
+                <button class="btn btn-default btn-sm" (click)="likeReply(reply.auteur, reply.creation, comment.auteur, comment.creation)"><i class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></i> {{reply.likes}} J'aime</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- **** Comment Form Handler*******/ -->
+<script>
+$(document).ready(function(){ /*code here*/ });
+$('input.commentAuteur').hide();
+  $('textarea.commentTextArea').focus(function () {
+       $(this).attr('rows', 5);
+       $('input.commentAuteur').show();
+  });
+  $('textarea.commentTextArea').blur(function () {  	
+    if ($(this).val().length==0){
+        $(this).attr('rows', 1);
+        $('input.commentAuteur').hide();
+    }else{
+    	$('input.commentAuteur').show();
+    }
+
+  });
+  
+</script>

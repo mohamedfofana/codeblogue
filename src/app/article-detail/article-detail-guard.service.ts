@@ -8,9 +8,9 @@ export class ArticleDetailGuard implements CanActivate {
     }
 
     canActivate(route: ActivatedRouteSnapshot): boolean {
-        let titre = route.url[1].path;
-        if (!(titre)) {
-            alert('Invalid article Id' + titre);
+        let url = route.url[1].path;
+        if (!(url)) {
+            alert('Invalid article Id' + url);
             this._router.navigate(['/articles']);
             return false;
         };

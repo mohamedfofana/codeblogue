@@ -1,0 +1,39 @@
+<h2 class="intro-text text-center">Astuces Grunt
+</h2>
+<hr>
+Grunt est un module qui fonctionne côté client. Par conséquent, toutes les opérations sur console (nodejs, dos, ….) concernant le module se font en se positionnant au préalable dans le dossier client du projet.
+<br/>
+<consoletip description="Installation de grunt" command="npm install –g grunt-cli –save"></consoletip>
+<dl class="dl-horizontal">
+  <dt>-g:</dt>
+  <dd>
+    permet de faire une installation globale. Cela veut dire qu’on pourra utiliser la commande grunt n’importe où sur la machine. Elle sera enregistrée dans les variables d’enironnement.
+  </dd>
+  <dt>--save:</dt>
+  <dd>
+    signifie que le module sera référencé dans le fichier package.json.
+  </dd> 
+</dl>
+<consoletip description="Le server de grunt est configuré par défaut sur le port 9000. Vous pouvez changer le port dans le fichier Gruntfile.js" command="grunt serve"></consoletip>
+<br/>
+Si en lanceant grunt la commande n’est pas trouvée, faire un npm install sur le dossier ou se trouve le fichier package.json. Cela réinstallera les dépendances référencées dans le fichier
+<br/>
+<br/>
+<div class="card">
+	<div class="card-header">Quand le module compass est introuvable</div>
+	<div class="card-block">		
+		<p>Running "concurrent:server" (concurrent) task Warning: Running "compass:server" (compass) task</p>
+		Warning: Command failed: 'compass.bat' is not recognized as an internal or external command, operable program or batch file. Use --force to continue.<br/>
+		<p>Cette erreur signifie que la tâche grunt du module compass n’est pas reconnue. Il peut s’agir de la la perte de l’installation du module compass durant une migration ou de l’absence de ruby dans le système.<br/>
+		Pour résoudre cette erreur, installer ruby si ce n’est pas déjà fait. </p>
+		Télécharger la dernière version sur ce lien  <a href="http://www.ruby-lang.org/en/documentation/installation/#rubyinstaller">http://www.ruby-lang.org/en/documentation/installation/#rubyinstaller</a>.<br/>
+		<consoletip description="Exécuter le commande suivantes pour installer compass" command="gem update --system"></consoletip>
+		<consoletip description="Suivi de cette commande" command="gem install compass"></consoletip>		
+	</div>
+</div>
+
+<br/>
+<br/>
+<br/>
+<hr>
+<br/>

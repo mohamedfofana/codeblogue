@@ -1,3 +1,17 @@
-<p>
-Détails de l'article {{articleTitle}}
-</p>
+<div *ngFor='let art of article | articleFilter:listFilter'>
+    <div [ngSwitch]="art.url">
+      <app-demineur *ngSwitchCase="'demineur'" [article]="art"></app-demineur>    
+      <app-morpion *ngSwitchCase="'morpion'" [article]="art"></app-morpion>    
+      <app-windows *ngSwitchCase="'windows'" [article]="art"></app-windows>    
+      <app-linux *ngSwitchCase="'linux'" [article]="art"></app-linux>    
+      <app-grunt *ngSwitchCase="'grunt'" [article]="art"></app-grunt>    
+      <app-nodemailer *ngSwitchCase="'nodemailer'" [article]="art"></app-nodemailer>    
+      <app-nodemailerfixit *ngSwitchCase="'nodemailerfixit'" [article]="art"></app-nodemailerfixit>    
+      <app-carousel *ngSwitchCase="'carousel'" [article]="art"></app-carousel>    
+      <app-sql *ngSwitchCase="'sql'" [article]="art"></app-sql>    
+      <app-oracle *ngSwitchCase="'oracle'" [article]="art"></app-oracle>    
+      <div *ngSwitchDefault>Cette page n'existe plus.</div>
+    </div>
+</div>
+<!--<app-demineur [article]="article"></app-demineur> 
+-->

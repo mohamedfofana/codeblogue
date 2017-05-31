@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 
@@ -11,10 +10,15 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ContactComponent } from './contact/contact.component';
 import { FooterComponent } from './footer/footer.component';
 import { RightMenuComponent } from './right-menu/right-menu.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { ArticleModule } from './article/article.module';
 
 import { ArticleService } from './services/article.service';
+import { ContactService } from './services/contact.service';
+import { ValidationService } from './services/validation.service';
+import { ResultSearchComponent } from './search/result-search/result-search.component';
+import { ResultItemComponent } from './search/result-item/result-item.component';
+
 
 @NgModule({
   declarations: [
@@ -23,17 +27,19 @@ import { ArticleService } from './services/article.service';
     NavbarComponent,
     ContactComponent,
     FooterComponent,
-    RightMenuComponent
+    RightMenuComponent,
+    ResultSearchComponent,
+    ResultItemComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
     HttpModule,
     RouterModule,
     ArticleModule,
+    ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [ArticleService],
+  providers: [ArticleService, ContactService, ValidationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

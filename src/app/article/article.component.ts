@@ -22,15 +22,23 @@ export class ArticleComponent implements OnInit {
 
   ngOnInit(): void {
     this._route.params.subscribe(params => {
-       this.categoryArticles = params['cat']; 
+       this.doInit(params['cat']); 
     });
-    this._articleService.getArticlesByCategry(this.categoryArticles).subscribe(articles => this.articles = articles, error => this.errorMessage = <any>error);
+    
   }
 
   toggleImage(): void {
         this.showImage = !this.showImage;
   }
 
+  doInit(cat: string): void {
+     this.categoryArticles = cat;
+    if(!this.categoryArticles){
+      this._articleService.getArticles().subscribe(articles => this.articles = articles, error => this.errorMessage = <any>error);
+    }else{
+      this._articleService.getArticlesByCategry(this.categoryArticles).subscribe(articles => this.articles = articles, error => this.errorMessage = <any>error);
+    }
+  }
    onRatingClicked(message: string): void {
         //this.pageTitle = 'Liste des articles de la catégorie: ' + message;
     }

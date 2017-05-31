@@ -5,20 +5,19 @@ module.exports = function(app, route){
 
 return function(req, res, next){
     var data = req.body;
-    
+    console.log(data);
     // login
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
             xoauth2: xoauth2.createXOAuth2Generator({
                 user: 'codeblogue@gmail.com',
-                clientId: '291884637316-5vn8arj45irvr7jnrmb9rn6n4g1pee11.apps.googleusercontent.com',
-                clientSecret: 'CFze1QYPDj0sP28T9ZnRWMDL',
+                clientId: '291884637316-u5d0sqir9njfa5pt8p24u0kv50mgakcn.apps.googleusercontent.com',
+                clientSecret: 'PCH3T4ah6uMc7HmzGAXL_bE0',
                 refreshToken: '1/yvw9Zvz9giT3A6mwbXYyDQw3hRwncdj3SvOqhPvz0TY'
             })
         }
     });
-
     var message = {
             from: 'Codeblogue.com ✔ <codeblogue@gmail.com>', // sender address
             to: 'fofana.mansour@gmail.com', // list of receivers

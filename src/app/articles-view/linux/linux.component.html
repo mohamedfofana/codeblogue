@@ -1,0 +1,35 @@
+<h2 class="intro-text text-center">Astuces linux
+</h2>
+<hr>
+
+<consoletip description="Compresser un dossier en .tar" command="tar -xvf fichier.tar dossier/"></consoletip>
+<consoletip description="Décompresser en fichier.tar" command="tar -xvf fichier.tar"></consoletip>
+<consoletip description="Compresser en .Z" command="compress fichier"></consoletip>
+<consoletip description="Compresser fichier.gz" command="gzip  fichier ou tar -zxvf fichier.tar dossier/"></consoletip>
+<consoletip description="Décompresser fichier.gz" command="gzip -d fichier.gz ou tar -zxvf fichier.tar ou gunzip fichier.gz"></consoletip>
+<consoletip description="Afficher le contenu de l'archive sans l'extraire" command=" tar -tf fichier.tar"></consoletip>
+<consoletip description="Ajouter un fichier" command="tar -rvf fichier.tar fichier_a_ajouter"></consoletip>
+
+<consoletip description="Création d'une archive gzip" command="tar zcvf votre_archive.tar.gz votre_dossier/"></consoletip>
+<consoletip description="Extraction d'une archive gzip" command="tar zxvf votre_archive.tar.gz"></consoletip>
+<consoletip description="Création d'une archive Bzip2. Bzip2 crée des fichiers beaucoup plus petits que Gzip, mais utilise plus de ressources processeur surtout pour compresser" command="tar jcvf votre_archive.tar.bz2 votre_dossier/"></consoletip>
+<consoletip description="Extraction d'une archive Bzip2" command="tar jxvf votre_archive.tar.bz2"></consoletip>
+<consoletip description="Création d'une archive, archivage de plusieurs fichiers" command="tar cvf archive.tar fichierarchive1 fichierarchive2..."></consoletip>
+<consoletip description="Création d'une archive d'un dossier" command="tar cvf archivedossier.tar dossier/"></consoletip>
+<consoletip description="Afficher le contenu d'un dossier sur une page avec tri croissant de la date de dernère modification." command="ls -ltr"></consoletip>
+<consoletip description="Afficher la dernière commande lancée" command="Esc + k"></consoletip>
+<consoletip description="Recherche de texte dans un fichier" command="cat nom_fichier | grep texte"></consoletip>
+<consoletip description="Afficher la fin du fichier en restant en lecture" command="tail -f nom_fichier"></consoletip>
+<consoletip description="Compter le nombre de dossier dans un répertoire" command="ls -l | grep ^d | wc -l"></consoletip>
+<consoletip description="Rechercher tous les fichiers dans un dossier" command="find dossier -type f"></consoletip>
+<consoletip description="Afficher les n premières lignes d'un fichier" command="head -nb_ligne nom_fichier"></consoletip>
+<consoletip description="Changer le propiétaire d'un dossier à root" command="chown new_user /dossier"></consoletip>
+<consoletip description="Changer le propiétaire et le groupe d'un dossier à root" command="chown new_user:new_group /dossier"></consoletip>
+<consoletip description="Changer le propiétaire d'un dossier et ses sous dossiers à root" command="chown -hR new_user /dossier"></consoletip>
+<consoletip description="Afficher les processus en exécution" command="ps -ef|grep java|wc -l"></consoletip>
+
+<br/>
+
+<figuretip description="Formater un fichier xml" content="xmllint --format mon_fichier.xml"></figuretip>
+<figuretip description="Exécuter une classe JAVA à partir d'un script sh avec des paramètres" content="nice -n 1 ${JAVA_HOME} -server -Xms13312m -Xmx13312m -Xss128k -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false  -cp '${CLASSPATH}' -Dlog4j.configuration='file://${HERE}/fichier_configuration_log4j.properties' com.classe.a.tester.LACLASSE --conf '${HERE}/fichier_configuration.properties' --parametre1 'valeur_parametre' --parametre2 'valeur_parametre' $@">
+</figuretip>

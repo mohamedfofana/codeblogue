@@ -1,0 +1,32 @@
+<h2 class="intro-text text-center">Astuces windows
+</h2>
+<hr>
+<consoletip description="Afficher les services en exécution  sur les ports tcp et udp" command="netstat -lntu"></consoletip>
+<br/>
+<div class="card">
+	<div class="card-header">Commande dos pour envoyer un fichier en ftp</div>
+	<div class="card-block">
+		<consoletip description="Connexion à la machine destinatire" command="ftp adresse_destinataire"></consoletip>
+		<consoletip description="Se positionner sur un répertoire sur la machine d'envoie" command="cd chemin"></consoletip>
+		<consoletip description="Se positionner sur un répertoire sur la machine destinatire" command="lcd chemin"></consoletip>
+		<consoletip description="Envoyer le fichier" command="put fichier"></consoletip>
+		<consoletip description="Quitter la console" command="quit"></consoletip>		
+	</div>
+</div>
+<br>
+<div class="card">
+	<div class="card-header">Commande pour rendre une clé usb bootable</div>
+	<div class="card-block">
+		<consoletip description="Ouvrir une fenêtre dos et lancer la commande" command="diskpart"></consoletip>
+		<consoletip description="Attendre l'ouverture de la fenêtre diskpart, lancer la commande" command="DISKPART>list disk"></consoletip>
+		<consoletip description="" command="DISKPART>sel disk numéro_disque_usb"></consoletip>
+		<consoletip description="" command="DISKPART>clean"></consoletip>
+		<consoletip description="" command="DISKPART>create part pri"></consoletip>
+		<consoletip description="" command="DISKPART>format fs=ntfs quick"></consoletip>
+		<consoletip description="" command="DISKPART>Active"></consoletip>
+		<consoletip description="" command="DISKPART>Assign"></consoletip>
+		<br/>
+		Vous pouvez maintenant copier les fichiers d'installation sur la clé.<br/> Modifier la séquence de boot pour démarrer sur la clé USB.<br/> Redémarrer et installer le système à partir de la clé USB.
+</div>
+</div>
+<br/>

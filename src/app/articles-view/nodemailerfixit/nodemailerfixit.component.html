@@ -1,0 +1,91 @@
+<h2 class="intro-text text-center">Configuration de Nodemailer et OAuth 2.0
+</h2>
+<hr>
+Nodemailer est un module node js qui permet d’envoyer des mails.
+Dans ce contexte, nodemailer sera configuré pour envoyer des mails via le serveur gmail.
+Gmail demande une autorisation pour pouvoir utiliser son server.<br/>
+Le module xoauth2 permet de s’authentifier sur le serveur gmail afin de pouvoir envoyer un mail à partir d’une adresse électronique gmail.
+<br/>
+<h4>Enregistrement deu site sur Google API Console</h4>
+<dl class="dl-horizontal">
+   <dd>
+      - Connecter vous sur le compte gmail dans le navigateur et ouvrer le lien Google APIs Console.
+   </dd>
+   <dd>
+      - Cliquer sur l’icône en haut à gauche de l’écran et Aller dans le Gestionnaire APIs.<br/>
+    <img class="img-responsive img-rounded" src="assets/images/google_api_console.png" height="130px">
+    </dd>    
+    <dd>
+  	  -	Cliquer sur le menu Identifiants (Créer un projet si vous en avez pas).
+ 	</dd>  
+    <dd>
+  	  - Cliquer sur Créer des identifiants. Dans a liste qui s’affiche choisir ID Client OAuth.
+	</dd>
+	<dd>
+	  - Cliquer sur Configurer l’écran d’identification : 
+	</dd>
+	<dd>
+	  - Compléter le formulaire et Enregistrer
+	</dd>
+	<dd>
+	  - Sur l’écran qui s’affiche choisir le type d’application : Application web
+	</dd>
+	<dd>
+	  - Compléter le formulaire et Enregistrer
+	</dd>
+</dl>
+Après ces opérations un Id client et un code secret client seront créés.
+<br/>
+<br/>
+<h4>Obtention de refreshtoken et de accesstoken</h4>
+<p>
+Pour obtenir les token pour OAuth connecter vous à la page : <a href="https://developers.google.com/oauthplayground">https://developers.google.com/oauthplayground</a>.
+</p>
+<br/>
+<p>
+<img class="img-responsive img-rounded" src="assets/images/Oauth_2_0_Playground.png" style="height: 350px;">
+</p>
+<br/>
+<b>Etape 1</b>
+<p>Cliquer sur le bouton paramètre.</p>
+<p>
+<img class="img-responsive img-rounded" src="assets/images/Oauth_2_0_configuration.png" style="height: 430px;">
+</p>
+<p>
+Saisir le client Id et le client secret récupérés précédemment.
+</p>
+<br/>
+<b>Etape 2</b>
+<p>
+Choisir dans la liste Gmail API v1 et sélectionner les actions à autoriser sur le compte
+</p>
+<p>
+<img class="img-responsive img-rounded" src="assets/images/google_api_selection_actions.png" style="height: 430px;">
+</p>
+<br/>
+<p>
+Cliquer ensuite sur Authorize API et choisir le compte gmail sur lequel on ajoute l’autorisation (au cas où plusieurs comptes sont ouverts sur le navigateur).<br/>
+Accepter l’accès du module OAuth2 au compte gmail. 
+</p>
+<br/>
+<p>
+<img class="img-responsive img-rounded" src="assets/images/google_api_auth.png" style="height: 330px;">
+</p>
+<b>Etape 3: </b>
+<p>
+Cliquer sur Exchange authorization code for tokens pour récupérer refreshToken et accessToken.
+</p>
+<p>
+<img class="img-responsive img-rounded" src="assets/images/Oauth_2_0_tokens.png" style="height: 400px;">
+</p>
+<br/>
+<p>
+Un paramètre, fixé par gmail, permet de changer le refreshtoken à chaque intervalle de temps.<br/>
+Pour une authentification permanente  sur le server, il faut utiliser uniquement Accestoken lors de la configuration de la connexion Oautth2.
+</p>
+
+<br/>
+<br/>
+<br/>
+<hr>
+<br/>

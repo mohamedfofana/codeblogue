@@ -1,3 +1,43 @@
-<p>
-  contact works!
-</p>
+<hr>
+<h2 class="intro-text text-center">Contact Us
+</h2>
+<hr>
+
+<!--<h4><span class="label label-success text-center" ng-show="emailSent">Email envoyé avec succès !!!</span></h4>
+<h4><span class="label label-danger text-center" ng-show="emailNotSent">Un problème est survenu lors de l'envoie de l'email !!!</span></h4>
+-->
+<p>Utiliser ce formulaire pour envoyer des publicités ou des remarques sur le site.</p>
+<div class="container">
+<form novalidate [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <div class="form-group row">
+      <label for="nom" class="col-sm-2 col-form-label" >Nom</label>
+      <div class="col-sm-6">
+          <input type="text" id="nom" class="form-control" maxlength="50" placeholder="Nom" formControlName="nom">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="email" class="col-sm-2 col-form-label">Email</label>
+      <div class="col-sm-6">
+        <input type="email" id="email" class="form-control" maxlength="70" placeholder="Email" formControlName="email">
+      </div>
+    </div>      
+   <div class="form-group row">
+      <label for="objet" class="col-sm-2 col-form-label">Objet</label>
+      <div class="col-sm-6">
+        <input type="text" id="objet" class="form-control" maxlength="50" placeholder="Objet" formControlName="objet">
+      </div>
+    </div>      
+   <div class="form-group row">
+      <label for="contenu" class="col-sm-2 col-form-label">Message</label>
+      <div class="col-sm-9">
+        <textarea maxlength="1000" id="contenu" class="form-control" rows="10" placeholder="" formControlName="contenu"></textarea>
+      </div>
+    </div>      
+    <div class="form-group row">
+   	  <label for="submit" class="col-sm-2 col-form-label"></label>
+      <div class="col-sm-9">
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+      </div>
+    </div>
+  </form>
+</div>

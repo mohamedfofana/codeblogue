@@ -8,7 +8,7 @@ import { ArticleDetailComponent } from '../article-detail/article-detail.compone
 
 const articleRoutes: Routes = [
       { path: 'articles', component: ArticleComponent },
-      { path: 'article/:titre',
+      { path: 'article/:url',
               canActivate: [ ArticleDetailGuard ],
               component: ArticleDetailComponent }
 ];

@@ -1,0 +1,115 @@
+<h2 class="intro-text text-center">Directive carousel AngularJs 1.4</h2>
+<hr>
+<p>Le carousel de boostrap permet de visualiser plusieurs images sur un slide.<br/>
+J'ai crée un carousel sous forme de directive AngularJs.<br/>
+L'environnement utilisé pour la création est une application à page unique M.E.A.N. Stack avec ces propriétés: Bootstrap 3.2.0, AngularJs 1.4.0.</p>
+La procédure de création est : 
+<h4>Définition des directives dans le module principale de l'application</h4>
+<pre class="with-style-pre"><code class="with-style-code"> 
+angular.module('myApp')  
+  .directive('mycarousel', function () {{ '{' }}  
+   return {{ '{' }}  
+    templateUrl: 'views/templates/mycarousel.html',  
+    restrict: 'E',  
+    scope: {{ '{' }}  
+     carouselOptions: '='  
+    }  
+   };  
+  })
+  .directive('carouseldatatarget', function () {{ '{' }}
+    return {{ '{' }}
+      template: '&lt;li data-target="#thecarousel" data-slide-to="{{ '{' }}{{ '{' }}numTarget}}" class="active"&gt;&lt;&#47;li&gt;',
+      restrict: 'E',
+      scope: {{ '{' }}
+        numTarget: '@'
+      }
+    };
+  }); 
+</code></pre>
+
+<h4>Contenu du template html principal</h4>
+<pre class="with-style-pre"><code class="with-style-code">
+&lt;div id=&quot;thecarousel&quot; class=&quot;carousel slide&quot;&gt;
+  &lt;!-- Indicators --&gt;
+  &lt;ol class=&quot;carousel-indicators hidden-xs&quot;&gt;
+    &lt;li data-target=&quot;#thecarousel&quot; data-slide-to=&quot;0&quot; class=&quot;active&quot;&gt;&lt;/li&gt;            
+    &lt;div ng-repeat=&quot;numImg in carouselOptions.nbImg&quot;&gt;
+      &lt;carouseldatatarget num-target=&quot;{{ '{' }}{{ '{' }}numImg}}&quot;&gt;&lt;/carouseldatatarget&gt;       
+    &lt;/div&gt;
+&lt;/ol&gt;
+
+&lt;!-- Wrapper for slides --&gt;
+&lt;div class=&quot;carousel-inner&quot;&gt;
+   &lt;div class=&quot;item active&quot;&gt;&lt;img class=&quot;img-responsive&quot; src=&quot;{{ '{' }}{{ '{' }}carouselOptions.firstImg}}&quot; alt=&quot;&quot;&gt;&lt;/div&gt;
+   &lt;div class=&quot;item&quot; ng-repeat=&quot;imgSrc in carouselOptions.srcs&quot;&gt;
+      &lt;img class=&quot;img-responsive&quot; src=&quot;{{ '{' }}{{ '{' }}imgSrc}}&quot; alt=&quot;&quot;&gt;
+   &lt;/div&gt;  
+&lt;/div&gt;
+
+&lt;!-- Controls --&gt;
+&lt;a class=&quot;left carousel-control&quot; href=&quot;{{ '{' }}{{ '{' }}carouselOptions.pathName}}/#thecarousel&quot; data-slide=&quot;prev&quot;&gt;
+      &lt;span class=&quot;glyphicon glyphicon-chevron-left&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+      &lt;span class=&quot;sr-only&quot;&gt;Previous&lt;/span&gt;
+&lt;/a&gt;
+&lt;a class=&quot;right carousel-control&quot; href=&quot;{{ '{' }}{{ '{' }}carouselOptions.pathName}}/#thecarousel&quot; data-slide=&quot;next&quot;&gt;
+      &lt;span class=&quot;glyphicon glyphicon-chevron-right&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+      &lt;span class=&quot;sr-only&quot;&gt;Next&lt;/span&gt;
+&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+    $(function(){{ '{' }}
+        $('.carousel-control').click(function(e){{ '{' }}
+            e.preventDefault();
+            $('#thecarousel').carousel( $(this).data() );
+        });
+
+    });
+&lt;/script&gt;
+</code></pre>
+
+<h4>Définition des paramètres du controller de la page appelant</h4>
+<pre class="with-style-pre"><code class="with-style-code">
+self.carouselOptions = {{ '{' }}
+  firstImg: 'premiere_image.[jpdg, png]',
+  nbImg: [1, 2,….],
+  srcs: ['image 2’,’image 3’,’image 4’,…],
+  pathName: 'chemin vers de la page’ ;
+};
+</code></pre>
+<p>Le script en bas du code permet d'activer le carousel. J'ai eu des problèmes sur le sliding des images sur cette version de Bootstrap.
+La succession des images ne se faisait pas correctement. Ce script permet d'activer le carousel et d'enregistrer les images.</p>
+<dl class="dl-horizontal">
+  <dt>carousleOptions:</dt>
+  <dd>
+    une variable json qui contient les options du carousel
+  </dd>
+  <dt>firstImg:</dt>
+  <dd>
+    représente la première image du carousel. Ceci permet de gérer l’image active à l’affichage du carousel
+  </dd>
+  <dt>nbImg:</dt>
+  <dd>
+    représente l’indice des images restantes du carousel sur le tableau srcs
+  </dd>
+  <dt>srcs:</dt>
+  <dd>
+    représente le tableau contenant les liens vers les images du carousel
+  </dd>
+</dl>
+
+<h4>Code css du carousel</h4>
+<pre class="with-style-pre"><code class="with-style-code">
+#thecarousel {{ '{' }}
+    width: 350px;
+    margin: 0 auto;
+}
+</code></pre>
+
+<h4>Code d'appel de la directive dans la page</h4>
+<pre class="with-style-pre"><code class="with-style-code">
+&lt;mycarousel carousel-options="ctrl.carouselOptions"&gt;&lt;/mycarousel&gt; 
+</code></pre>
+
+
+<br/>

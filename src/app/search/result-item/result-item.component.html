@@ -1,0 +1,24 @@
+<article class="search-result row">                   
+    <div class="col-xs-12 col-sm-12 col-md-2">
+        <ul class="meta-search">
+            <li><i class="fa fa-calendar" aria-hidden="true"></i> <span>{{article.creation | date:'shortDate'}}</span></li>
+            <li><i class="fa fa-clock-o" aria-hidden="true"></i> <span>{{article.creation | date:'shortTime'}}</span></li>
+            <li><i class="fa fa-eye" aria-hidden="true"></i> <span>{{article.views}} vues</span></li>
+            <li><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> <span>{{article.likes}} J'aime</span></li>
+        </ul>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-10 excerpet">
+        <h3><a href="#" title="">{{article.titre}}</a></h3>
+        <p>{{article.description}}</p>    
+        <table style="float:right;">
+            <tbody>
+                <tr>
+                    <td *ngFor="let tag of article.tags">
+                        <a routerLink=''><i>{{tag}}</i></a>&nbsp; &nbsp; &nbsp;
+                    </td>
+                </tr>
+            </tbody>
+        </table>                      
+    </div>            
+    <span class="clearfix borda"></span>
+</article>

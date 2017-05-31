@@ -1,5 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
-/* You can add global styles to this file, and also import other style files */
+
 .browsehappy {
 	margin: 0.2em 0;
 	background: #ccc;
@@ -7,25 +6,14 @@
 	padding: 0.2em 0;
 }
 
-/*!
- * Start Bootstrap - Business Casual (http://startbootstrap.com/)
- * Copyright 2013-2016 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
- */
-/*!
- * Variables
- */
-/*rgb(0, 81, 126);*/
-/*!
-  * Fin variable
-  */
 body {
-	font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-family: "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
 	background: url("assets/images/bg.jpg") no-repeat center center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	background-size: cover;
 	-o-background-size: cover;
+    font-size: 16px;
 }
 
 .container {
@@ -39,7 +27,7 @@ h4,
 h5,
 h6 {
 	font-family: "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
-	font-weight: 700;
+	font-weight: 400;
 	letter-spacing: 1px;
 }
 
@@ -94,7 +82,6 @@ hr {
 .intro-text {
     text-transform: uppercase;
     font-size: 1.25em;
-    font-weight: 400;
     letter-spacing: 1px;
 }
 
@@ -113,6 +100,8 @@ footer {
     background: #fff;
     background: rgba(255,255,255,0.9);
     border-top: 1px solid #eeeeee;
+    color: #292b2c;
+    color:white;
 }
 
 footer p {
@@ -156,7 +145,7 @@ footer p {
         color: #fff;
     }
 
-    .navbar {
+   .navbar {
         border-radius: 0;
     }
 
@@ -188,12 +177,12 @@ footer p {
         line-height: normal;
     }
 
-    .navbar-nav {
+  /*   .navbar-nav {
         display: table;
         float: none;
         table-layout: fixed;
         font-size: 1.05em;
-    }
+    } */
 }
 
 @media screen and (min-width:1200px) {
@@ -241,4 +230,112 @@ footer p {
   font-family: "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
   color: #fd1506;
   font-weight: 700;
+}
+
+/** Carousel **/
+#carouselExampleIndicators {
+    width: 350px;
+    margin: 0 auto;
+}
+
+/* Recherche */
+.search-result .thumbnail { border-radius: 0 !important; }
+.search-result { margin-top: 20px; }
+.search-result .col-md-2 { border-right: 1px dotted #ccc; min-height: 140px; }
+.search-result ul { padding-left: 0 !important; list-style: none;  }
+.search-result ul li { font: 400 normal .85em "Roboto",Arial,Verdana,sans-serif;  line-height: 30px; }
+.search-result ul li i { padding-right: 5px; }
+.search-result .col-md-7 { position: relative; }
+.search-result h3 { font: 500 normal 1.375em "Roboto",Arial,Verdana,sans-serif; margin-top: 0 !important; margin-bottom: 10px !important; }
+.search-result h3 > a, .search-result i { color: #248dc1 !important; }
+.search-result p { font: normal normal 1.125em "Roboto",Arial,Verdana,sans-serif; } 
+
+/* Gestion du section de commentaire */
+ 
+/*Comment List styles*/
+.comment-list .row {
+  margin-bottom: 0px;
+}
+.comment-list .panel .panel-heading {
+  padding: 4px 15px;
+  position: absolute;
+  border:none;
+  /*Panel-heading border radius*/
+  border-top-right-radius:0px;
+  top: 1px;
+}
+.comment-list .panel .panel-heading.right {
+  border-right-width: 0px;
+  /*Panel-heading border radius*/
+  border-top-left-radius:0px;
+  right: 16px;
+}
+.comment-list .panel .panel-heading .panel-body {
+  padding-top: 6px;
+}
+.comment-list figcaption {
+  /*For wrapping text in thumbnail*/
+  word-wrap: break-word;
+}
+/* Portrait tablets and medium desktops */
+@media (min-width: 768px) {
+  .comment-list .arrow:after, .comment-list .arrow:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-color: transparent;
+  }
+  .comment-list .panel.arrow.left:after, .comment-list .panel.arrow.left:before {
+    border-left: 0;
+  }
+  /*****Left Arrow*****/
+  /*Outline effect style*/
+  .comment-list .panel.arrow.left:before {
+    left: 0px;
+    top: 30px;
+    /*Use boarder color of panel*/
+    border-right-color: inherit;
+    border-width: 16px;
+  }
+  /*Background color effect*/
+  .comment-list .panel.arrow.left:after {
+    left: 1px;
+    top: 31px;
+    /*Change for different outline color*/
+    border-right-color: #FFFFFF;
+    border-width: 15px;
+  }
+  /*****Right Arrow*****/
+  /*Outline effect style*/
+  .comment-list .panel.arrow.right:before {
+    right: -16px;
+    top: 30px;
+    /*Use boarder color of panel*/
+    border-left-color: inherit;
+    border-width: 16px;
+  }
+  /*Background color effect*/
+  .comment-list .panel.arrow.right:after {
+    right: -14px;
+    top: 31px;
+    /*Change for different outline color*/
+    border-left-color: #FFFFFF;
+    border-width: 15px;
+  }
+}
+.comment-list .comment-post {
+  margin-top: 6px;
+}
+
+/* Fin comment section */
+
+/** Debut Ajout commentaire */
+.commentAddSection .replyAddSection {
+    margin-top: 10px;
+}
+
+.card-block-comment {
+  padding-bottom: 8px;
 }

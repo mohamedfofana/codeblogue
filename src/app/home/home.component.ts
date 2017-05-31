@@ -5,7 +5,6 @@ import { IArticle } from '../services/models/article';
 import { ArticleService } from '../services/article.service';
 
 @Component({
-  selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
