@@ -41,8 +41,31 @@ export class CommentBoxComponent implements OnInit {
       .subscribe(comments => this.comments = comments, error => this.errorMessage = <any>error);
     this._articleService.getCommentReplies(this.article.titre)
       .subscribe(replies => this.replies = replies, error => this.errorMessage = <any>error);
+
+    this.hideDiv();
   }
 
+  hideDiv(): void {
+    $('input.commentAuteur').hide();
+    $('button.commentSubmit').hide();
+    $('textarea.commentTextArea').focus(function () {
+      $(this).attr('rows', 5);
+      $('input.commentAuteur').show();
+      $('button.commentSubmit').show();
+    });
+    
+    $('textarea.commentTextArea').blur(function () {
+      if ($(this).val().length == 0) {
+        $(this).attr('rows', 1);
+        $('input.commentAuteur').hide();
+        $('button.commentSubmit').hide();
+      } else {
+        $('input.commentSubmit').show();
+        $('button.commentAuteur').show();
+      }
+
+    });
+  }
   saveComment(): void {
     console.log(this.comment);
     this._articleService.saveComment(this.comment);
@@ -53,21 +76,19 @@ export class CommentBoxComponent implements OnInit {
     this._articleService.saveReply(this.reply);
   }
 
-  likeArticle(): void {
-    console.log(this.article);
-    // this._articleService.;
+  likeArticle(article: IArticle): void {
+    article.likes = article.likes + 1;
+    this._articleService.likeArticle(article);
   }
 
-  likeComment(auteur: String, creation: Date): void {
-    console.log(auteur);
-    console.log(creation);
+  likeComment(comment: IComment): void {
+    comment.likes = comment.likes + 1;
+    this._articleService.likeComment(comment);
   }
 
-  likeReply(auteur: String, creation: Date, comment_auteur: String, comment_creation: Date) {
-    console.log(auteur);
-    console.log(creation);
-    console.log(comment_auteur);
-    console.log(comment_creation);
+  likeReply(reply: IReply) {
+    reply.likes = reply.likes + 1;
+    this._articleService.likeReply(reply);
   }
 
   showHideReply(elementID: String) {
@@ -79,6 +100,26 @@ export class CommentBoxComponent implements OnInit {
       target.css('display', 'block');
       $('.commentAddSection').hide();
     }
+
+    $('input.replyAuteur').hide();
+    $('button.replySubmit').hide();
+    $('textarea.replyTextArea').focus(function () {
+      $(this).attr('rows', 5);
+      $('input.replyAuteur').show();
+      $('button.replySubmit').show();
+    });
+    
+    $('textarea.replyTextArea').blur(function () {
+      if ($(this).val().length == 0) {
+        $(this).attr('rows', 1);
+        $('input.replyAuteur').hide();
+        $('button.replySubmit').hide();
+      } else {
+        $('input.replySubmit').show();
+        $('button.replyAuteur').show();
+      }
+
+    });
   }
 
 }

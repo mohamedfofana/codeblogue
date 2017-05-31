@@ -1,8 +1,8 @@
 export interface IComment {
-     _id: Number; 
+     _id: number; 
     article_titre: String; 
     contenu: String;
     auteur: String;
-    likes: Number; 
+    likes: number; 
     creation :Date; 
 }

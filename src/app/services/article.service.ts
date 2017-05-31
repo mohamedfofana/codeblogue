@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
@@ -12,10 +12,17 @@ import { IReply } from './models/reply';
 
 @Injectable()
 export class ArticleService {
-  private articleUrl = "http://localhost:3000/article"
-  private commentUrl = "http://localhost:3000/comment"
-  private replyUrl = "http://localhost:3000/reply"
-  constructor(private _http: Http) { };
+  private articleUrl = "http://localhost:3000/article";
+  private commentUrl = "http://localhost:3000/comment";
+  private replyUrl = "http://localhost:3000/reply";
+  private headers: Headers;
+  private options: RequestOptions;
+
+  constructor(private _http: Http) { 
+    this.headers = new Headers({ 'Content-Type': 'application/json' });
+    this.options = new RequestOptions({ headers: this.headers });
+
+  };
 
   getArticles(): Observable<IArticle[]> {
     return this._http.get(this.articleUrl)
@@ -45,8 +52,32 @@ export class ArticleService {
 
   }
   
+  likeArticle(article: IArticle): Observable<IArticle[]> {
+    let body = JSON.stringify(article);
+    return this._http.put(this.articleUrl + '/'+article._id, body, this.headers)
+      .map((response: Response) => <IArticle[]>response.json())
+      .catch(this.handleError);
+
+  }
+
+  likeComment(comment: IComment): Observable<IComment[]> {
+    let body = JSON.stringify(comment);
+    return this._http.put(this.commentUrl, comment, this.headers)
+      .map((response: Response) => <IComment[]>response.json())
+      .catch(this.handleError);
+
+  }
+  
+  likeReply(reply: IReply): Observable<IReply[]> {
+    let body = JSON.stringify(reply);
+    return this._http.put(this.replyUrl + '/'+reply._id, body, this.headers)
+      .map((response: Response) => <IReply[]>response.json())
+      .catch(this.handleError);
+
+  }
+
   saveReply(reply: IReply): Observable<IReply[]> {
-    return this._http.post(this.commentUrl, reply)
+    return this._http.post(this.replyUrl, reply)
       .map((response: Response) => <IReply[]>response.json())
       .catch(this.handleError);
 

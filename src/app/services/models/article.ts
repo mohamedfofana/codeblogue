@@ -1,4 +1,5 @@
 export interface IArticle {
+	_id: number;
     auteur: String;
 	titre: String;
 	description: String;
@@ -6,8 +7,8 @@ export interface IArticle {
 	tags: [String];
 	creation: Date;
 	visible: Boolean;
-	views: Number;
-	likes: Number;
+	views: number;
+	likes: number;
 	category: String;
 	imageUrl: String;
 }

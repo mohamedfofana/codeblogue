@@ -45,6 +45,16 @@ var ArticleSchema = new mongoose.Schema({
 		type : Number,
 		require : false,
 		default : 0
+	},
+	category: {
+		type : String,
+		require : false,
+		default : 0
+	},
+	imageUrl: {
+		type : String,
+		require : false,
+		default : 0
 	}
 });
 // On declare le model User dans mongoose
