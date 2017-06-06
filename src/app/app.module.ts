@@ -14,6 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ArticleModule } from './article/article.module';
 
 import { ArticleService } from './services/article.service';
+import { CommentService } from './services/comment.service';
+import { ReplyService } from './services/reply.service';
 import { ContactService } from './services/contact.service';
 import { ValidationService } from './services/validation.service';
 import { ResultSearchComponent } from './search/result-search/result-search.component';
@@ -39,7 +41,7 @@ import { ResultItemComponent } from './search/result-item/result-item.component'
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [ArticleService, ContactService, ValidationService],
+  providers: [ArticleService,CommentService,ReplyService, ContactService, ValidationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

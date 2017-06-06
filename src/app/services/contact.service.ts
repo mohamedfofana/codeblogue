@@ -10,7 +10,7 @@ import { IContact } from './models/contact';
 
 @Injectable()
 export class ContactService {
-  private contactUrl = "http://localhost:3000/contact"
+  private contactUrl = "http://localhost:3000/api/contact"
   constructor(private _http: Http) { };
 
   sendMail(contact: IContact): Observable<IContact[]> {

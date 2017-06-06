@@ -7,6 +7,8 @@ import { IComment } from '../services/models/comment';
 import { IReply } from '../services/models/reply';
 
 import { ArticleService } from '../services/article.service';
+import { CommentService } from '../services/comment.service';
+import { ReplyService } from '../services/reply.service';
 
 declare var jquery: any;
 declare var $: any;
@@ -25,7 +27,7 @@ export class CommentBoxComponent implements OnInit {
   replyForm: FormGroup;
   errorMessage: string;
 
-  constructor(private _articleService: ArticleService, private _formBuilder: FormBuilder) { }
+  constructor(private _articleService: ArticleService, private _commentService: CommentService, private _replyService: ReplyService, private _formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.commentForm = this._formBuilder.group({
@@ -37,15 +39,76 @@ export class CommentBoxComponent implements OnInit {
       contenu: ['', [Validators.required, Validators.maxLength(1000)]]
     });
 
-    this._articleService.getArticleComments(this.article.titre)
-      .subscribe(comments => this.comments = comments, error => this.errorMessage = <any>error);
-    this._articleService.getCommentReplies(this.article.titre)
-      .subscribe(replies => this.replies = replies, error => this.errorMessage = <any>error);
+    this.initComments();
+    this.initReplies();
 
-    this.hideDiv();
+    this.showHideComment();
   }
 
-  hideDiv(): void {
+  initComments(): void {
+    this.comment = {} as IComment;
+    this._commentService.getCommentsByArticle(this.article.titre)
+      .subscribe(comments => this.comments = comments, error => this.errorMessage = <any>error);
+  }
+
+  initReplies(): void {
+    this.reply = {} as IReply;
+    this._replyService.getRepliesByArticle(this.article.titre)
+      .subscribe(replies => this.replies = replies, error => this.errorMessage = <any>error);
+  }
+  saveComment(): void {
+    this.comment.article_titre = this.article.titre;
+    this.comment.auteur = this.commentForm.value.auteur;
+    this.comment.contenu = this.commentForm.value.contenu;
+    this.comment.creation = new Date();
+    this.comment.likes = 0;
+
+    this._commentService.saveComment(this.comment).subscribe(
+      result => this.initComments(),
+      error => this.errorMessage = <any>error
+    );
+    this.showHideComment();
+  }
+
+  saveReply(comment_auteur: String, comment_creation: Date, elementID: String): void {
+    this.reply.article_titre = this.article.titre;
+    this.reply.auteur = this.replyForm.value.auteur;
+    this.reply.contenu = this.replyForm.value.contenu;
+    this.reply.likes = 0;
+    this.reply.comment_auteur = comment_auteur;
+    this.reply.comment_creation = comment_creation;
+
+    this._replyService.saveReply(this.reply).subscribe(
+      result => this.initReplies(),
+      error => this.errorMessage = <any>error);
+    this.showHideReply(elementID);
+  }
+
+  likeArticle(article: IArticle): void {
+    article.likes = article.likes + 1;
+    this._articleService.likeArticle(article).subscribe(
+      result => result,
+      error => this.errorMessage = <any>error
+    );
+  }
+
+  likeComment(comment: IComment): void {
+    comment.likes = comment.likes + 1;
+    this._commentService.likeComment(comment).subscribe(
+      result => result,
+      error => this.errorMessage = <any>error
+    );
+  }
+
+  likeReply(reply: IReply) {
+    reply.likes = reply.likes + 1;
+    this._replyService.likeReply(reply).subscribe(
+      result => result,
+      error => this.errorMessage = <any>error
+    );
+  }
+
+  showHideComment(): void {
     $('input.commentAuteur').hide();
     $('button.commentSubmit').hide();
     $('textarea.commentTextArea').focus(function () {
@@ -53,7 +116,7 @@ export class CommentBoxComponent implements OnInit {
       $('input.commentAuteur').show();
       $('button.commentSubmit').show();
     });
-    
+
     $('textarea.commentTextArea').blur(function () {
       if ($(this).val().length == 0) {
         $(this).attr('rows', 1);
@@ -65,30 +128,6 @@ export class CommentBoxComponent implements OnInit {
       }
 
     });
-  }
-  saveComment(): void {
-    console.log(this.comment);
-    this._articleService.saveComment(this.comment);
-  }
-
-  saveReply(comment_auteur: String, comment_creation: Date): void {
-    console.log(this.reply);
-    this._articleService.saveReply(this.reply);
-  }
-
-  likeArticle(article: IArticle): void {
-    article.likes = article.likes + 1;
-    this._articleService.likeArticle(article);
-  }
-
-  likeComment(comment: IComment): void {
-    comment.likes = comment.likes + 1;
-    this._articleService.likeComment(comment);
-  }
-
-  likeReply(reply: IReply) {
-    reply.likes = reply.likes + 1;
-    this._articleService.likeReply(reply);
   }
 
   showHideReply(elementID: String) {
@@ -103,20 +142,28 @@ export class CommentBoxComponent implements OnInit {
 
     $('input.replyAuteur').hide();
     $('button.replySubmit').hide();
+    $('textarea.replyTextArea').show();
     $('textarea.replyTextArea').focus(function () {
       $(this).attr('rows', 5);
       $('input.replyAuteur').show();
       $('button.replySubmit').show();
     });
-    
+
     $('textarea.replyTextArea').blur(function () {
       if ($(this).val().length == 0) {
         $(this).attr('rows', 1);
         $('input.replyAuteur').hide();
         $('button.replySubmit').hide();
+        $('.replyAddSection').hide();
+
+        $('.commentAddSection').show();
       } else {
         $('input.replySubmit').show();
         $('button.replyAuteur').show();
+
+        $('input.commentAuteur').hide();
+        $('button.commentSubmit').hide();
+        $('.replyAddSection').show();
       }
 
     });

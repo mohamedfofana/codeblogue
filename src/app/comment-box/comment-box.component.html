@@ -1,97 +1,94 @@
 <div class="text-right">
   <br/>
   <br/>
-  <i class="fa fa-eye" aria-hidden="true"> {{article.views}}</i>  &nbsp;&nbsp; <i class="fa fa-heart" aria-hidden="true" (click)="likeArticle(article)"> {{article.likes}}</i>
+  <i class="fa fa-heart" aria-hidden="true" (click)="likeArticle(article)"> {{article.likes}}</i>
 </div>
-  <div class="row">
-    <!-- Formulaire de commentaire-->
-    <div class="comments-container">
-      <h2 class="page-header">Commentaires({{comments? comments.length : '0'}})</h2>
-      <div class="commentAddSection" id="commentAddSection">
-        <form class="form-horizontal" [formGroup]="commentForm" (ngSubmit)="saveComment()">
-          <div class="form-group">
-            <div class="col-sm-12">
-              <textarea class="form-control commentTextArea" rows="1" id="comment" formControlName="contenu" required placeholder="Ajouter un commentaire ..."></textarea>
-            </div>
+<div class="row">
+  <!-- Formulaire de commentaire-->
+  <div class="comments-container">
+    <h3>Commentaires({{comments? comments.length : '0'}})</h3>
+    <div class="commentAddSection" id="commentAddSection">
+      <form class="form-horizontal" [formGroup]="commentForm" (ngSubmit)="saveComment()">
+        <div class="form-group">
+          <div class="col-sm-12">
+            <textarea class="form-control commentTextArea" rows="1" id="comment" formControlName="contenu" placeholder="Ajouter un commentaire ..."></textarea>
           </div>
-          <div class="form-group">
-            <div class="col-sm-offset-5 col-sm-7">
-              <input type="text" class="form-control col-xs-3 commentAuteur" id="auteur" formControlName="auteur" placeholder="Entrer votre nom ....">
-            </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-5 col-sm-7">
+            <input type="text" class="form-control col-xs-3 commentAuteur pull-left" id="auteur" formControlName="auteur" placeholder="Entrer votre nom ....">
           </div>
-          <div class="form-group">
-            <div class="col-sm-12">
-              <button type="submit" class="btn btn-success commentSubmit green float-right" [disabled]="commentForm.invalid"><i class="fa fa-share"></i> Publier</button>
-            </div>
+          <div class="col-sm-12">
+            <button type="submit" class="btn btn-success commentSubmit green pull-right" [disabled]="commentForm.invalid"><i class="fa fa-share"></i> Publier</button>
           </div>
-        </form>
-      </div>
-
-      <div *ngFor="let comment of comments">
-        <ul id="comments-list" class="comments-list">
-          <li>
-            <div class="comment-main-level">
-              <!-- Avatar -->
-              <!-- <div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div> -->
-              <!-- Contenedor del Comentario -->
-              <div class="comment-box">
-                <div class="comment-head">
-                  <h6 class="comment-name by-author">{{comment.auteur}}</h6>
-                  <span>{{comment.creation | date: "medium"}}</span>
-                  <i class="fa fa-heart" aria-hidden="true" (click)="likeComment(comment)"> {{comment.likes}}</i>
-                  <i class="fa fa-reply" (click)="showHideReply('replyNum' + comment._id)"></i>
-                </div>
-                <div class="comment-content">
-                  <p>
-                    {{comment.contenu}}
-                  </p>
-                </div>
+        </div>
+      </form>
+    </div>
+    <div class="box-shadow" *ngFor="let comment of comments">
+      <ul id="comments-list" class="comments-list">
+        <li>
+          <div class="comment-main-level">
+            <!-- Avatar -->
+            <div class="comment-avatar"><img src="assets/images/unknown-user.png" alt=""></div>
+            <!-- Contenedor del Comentario -->
+            <div class="comment-box">
+              <div class="comment-head">
+                <h6 class="comment-name by-author">{{comment.auteur}}</h6>
+                <span>{{comment.creation | date: "medium"}}</span>
+                <i class="fa fa-heart" aria-hidden="true" (click)="likeComment(comment)"> {{comment.likes}}</i>
+                <i class="fa fa-reply" (click)="showHideReply('replyNum' + comment._id)"></i>
+              </div>
+              <div class="comment-content">
+                <p>
+                  {{comment.contenu}}
+                </p>
               </div>
             </div>
-            <!-- Reply -->
-            <div class="replyAddSection" id="{{'replyNum' + comment._id}}" style="display:none;">
-              <form class="form-horizontal" [formGroup]="replyForm" (ngSubmit)="saveReply()">
-                <div class="form-group">
-                  <div class="col-md-offset-3 col-sm-12">
-                    <textarea class="form-control replyTextArea" rows="5" id="comment" formControlName="contenu" required placeholder="Ajouter un commentaire ..."></textarea>
-                  </div>
+          </div>
+          <!-- Reply -->
+          <div class="replyAddSection" id="{{'replyNum' + comment._id}}" style="display:none;">
+            <form class="form-horizontal" [formGroup]="replyForm" (ngSubmit)="saveReply(comment.auteur, comment.creation, 'replyNum' + comment._id)">
+              <div class="form-group">
+                <div class="col-md-offset-3 col-sm-12">
+                  <textarea class="form-control replyTextArea" rows="5" id="comment" formControlName="contenu" required placeholder="Ajouter un commentaire ..."></textarea>
                 </div>
-                <div class="form-group">
-                  <div class="col-sm-offset-5 col-sm-6">
-                    <input type="text" class="form-control col-xs-3 replyAuteur" id="auteur" formControlName="auteur" maxlength="50" required
-                      placeholder="Entrer votre nom ....">
-                  </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-offset-5 col-sm-6">
+                  <input type="text" class="form-control col-xs-3 replyAuteur" id="auteur" formControlName="auteur" maxlength="50" required
+                    placeholder="Entrer votre nom ....">
                 </div>
-                <div class="form-group">
-                  <div class="col-md-offset-3 col-sm-12">
-                    <button type="submit" class="btn btn-success replySubmit green float-right" [disabled]="replyForm.invalid"><i class="fa fa-share"></i> Publier</button>
-                  </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-offset-3 col-sm-12">
+                  <button type="submit" class="btn btn-success replySubmit green float-right" [disabled]="replyForm.invalid"><i class="fa fa-share"></i> Publier</button>
                 </div>
-              </form>
-            </div>
-            <!-- Replies -->
-            <div *ngIf='replies'>
+              </div>
+            </form>
+          </div>
+          <!-- Replies -->
+          <div *ngIf='replies'>
             <ul class="comments-list reply-list">
               <li *ngFor="let reply of replies | replyFilter:comment.auteur:comment.creation">
-                <!-- Avatar -->
-                <!-- <div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_2_zps7de12f8b.jpg" alt=""></div> -->
-                <!-- Contenedor del Comentario -->
-                <div class="comment-box">
-                  <div class="comment-head">
-                    <h6 class="comment-name by-author">{{reply.auteur}}</h6>
-                    <span>{{reply.creation | date: "medium"}}</span>
-                    <i class="fa fa-heart" (click)="likeReply(reply)"> {{reply.likes}}</i>
+                  <!-- Avatar -->
+                  <div class="comment-avatar"><img src="assets/images/unknown-user.png" alt=""></div>
+                  <!-- Contenedor del Comentario -->
+                  <div class="comment-box">
+                    <div class="comment-head">
+                      <h6 class="comment-name by-author">{{reply.auteur}}</h6>
+                      <span>{{reply.creation | date: "medium"}}</span>
+                      <i class="fa fa-heart" (click)="likeReply(reply)"> {{reply.likes}}</i>
+                    </div>
+                    <div class="comment-content">
+                      <p>
+                        {{reply.contenu}}
+                      </p>
+                    </div>
                   </div>
-                  <div class="comment-content">
-                    <p>
-                      {{reply.contenu}}
-                    </p>
-                  </div>
-                </div>
               </li>
             </ul>
-            </div>
-          </li>
-        </ul>
-      </div>
+          </div>
+        </li>
+      </ul>
     </div>
+  </div>

@@ -30,7 +30,12 @@ h6 {
 	font-weight: 400;
 	letter-spacing: 1px;
 }
-
+bold-title{
+    font-family: "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-weight: 400;
+	letter-spacing: 1px;
+    font-size: 1.5rem;
+}
 p {
 	margin: 0 0 10px;
 }
@@ -332,13 +337,20 @@ footer p {
 /* Fin comment section */
 
 /** Debut Ajout commentaire */
-.commentAddSection .replyAddSection {
-    margin-top: 10px;
-    margin-bottom: 30px;
+.commentAddSection {
+   width: auto;
+   
+}
+.replyAddSection {
+    margin-top: 20px;
+    margin-bottom: 0px;
 }
 
+.box-shadow {
+    overflow:auto;
+    clear: both;
+}
 .replyAddSection {
-    margin-top: 15px;
     margin-left: 30px;
 }
 .card-block-comment {
@@ -349,13 +361,13 @@ footer p {
  * Lista de Comentarios
  =======================*/
 .comments-container {
-	width: auto;
+	width: 100%;
 }
 
 .comments-container h1 {
 	font-size: 36px;
 	color: #283035;
-	font-weight: 400;
+	font-weight: 300;
 }
 
 .comments-container h1 a {
@@ -364,49 +376,10 @@ footer p {
 }
 
 .comments-list {
-	margin-top: 30px;
+	margin-top: 10px;
+    padding: 0;
 	position: relative;
 }
-
-/**
- * Lineas / Detalles
- -----------------------*/
-/*
-.comments-list:before {
-	content: '';
-	width: 2px;
-	height: 100%;
-	background: #c7cacb;
-	position: absolute;
-	left: 32px;
-	top: 0;
-}
-
-.comments-list:after {
-	content: '';
-	position: absolute;
-	background: #c7cacb;
-	bottom: 0;
-	left: 27px;
-	width: 7px;
-	height: 7px;
-	border: 3px solid #dee1e3;
-	-webkit-border-radius: 50%;
-	-moz-border-radius: 50%;
-	border-radius: 50%;
-}
-
-.reply-list:before, .reply-list:after {display: none;}
-.reply-list li:before {
-	content: '';
-	width: 60px;
-	height: 2px;
-	background: #c7cacb;
-	position: absolute;
-	top: 25px;
-	left: -55px;
-}
-*/
 
 .comments-list li {
 	margin-bottom: 15px;
@@ -423,6 +396,7 @@ footer p {
 }
 
 .reply-list {
+	padding-left: 88px;
 	clear: both;
 	margin-top: 15px;
 }

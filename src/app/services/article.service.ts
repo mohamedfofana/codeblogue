@@ -12,9 +12,7 @@ import { IReply } from './models/reply';
 
 @Injectable()
 export class ArticleService {
-  private articleUrl = "http://localhost:3000/article";
-  private commentUrl = "http://localhost:3000/comment";
-  private replyUrl = "http://localhost:3000/reply";
+  private articleUrl = "http://localhost:3000/api/article";
   private headers: Headers;
   private options: RequestOptions;
 
@@ -31,58 +29,14 @@ export class ArticleService {
 
   }
 
-  getArticleComments(titre: String): Observable<IComment[]> {
-    return this._http.get(this.commentUrl, {params: {article_titre: titre, sort: 'creation'}})
-      .map((response: Response) => <IComment[]>response.json())
-      .catch(this.handleError);
-
-  }
-
-  getCommentReplies(titre: String): Observable<IReply[]> {
-    return this._http.get(this.replyUrl, {params: {article_titre: titre, sort: 'creation'}})
-      .map((response: Response) => <IReply[]>response.json())
-      .catch(this.handleError);
-
-  }
-  
-  saveComment(comment: IComment): Observable<IComment[]> {
-    return this._http.post(this.commentUrl, comment)
-      .map((response: Response) => <IComment[]>response.json())
-      .catch(this.handleError);
-
-  }
-  
   likeArticle(article: IArticle): Observable<IArticle[]> {
     let body = JSON.stringify(article);
-    return this._http.put(this.articleUrl + '/'+article._id, body, this.headers)
+    return this._http.put(this.articleUrl + '/'+article._id, body, this.options)
       .map((response: Response) => <IArticle[]>response.json())
       .catch(this.handleError);
 
   }
-
-  likeComment(comment: IComment): Observable<IComment[]> {
-    let body = JSON.stringify(comment);
-    return this._http.put(this.commentUrl, comment, this.headers)
-      .map((response: Response) => <IComment[]>response.json())
-      .catch(this.handleError);
-
-  }
   
-  likeReply(reply: IReply): Observable<IReply[]> {
-    let body = JSON.stringify(reply);
-    return this._http.put(this.replyUrl + '/'+reply._id, body, this.headers)
-      .map((response: Response) => <IReply[]>response.json())
-      .catch(this.handleError);
-
-  }
-
-  saveReply(reply: IReply): Observable<IReply[]> {
-    return this._http.post(this.replyUrl, reply)
-      .map((response: Response) => <IReply[]>response.json())
-      .catch(this.handleError);
-
-  }
-
   getTopNArticles(num: Number): Observable<IArticle[]> {
     return this._http.get(this.articleUrl, { params: { limit: num, sort: 'views' } })
       .map((response: Response) => <IArticle[]>response.json())

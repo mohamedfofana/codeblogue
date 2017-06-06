@@ -11,7 +11,7 @@
     <hr>
     <h2 class="intro-text text-center">{{article.titre}}
     </h2>
-    <img class="img-responsive img-rounded img-left" src="assets/images/{{article.imageUrl}}" alt="">
+    <img *ngIf="article.imageUrl.indexOf('.png') > 0 || article.imageUrl.indexOf('.jpeg') > 0" class="img-responsive img-rounded img-left" src="assets/images/{{article.imageUrl}}" alt="">
     <p class="trunc-text">{{article.description}}.</p>
     <p><a routerLink='/article/{{article.url}}'><small>[Plus...]</small></a>
     </p>

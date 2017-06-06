@@ -50,4 +50,3 @@ db.once('open', function() {
 		console.log('listening on port 3000...');
 	});
 });
-
