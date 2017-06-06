@@ -56,6 +56,7 @@ export class CommentBoxComponent implements OnInit {
     this._replyService.getRepliesByArticle(this.article.titre)
       .subscribe(replies => this.replies = replies, error => this.errorMessage = <any>error);
   }
+  
   saveComment(): void {
     this.comment.article_titre = this.article.titre;
     this.comment.auteur = this.commentForm.value.auteur;

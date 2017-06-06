@@ -38,7 +38,7 @@ export class ArticleService {
   }
   
   getTopNArticles(num: Number): Observable<IArticle[]> {
-    return this._http.get(this.articleUrl, { params: { limit: num, sort: 'views' } })
+    return this._http.get(this.articleUrl, { params: { limit: num, sort: '-views' } })
       .map((response: Response) => <IArticle[]>response.json())
       .catch(this.handleError);
   }

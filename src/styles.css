@@ -362,6 +362,7 @@ footer p {
  =======================*/
 .comments-container {
 	width: 100%;
+    margin-bottom: 10px;
 }
 
 .comments-container h1 {
