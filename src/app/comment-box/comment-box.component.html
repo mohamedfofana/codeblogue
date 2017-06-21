@@ -6,7 +6,7 @@
 <div class="row">
   <!-- Formulaire de commentaire-->
   <div class="comments-container">
-    <h3>Commentaires({{comments? comments.length : '0'}})</h3>
+    <h3>Commentaires({{numComment}})</h3>
     <div class="commentAddSection" id="commentAddSection">
       <form class="form-horizontal" [formGroup]="commentForm" (ngSubmit)="saveComment()">
         <div class="form-group">

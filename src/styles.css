@@ -53,6 +53,7 @@ hr {
 .navbar{
     margin-bottom: 10px;
 }
+
 .img-full {
     min-width: 100%;
 }
@@ -145,7 +146,7 @@ footer p {
         text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         text-transform: uppercase;
         font-size: 1.2em;
-        font-weight: 400;
+        font-weight: 300;
         letter-spacing: 3px;
         color: #fff;
     }
@@ -162,7 +163,7 @@ footer p {
         min-height: 0;
     }
 
-    .navbar-default {
+    .navbar-inverse {
         border: none;
         background: #fff;
         background: rgb(0, 151, 196);
@@ -181,7 +182,9 @@ footer p {
     .navbar-nav>li>a {
         line-height: normal;
     }
-
+.navbar-inverse .navbar-nav .nav-link {
+    color: white;
+}
   /*   .navbar-nav {
         display: table;
         float: none;
@@ -213,16 +216,16 @@ footer p {
 .navbar {
     min-height:38px !important;
 }
-.navbar-default .navbar-nav > li > a {
+.navbar-inverse .navbar-nav > li > a {
     color: white;
 }
-.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
     background-color: transparent;
     color: white;
 }
-.navbar-default .navbar-nav > .active > a, 
- .navbar-default .navbar-nav > .active > a:hover, 
- .navbar-default .navbar-nav > .active > a:focus {
+.navbar-inverse .navbar-nav > .active > a, 
+ .navbar-inverse .navbar-nav > .active > a:hover, 
+ .navbar-inverse .navbar-nav > .active > a:focus {
            color: white;
  }
 .well {

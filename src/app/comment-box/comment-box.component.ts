@@ -21,6 +21,7 @@ export class CommentBoxComponent implements OnInit {
   @Input() article: IArticle;
   comments: IComment[];
   comment: IComment;
+  numComment: number = 0;
   replies: IReply[];
   reply: IReply;
   commentForm: FormGroup;
@@ -48,13 +49,28 @@ export class CommentBoxComponent implements OnInit {
   initComments(): void {
     this.comment = {} as IComment;
     this._commentService.getCommentsByArticle(this.article.titre)
-      .subscribe(comments => this.comments = comments, error => this.errorMessage = <any>error);
+      .subscribe(comments => this.loadComments(comments), error => this.errorMessage = <any>error);
+
+  }
+
+  loadComments(comments: IComment[]){
+    this.comments = comments;
+    if (comments){
+      this.numComment += comments.length;
+    }
+  }
+
+  loadReplies(replies: IReply[]){
+    this.replies = replies;
+    if (replies){
+      this.numComment += replies.length;
+    }
   }
 
   initReplies(): void {
     this.reply = {} as IReply;
     this._replyService.getRepliesByArticle(this.article.titre)
-      .subscribe(replies => this.replies = replies, error => this.errorMessage = <any>error);
+      .subscribe(replies => this.loadReplies(replies), error => this.errorMessage = <any>error);
   }
   
   saveComment(): void {
