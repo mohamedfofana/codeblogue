@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
@@ -6,12 +6,14 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
 
+import { APP_CONFIG, AppConfig } from '../config/app-config.module';
+
 import { IContact } from './models/contact';
 
 @Injectable()
 export class ContactService {
-  private contactUrl = "http://localhost:3000/api/contact"
-  constructor(private _http: Http) { };
+  private contactUrl = this.config.apiEndpoint + "contact"
+  constructor(private _http: Http, @Inject(APP_CONFIG) private config: AppConfig) { };
 
   sendMail(contact: IContact): Observable<IContact[]> {
       console.log("sending email ...");

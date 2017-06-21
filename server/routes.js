@@ -2,9 +2,9 @@
 // el1: url
 // el2: controller à appeler
 module.exports = {
-	'/api/user' : './controllers/user',	
-	'/api/article' : './controllers/article',	
-	'/api/comment' : './controllers/comment',	
-	'/api/reply' : './controllers/reply',	
-	'/api/contact' : './controllers/contact'	
+	'/api/user' : './server/controllers/user',	
+	'/api/article' : './server/controllers/article',	
+	'/api/comment' : './server/controllers/comment',	
+	'/api/reply' : './server/controllers/reply',	
+	'/api/contact' : './server/controllers/contact'	
 };

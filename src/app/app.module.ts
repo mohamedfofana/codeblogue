@@ -12,6 +12,7 @@ import { FooterComponent } from './footer/footer.component';
 import { RightMenuComponent } from './right-menu/right-menu.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ArticleModule } from './article/article.module';
+import { AppConfigModule } from './config/app-config.module';
 
 import { ArticleService } from './services/article.service';
 import { CommentService } from './services/comment.service';
@@ -39,7 +40,8 @@ import { ResultItemComponent } from './search/result-item/result-item.component'
     RouterModule,
     ArticleModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AppConfigModule
   ],
   providers: [ArticleService,CommentService,ReplyService, ContactService, ValidationService],
   bootstrap: [AppComponent]

@@ -3,9 +3,11 @@
 var express 	  		= require('express'),
     bodyParser     	= require('body-parser'),
     mongoose	   		= require('mongoose'),    
-    methodOverride 	= require('method-override');
- 	  _ 					    = require('lodash');
-    mongodbServer   = 'mongodb://localhost:27017/codeblogue';    
+    methodOverride 	= require('method-override'),
+ 	  _ 					    = require('lodash'),
+    mongodbServer   = 'mongodb://localhost:27017/codeblogue',
+    path            = require('path');
+    PORT            = 8080;        
 
 // creation de l'application
 var app = express();
@@ -34,19 +36,26 @@ mongoose.connect(mongodbServer)
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
+  	// Point static path to dist
+    app.use(express.static(path.join(__dirname, 'dist')));
   	
-  	// Charmgement des models.
-  	app.models = require('./models/index');
+    // Charmgement des models.
+  	app.models = require('./server/models/index');
 
     // Chargement des routes.
-    var routes = require('./routes');
+    var routes = require('./server/routes');
     _.each(routes, function(controller, route) {
          var theCtrl = require(controller);
          app.use(route, theCtrl(app, route));
     });
 
+    // Catch all ot/ Point static path to dist
+        app.get('*', (req, res) => {
+                res.sendFile(path.join(__dirname, 'dist/index.html'));
+        });
+
   	// Démarrage du server
-	app.listen(3000, function(){
-		console.log('listening on port 3000...');
+	app.listen(PORT, function(){
+		console.log('listening on port ' + PORT + '...');
 	});
 });

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
@@ -6,17 +6,19 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
 
+import { APP_CONFIG, AppConfig } from '../config/app-config.module';
+
 import { IArticle } from './models/article';
 import { IComment } from './models/comment';
 import { IReply } from './models/reply';
 
 @Injectable()
 export class ArticleService {
-  private articleUrl = "http://localhost:3000/api/article";
+  private articleUrl = this.config.apiEndpoint + "article";
   private headers: Headers;
   private options: RequestOptions;
 
-  constructor(private _http: Http) { 
+  constructor(private _http: Http, @Inject(APP_CONFIG) private config: AppConfig) { 
     this.headers = new Headers({ 'Content-Type': 'application/json' });
     this.options = new RequestOptions({ headers: this.headers });
 
