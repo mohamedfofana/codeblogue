@@ -14,6 +14,7 @@ body {
 	background-size: cover;
 	-o-background-size: cover;
     font-size: 16px;
+    padding-top: 35px;
 }
 
 .container {
@@ -52,6 +53,7 @@ hr {
 
 .navbar{
     margin-bottom: 10px;
+    height: 50px;
 }
 
 .img-full {
@@ -153,6 +155,9 @@ footer p {
 
    .navbar {
         border-radius: 0;
+        width:100%;
+        
+           
     }
 
     .navbar-header {
@@ -239,6 +244,10 @@ footer p {
   color: #fd1506;
   font-weight: 700;
 }
+.rounded-search-button {
+    border-radius: 30%;
+    border: none;
+}
 
 /** Carousel **/
 #carouselExampleIndicators {
@@ -247,6 +256,63 @@ footer p {
 }
 
 /* Recherche */
+.search-form .input-group {
+  float: right !important;
+  transition: all 0.35s, border-radius 0s;
+  width: 32px;
+  height: 32px;
+  background-color: #fff;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+}
+.search-form .input-group input.form-control {
+  margin-left: -25px;
+  border:none;
+  background: transparent;
+  box-shadow: none;
+  display:block;
+  padding: 1rem 2rem;
+}
+
+.search-form .input-group input.form-control::-webkit-input-placeholder {
+  display: none;
+}
+.search-form .input-group input.form-control:-moz-placeholder {
+  /* Firefox 18- */
+  display: none;
+}
+.search-form .input-group input.form-control::-moz-placeholder {
+  /* Firefox 19+ */
+  display: none;
+}
+.search-form .input-group input.form-control:-ms-input-placeholder {
+  display: none;
+}
+.search-form .input-group:hover,
+.search-form .input-group.hover {
+  width: 100%;
+  border-radius: 25px 25px 25px 25px;
+}
+
+.search-form .input-group span.form-control-feedback {
+  position: absolute;
+  top: -5px;
+  bottom: 0px;
+  right: 0px;
+  left: 5px;
+  display: block;
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  color: #3596e0;
+  left: initial;
+  font-size: 14px;
+}
+
+
+
 .search-result .thumbnail { border-radius: 0 !important; }
 .search-result { margin-top: 20px; }
 .search-result .col-md-2 { border-right: 1px dotted #ccc; min-height: 140px; }
