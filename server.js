@@ -45,14 +45,14 @@ db.once('open', function() {
     // Chargement des routes.
     var routes = require('./server/routes');
     _.each(routes, function(controller, route) {
-         var theCtrl = require(controller);
-         app.use(route, theCtrl(app, route));
+      var theCtrl = require(controller);
+      app.use(route, theCtrl(app, route));
     });
 
     // Catch all ot/ Point static path to dist
-        app.get('*', (req, res) => {
-                res.sendFile(path.join(__dirname, 'dist/index.html'));
-        });
+      app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, 'dist/index.html'));
+      });
 
   	// Démarrage du server
 	app.listen(PORT, function(){
