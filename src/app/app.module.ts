@@ -18,9 +18,12 @@ import { ArticleService } from './services/article.service';
 import { CommentService } from './services/comment.service';
 import { ReplyService } from './services/reply.service';
 import { ContactService } from './services/contact.service';
+import { AuthService } from './services/auth.service';
 import { ValidationService } from './services/validation.service';
 import { ResultSearchComponent } from './search/result-search/result-search.component';
 import { ResultItemComponent } from './search/result-item/result-item.component';
+import { LoginComponent } from './auth/login.component';
+import { LogoutComponent } from './auth/logout.component';
 
 
 @NgModule({
@@ -28,6 +31,8 @@ import { ResultItemComponent } from './search/result-item/result-item.component'
     AppComponent,
     HomeComponent,
     NavbarComponent,
+    LoginComponent,
+    LogoutComponent,
     ContactComponent,
     FooterComponent,
     RightMenuComponent,
@@ -43,7 +48,7 @@ import { ResultItemComponent } from './search/result-item/result-item.component'
     AppRoutingModule,
     AppConfigModule
   ],
-  providers: [ArticleService,CommentService,ReplyService, ContactService, ValidationService],
+  providers: [ArticleService, AuthService, CommentService, ReplyService, ContactService, ValidationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

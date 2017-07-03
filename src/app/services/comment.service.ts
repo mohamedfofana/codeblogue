@@ -22,7 +22,7 @@ export class CommentService {
     this.headers = new Headers({ 'Content-Type': 'application/json' });
     this.options = new RequestOptions({ headers: this.headers });
 
-  };
+  }
 
   getCommentsByArticle(titre: String): Observable<IComment[]> {
     return this._http.get(this.commentUrl, {params: {article_titre: titre, sort: '-creation'}})

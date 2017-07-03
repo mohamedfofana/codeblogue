@@ -22,7 +22,7 @@ export class ReplyService {
     this.headers = new Headers({ 'Content-Type': 'application/json' });
     this.options = new RequestOptions({ headers: this.headers });
 
-  };
+  }
 
   getRepliesByArticle(titre: String): Observable<IReply[]> {
     return this._http.get(this.replyUrl, {params: {article_titre: titre, sort: '-creation'}})
