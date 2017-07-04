@@ -5,6 +5,7 @@ import { IUser } from '../services/models/user';
 import { Router } from '@angular/router';
 
 import { AuthService } from '../services/auth.service'
+import { SessionService } from '../services/session.service'
 
 @Component({
   templateUrl: './login.component.html'
@@ -12,10 +13,11 @@ import { AuthService } from '../services/auth.service'
 export class LoginComponent implements OnInit {
 
   errorMessage: string;
+  errorLogin: string;
   loginForm: FormGroup;
   user: IUser;
 
-  constructor(private _formBuilder: FormBuilder, private _authService: AuthService, private _router: Router) { 
+  constructor(private _formBuilder: FormBuilder, private _authService: AuthService, private _sessionService: SessionService, private _router: Router) { 
     this.loginForm = this._formBuilder.group({
       email: ['', [Validators.required, Validators.maxLength(50)]],
       password: ['', [Validators.required, Validators.maxLength(70)]]
@@ -35,9 +37,23 @@ export class LoginComponent implements OnInit {
   }
 
   isLogged(res: Response): void{
-    console.log(res);
+    let newRoute = res.url.split('/')[3];
+    if (newRoute == 'login'){
+        this.errorLogin = 'Login ou mot de passe incorrect';
+        this._sessionService.setLogged(false);
+        localStorage.removeItem('currentUserName');
+        localStorage.removeItem('currentUserEmail');
+        localStorage.removeItem('userLogged');
+    }else{
+      this.user.name = res.url.split('/')[3];
+        this.errorLogin = '';
+        localStorage.setItem('currentUserName', JSON.stringify(this.user.name));
+        localStorage.setItem('currentUserEmail', JSON.stringify(this.user.email));
+        localStorage.setItem('userLogged', 'true');
+        this._sessionService.setLogged(true);
+    }
     //localStorage.setItem('user', res;
-    this._router.navigate([res.url.substr(21)]);
+    this._router.navigate([newRoute]);
   }
 
   getErrorMessage(): void {

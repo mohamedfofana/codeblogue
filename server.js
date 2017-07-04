@@ -8,7 +8,7 @@ var express = require('express'),
   morgan = require('morgan'),
   cookieParser = require('cookie-parser'),
   passport = require('passport'),
-  flash    = require('connect-flash'),
+  flash = require('connect-flash'),
   _ = require('lodash'),
   mongodbServer = 'mongodb://localhost:27017/codeblogue',
   path = require('path'),
@@ -46,8 +46,8 @@ app.use(function (req, res, next) {
   //  res.sendStatus(200);
   //}
   //else {
-    next();
- // }
+  next();
+  // }
 });
 
 app.use(require('express-session')({
@@ -76,12 +76,23 @@ db.once('open', function () {
 
   // Chargement des routes auth.
   // process the login form
-  app.post('/api/auth/login', passport.authenticate('local-login', {
-        successRedirect : '/', // redirect to the secure profile section
-        failureRedirect : '/login', // redirect back to the signup page if there is an error
-        failureFlash : true // allow flash messages
-  }));
-  
+  app.post('/api/auth/login', function (req, res, next) {
+    passport.authenticate('local', function (err, user, info) {
+      if (err) { 
+        return next(err); 
+      }
+      if (!user) { 
+        return res.redirect('/login'); 
+      }
+      req.logIn(user, function (err) {
+        if (err) { 
+          return next(err); 
+        }
+        return res.redirect('/' + user.local.name);
+      });
+    })(req, res, next);
+  });
+
   app.get('/api/auth/google', passport.authenticate('google', { scope: "email" }));
   app.get('/api/auth/google/callback', passport.authenticate('google', { successRedirect: '/', failureRedirect: '/' }));
   /*
@@ -97,7 +108,7 @@ db.once('open', function () {
 
   // Catch all ot/ Point static path to dist
   app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/index.html'));
+    res.sendFile(path.join(__dirname, 'dist/index.html'));
   });
 
   // Démarrage du server

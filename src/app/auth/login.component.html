@@ -3,6 +3,9 @@
 
     <p>Login or Register with:</p>
     <p>Utiliser ce formulaire pour envoyer des publicités ou des remarques sur le site.</p>
+    <div *ngIf="errorLogin" class="alert alert-danger" role="alert">
+      {{errorLogin}}.
+    </div>
 <form novalidate [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="form-group row">
       <label for="email" class="col-sm-2 col-form-label">Email</label>
