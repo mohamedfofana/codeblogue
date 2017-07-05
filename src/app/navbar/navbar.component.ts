@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 
 import { SessionService } from '../services/session.service'
 
+import { IUser } from '../services/models/user';
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html'
@@ -17,7 +19,6 @@ export class NavbarComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder, private _sessionService: SessionService, private _router: Router) { 
     this._sessionService.userLogged$.subscribe( isLoggedIn => {
         this.isLoggedIn = isLoggedIn;
-        console.log(this.isLoggedIn); 
       });
   }
 
@@ -28,10 +29,10 @@ export class NavbarComponent implements OnInit {
 
     if ( localStorage.getItem('userLogged') == 'true'){
         if (!this.isLoggedIn){
-          console.log('here');
+          let currentUserName = JSON.parse(localStorage.getItem('currentUserName'));
+          let currentUserEmail = JSON.parse(localStorage.getItem('currentUserEmailzda'));
           this._sessionService.setLogged(true);
-          let currentUser = JSON.parse(localStorage.getItem('currentUser'));
-          console.log(currentUser);
+          let currentUser: IUser = ({name: currentUserName, email: currentUserEmail, password: ''});
           this._sessionService.setUser(currentUser);
         }
     }else{

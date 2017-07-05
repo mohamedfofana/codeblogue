@@ -51,6 +51,8 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('currentUserEmail', JSON.stringify(this.user.email));
         localStorage.setItem('userLogged', 'true');
         this._sessionService.setLogged(true);
+        let currentUser: IUser = ({name: this.user.name, email: this.user.email, password: ''});
+        this._sessionService.setUser(currentUser);
     }
     //localStorage.setItem('user', res;
     this._router.navigate([newRoute]);

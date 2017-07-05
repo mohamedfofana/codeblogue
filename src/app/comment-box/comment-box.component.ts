@@ -5,10 +5,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IArticle } from '../services/models/article';
 import { IComment } from '../services/models/comment';
 import { IReply } from '../services/models/reply';
+import { IUser } from '../services/models/user';
 
 import { ArticleService } from '../services/article.service';
 import { CommentService } from '../services/comment.service';
 import { ReplyService } from '../services/reply.service';
+import { SessionService } from '../services/session.service'
 
 declare var jquery: any;
 declare var $: any;
@@ -21,29 +23,37 @@ export class CommentBoxComponent implements OnInit {
   @Input() article: IArticle;
   comments: IComment[];
   comment: IComment;
-  numComment: number = 0;
+  user: IUser;
+  isLoggedIn: boolean;
+  numComments: number = 0;
+  numReplies: number = 0;
   replies: IReply[];
   reply: IReply;
   commentForm: FormGroup;
   replyForm: FormGroup;
   errorMessage: string;
 
-  constructor(private _articleService: ArticleService, private _commentService: CommentService, private _replyService: ReplyService, private _formBuilder: FormBuilder) { }
+  constructor(private _articleService: ArticleService, private _commentService: CommentService, 
+              private _replyService: ReplyService, private _formBuilder: FormBuilder,
+              private _sessionService: SessionService) { }
 
   ngOnInit() {
     this.commentForm = this._formBuilder.group({
-      auteur: ['', [Validators.required, Validators.maxLength(70)]],
       contenu: ['', [Validators.required, Validators.maxLength(1000)]]
     });
     this.replyForm = this._formBuilder.group({
-      auteur: ['', [Validators.required, Validators.maxLength(70)]],
       contenu: ['', [Validators.required, Validators.maxLength(1000)]]
     });
-
+    this._sessionService.userLogged$.subscribe(logged => this.isLoggedIn = logged);
+    this._sessionService.currentUser$.subscribe(user => this.user = user);
+    
     this.initComments();
     this.initReplies();
-
-    this.showHideComment();
+    if (this.isLoggedIn){
+      this.showHideComment();
+    }else{
+      $('.commentAddSection').hide();
+    }  
   }
 
   initComments(): void {
@@ -56,14 +66,14 @@ export class CommentBoxComponent implements OnInit {
   loadComments(comments: IComment[]){
     this.comments = comments;
     if (comments){
-      this.numComment += comments.length;
+      this.numComments = comments.length;
     }
   }
 
   loadReplies(replies: IReply[]){
     this.replies = replies;
     if (replies){
-      this.numComment += replies.length;
+      this.numReplies = replies.length;
     }
   }
 
@@ -75,11 +85,11 @@ export class CommentBoxComponent implements OnInit {
   
   saveComment(): void {
     this.comment.article_titre = this.article.titre;
-    this.comment.auteur = this.commentForm.value.auteur;
+    this.comment.auteur = this.user.name;
     this.comment.contenu = this.commentForm.value.contenu;
     this.comment.creation = new Date();
     this.comment.likes = 0;
-
+    console.log(this.commentForm.value.auteur);
     this._commentService.saveComment(this.comment).subscribe(
       result => this.initComments(),
       error => this.errorMessage = <any>error
@@ -89,7 +99,7 @@ export class CommentBoxComponent implements OnInit {
 
   saveReply(comment_auteur: String, comment_creation: Date, elementID: String): void {
     this.reply.article_titre = this.article.titre;
-    this.reply.auteur = this.replyForm.value.auteur;
+    this.reply.auteur = this.user.name;
     this.reply.contenu = this.replyForm.value.contenu;
     this.reply.likes = 0;
     this.reply.comment_auteur = comment_auteur;
@@ -126,18 +136,20 @@ export class CommentBoxComponent implements OnInit {
   }
 
   showHideComment(): void {
-    $('input.commentAuteur').hide();
+    $('textarea.commentTextArea').val('');
+    $('textarea.commentTextArea').attr('rows', 1);
+    $('textarea.replyTextArea').val('');
+    $('textarea.replyTextArea').attr('rows', 1);
+    
     $('button.commentSubmit').hide();
     $('textarea.commentTextArea').focus(function () {
       $(this).attr('rows', 5);
-      $('input.commentAuteur').show();
-      $('button.commentSubmit').show();
+    $('button.commentSubmit').show();
     });
 
     $('textarea.commentTextArea').blur(function () {
       if ($(this).val().length == 0) {
         $(this).attr('rows', 1);
-        $('input.commentAuteur').hide();
         $('button.commentSubmit').hide();
       } else {
         $('input.commentSubmit').show();
@@ -148,6 +160,11 @@ export class CommentBoxComponent implements OnInit {
   }
 
   showHideReply(elementID: String) {
+    $('textarea.commentTextArea').val('');
+    $('textarea.commentTextArea').attr('rows', 1);
+    $('textarea.replyTextArea').val('');
+    $('textarea.replyTextArea').attr('rows', 1);
+    
     var target = $('#' + elementID);
     if (target.css('display') == 'block') {
       target.css('display', 'none');
@@ -157,19 +174,16 @@ export class CommentBoxComponent implements OnInit {
       $('.commentAddSection').hide();
     }
 
-    $('input.replyAuteur').hide();
     $('button.replySubmit').hide();
     $('textarea.replyTextArea').show();
     $('textarea.replyTextArea').focus(function () {
       $(this).attr('rows', 5);
-      $('input.replyAuteur').show();
       $('button.replySubmit').show();
     });
 
     $('textarea.replyTextArea').blur(function () {
       if ($(this).val().length == 0) {
         $(this).attr('rows', 1);
-        $('input.replyAuteur').hide();
         $('button.replySubmit').hide();
         $('.replyAddSection').hide();
 
@@ -178,7 +192,6 @@ export class CommentBoxComponent implements OnInit {
         $('input.replySubmit').show();
         $('button.replyAuteur').show();
 
-        $('input.commentAuteur').hide();
         $('button.commentSubmit').hide();
         $('.replyAddSection').show();
       }

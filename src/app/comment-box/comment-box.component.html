@@ -6,7 +6,7 @@
 <div class="row">
   <!-- Formulaire de commentaire-->
   <div class="comments-container">
-    <h3>Commentaires({{numComment}})</h3>
+    <h3>Commentaires({{numComments + numReplies}})</h3>
     <div class="commentAddSection" id="commentAddSection">
       <form class="form-horizontal" [formGroup]="commentForm" (ngSubmit)="saveComment()">
         <div class="form-group">
@@ -15,9 +15,6 @@
           </div>
         </div>
         <div class="form-group">
-          <div class="col-sm-offset-5 col-sm-7">
-            <input type="text" class="form-control col-xs-3 commentAuteur pull-left" id="auteur" formControlName="auteur" placeholder="Entrer votre nom ....">
-          </div>
           <div class="col-sm-12">
             <button type="submit" class="btn btn-success commentSubmit green pull-right" [disabled]="commentForm.invalid"><i class="fa fa-share"></i> Publier</button>
           </div>
@@ -33,7 +30,7 @@
             <!-- Contenedor del Comentario -->
             <div class="comment-box">
               <div class="comment-head">
-                <h6 class="comment-name by-author">{{comment.auteur}}</h6>
+                <h6 class="comment-name">{{comment.auteur}}</h6>
                 <span>{{comment.creation | date: "medium"}}</span>
                 <i class="fa fa-heart" aria-hidden="true" (click)="likeComment(comment)"> {{comment.likes}}</i>
                 <i class="fa fa-reply" (click)="showHideReply('replyNum' + comment._id)"></i>
@@ -54,12 +51,6 @@
                 </div>
               </div>
               <div class="form-group">
-                <div class="col-sm-offset-5 col-sm-6">
-                  <input type="text" class="form-control col-xs-3 replyAuteur" id="auteur" formControlName="auteur" maxlength="50" required
-                    placeholder="Entrer votre nom ....">
-                </div>
-              </div>
-              <div class="form-group">
                 <div class="col-md-offset-3 col-sm-12">
                   <button type="submit" class="btn btn-success replySubmit green float-right" [disabled]="replyForm.invalid"><i class="fa fa-share"></i> Publier</button>
                 </div>
@@ -75,7 +66,7 @@
                   <!-- Contenedor del Comentario -->
                   <div class="comment-box">
                     <div class="comment-head">
-                      <h6 class="comment-name by-author">{{reply.auteur}}</h6>
+                      <h6 class="comment-name">{{reply.auteur}}</h6>
                       <span>{{reply.creation | date: "medium"}}</span>
                       <i class="fa fa-heart" (click)="likeReply(reply)"> {{reply.likes}}</i>
                     </div>
