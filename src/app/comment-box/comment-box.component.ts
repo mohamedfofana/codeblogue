@@ -137,14 +137,13 @@ export class CommentBoxComponent implements OnInit {
 
   showHideComment(): void {
     $('textarea.commentTextArea').val('');
-    $('textarea.commentTextArea').attr('rows', 1);
-    $('textarea.replyTextArea').val('');
-    $('textarea.replyTextArea').attr('rows', 1);
-    
+    $('textarea.commentTextArea').attr('rows', 1); 
     $('button.commentSubmit').hide();
+    $('#commentSubmit').prop('disabled', true);
+
     $('textarea.commentTextArea').focus(function () {
       $(this).attr('rows', 5);
-    $('button.commentSubmit').show();
+      $('button.commentSubmit').show();
     });
 
     $('textarea.commentTextArea').blur(function () {
@@ -152,50 +151,56 @@ export class CommentBoxComponent implements OnInit {
         $(this).attr('rows', 1);
         $('button.commentSubmit').hide();
       } else {
-        $('input.commentSubmit').show();
-        $('button.commentAuteur').show();
+        $('button.commentSubmit').show();
       }
 
+    });
+
+    $('textarea.commentTextArea').on('keyup',function() {
+      if ($('textarea.commentTextArea').val().length == 0){
+        $('#commentSubmit').prop('disabled', true);
+      }else{
+        $('#commentSubmit').prop('disabled', false);
+      }
     });
   }
 
   showHideReply(elementID: String) {
-    $('textarea.commentTextArea').val('');
-    $('textarea.commentTextArea').attr('rows', 1);
-    $('textarea.replyTextArea').val('');
-    $('textarea.replyTextArea').attr('rows', 1);
-    
     var target = $('#' + elementID);
+    target.find('textarea').val('');
+    target.find('textarea').attr('rows', 1);
+    $('#replySubmit').prop('disabled', true);
+
     if (target.css('display') == 'block') {
       target.css('display', 'none');
       $('.commentAddSection').show();
+      $('.replyAddSection').hide();
     } else {
       target.css('display', 'block');
       $('.commentAddSection').hide();
     }
 
-    $('button.replySubmit').hide();
-    $('textarea.replyTextArea').show();
-    $('textarea.replyTextArea').focus(function () {
+    target.find('textarea').focus(function () {
       $(this).attr('rows', 5);
       $('button.replySubmit').show();
     });
 
-    $('textarea.replyTextArea').blur(function () {
+    target.find('textarea').blur(function () {
       if ($(this).val().length == 0) {
         $(this).attr('rows', 1);
-        $('button.replySubmit').hide();
-        $('.replyAddSection').hide();
-
-        $('.commentAddSection').show();
+        target.find('button').hide();
       } else {
-        $('input.replySubmit').show();
-        $('button.replyAuteur').show();
-
-        $('button.commentSubmit').hide();
-        $('.replyAddSection').show();
+        target.find('button').show();
       }
 
+    });
+
+    $('textarea.replyTextArea').on('keyup',function() {
+      if ($('textarea.replyTextArea').val().length == 0){
+        $('#replySubmit').prop('disabled', true);
+      }else{
+        $('#replySubmit').prop('disabled', false);
+      }
     });
   }
 
