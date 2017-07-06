@@ -11,7 +11,8 @@ import { APP_CONFIG, AppConfig } from '../config/app-config.module';
 @Injectable()
 export class AuthService {
   private url = this.config.apiEndpoint + "auth/google";
-  private userUrl = this.config.apiEndpoint + "auth/login";
+  private loginUrl = this.config.apiEndpoint + "auth/login";
+  private registerUrl = this.config.apiEndpoint + "auth/register";
   private headers: Headers;
   private options: RequestOptions;
 
@@ -30,7 +31,7 @@ export class AuthService {
 
   login(user) {
     let body = JSON.stringify(user);
-    return this._http.post(this.userUrl, body, this.options)
+    return this._http.post(this.loginUrl, body, this.options)
                     .map((res: Response) => res)
                     .catch(this.handleError);
   }
@@ -45,17 +46,13 @@ export class AuthService {
                     .map((res: Response) => res.json())
                     .catch(this.handleError);
   }
-
+*/
   register(user) {
     let body = JSON.stringify(user);
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-
-    return this.http.post(this._registerApi, body, <RequestOptionsArgs> {headers: headers, withCredentials: true})
+    return this._http.post(this.registerUrl, body, this.options)
                     .map((res: Response) => res)
                     .catch(this.handleError);
   }
-  */
   private handleError(error: Response) {
     console.error(error);
     return Observable.throw(error.json().error || 'Server error');

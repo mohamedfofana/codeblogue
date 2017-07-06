@@ -14,25 +14,27 @@ export class LoginComponent implements OnInit {
 
   errorMessage: string;
   errorLogin: string;
-  loginForm: FormGroup;
+  registerForm: FormGroup;
   user: IUser;
 
   constructor(private _formBuilder: FormBuilder, private _authService: AuthService, private _sessionService: SessionService, private _router: Router) { 
-    this.loginForm = this._formBuilder.group({
+    this.registerForm = this._formBuilder.group({
+      name: ['', [Validators.required, Validators.maxLength(50)]],
       email: ['', [Validators.required, Validators.maxLength(50)]],
       password: ['', [Validators.required, Validators.maxLength(70)]]
     });
   }
 
   ngOnInit() {
-        
+    
   }
 
   onSubmit(): void {
-    if (this.loginForm.valid){
-      this.user = this.loginForm.value;
-      this._authService.login(this.user).subscribe(res => this.isLogged(res), error => this.errorMessage = <any>error);    
+    if (this.registerForm.valid){
+      this.user = this.registerForm.value;
+      this._authService.register(this.user).subscribe(res => this.isLogged(res), error => this.errorMessage = <any>error);    
     }
+
   }
 
   isLogged(res: Response): void{

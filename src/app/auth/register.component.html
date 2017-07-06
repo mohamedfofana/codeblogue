@@ -8,6 +8,12 @@
     </div>
 <form novalidate [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="form-group row">
+      <label for="name" class="col-sm-2 col-form-label">Nom</label>
+      <div class="col-sm-6">
+        <input type="email" id="email" class="form-control" maxlength="70" placeholder="Nom" formControlName="name">
+      </div>
+    </div>  
+    <div class="form-group row">
       <label for="email" class="col-sm-2 col-form-label">Email</label>
       <div class="col-sm-6">
         <input type="email" id="email" class="form-control" maxlength="70" placeholder="Email" formControlName="email">
