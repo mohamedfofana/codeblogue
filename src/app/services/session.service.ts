@@ -7,7 +7,7 @@ import { IUser } from './models/user';
 export class SessionService {
   // Observable source
   private _userLogged = new BehaviorSubject<boolean>(false);
-  private _currentUser = new BehaviorSubject<IUser>({username: '', password: ''});
+  private _currentUser = new BehaviorSubject<IUser>({email:'', username: '', password: ''});
 
   // Observable stream
   userLogged$ = this._userLogged.asObservable();

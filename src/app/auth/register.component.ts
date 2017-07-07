@@ -8,6 +8,7 @@ import { AuthService } from '../services/auth.service'
 import { SessionService } from '../services/session.service'
 
 @Component({
+  styleUrls: ['./auth.component.css'],
   templateUrl: './register.component.html'
 })
 export class RegisterComponent {
@@ -19,6 +20,7 @@ export class RegisterComponent {
 
   constructor(private _formBuilder: FormBuilder, private _authService: AuthService, private _sessionService: SessionService, private _router: Router) { 
     this.registerForm = this._formBuilder.group({
+      email: ['', [Validators.required, Validators.maxLength(50)]],
       username: ['', [Validators.required, Validators.maxLength(50)]],
       password: ['', [Validators.required, Validators.maxLength(70)]]
     });

@@ -41,6 +41,7 @@ module.exports = function(passport) {
 
         // find a user whose email is the same as the forms email
         // we are checking to see if the user trying to login already exists
+        let email = req.body.email;
         User.findOne({ 'local.username' :  username}, function(err, user) {
             // if there are any errors, return the error before anything else
             if (err){
@@ -48,23 +49,37 @@ module.exports = function(passport) {
                 return done(err);
             }
             // if no user is found, return the message
-            if (user){
-                return done(null, false, { message : 'The email is alredy taken.' });
+            if (!user){
+                 User.findOne({ 'local.email' :  email}, function(err, user) {
+                    if (err){
+                        console.log('there are any errors, return the error before anything else');
+                        return done(err);
+                    }
+                    if (user){
+                        console.log('The email is alredy taken.');
+                        return done(null, false, { message : 'The email is alredy taken.' });
+                    }else{
+                        // if there is no user with that email
+                        // create the user
+                        var newUser            = new User();
+
+                        // set the user's local credentials
+                        newUser.local.email = email;
+                        newUser.local.username = username;
+                        newUser.local.password = password; //newUser.generateHash(password);
+
+                        // save the user
+                        newUser.save(function(err) {
+                            if (err)
+                                throw err;
+                                console.log('user created');
+                            return done(null, newUser);
+                        });
+                    }    
+                 });
             }else{
-                 // if there is no user with that email
-                // create the user
-                var newUser            = new User();
-
-                // set the user's local credentials
-                newUser.local.username = username;
-                newUser.local.password = password; //newUser.generateHash(password);
-
-                // save the user
-                newUser.save(function(err) {
-                    if (err)
-                        throw err;
-                    return done(null, newUser);
-                });
+                console.log('The username is alredy taken.');
+                return done(null, false, { message : 'The username is alredy taken.' });
             }
             // if the user is found but the password is wrong
             /*if (!user.validPassword(password)){
@@ -104,8 +119,24 @@ module.exports = function(passport) {
             }
             // if no user is found, return the message
             if (!user){
-                console.log('no user is found, return the message');
-                return done(null, false, { message : 'The email is alredy taken.' }); // req.flash is the way to set flashdata using connect-flash
+                 User.findOne({ 'local.email' :  username, 'local.password' : password }, function(err, user) {
+                    // if there are any errors, return the error before anything else
+                    if (err){
+                        console.log('there are any errors, return the error before anything else');
+                        return done(err);
+                    }
+                    // if no user is found, return the message
+                    if (!user){
+                        console.log('no user is found, return the message');
+                        return done(null, false, { message : 'no user is found, return the message' }); // req.flash is the way to set flashdata using connect-flash
+                    }else{
+                        console.log('all is well, return successful user');
+                        return done(null, user);
+                    }
+                });
+            }else{
+                console.log('all is well, return successful user');
+                return done(null, user);
             }
             // if the user is found but the password is wrong
             /*if (!user.validPassword(password)){
@@ -114,8 +145,6 @@ module.exports = function(passport) {
             }
             */
             // all is well, return successful user
-            console.log('all is well, return successful user');
-            return done(null, user);
         });
 
     }));

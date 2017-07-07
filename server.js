@@ -112,17 +112,7 @@ db.once('open', function () {
 
   app.get('/api/auth/google', passport.authenticate('google', { scope: "email" }));
   app.get('/api/auth/google/callback', passport.authenticate('google', { successRedirect: '/', failureRedirect: '/' }));
-  /*
-    var routesAuth = require('./server/routes.auth');
-    _.each(routesAuth, function (controller, routeAuth) {
-      var theCtrl = require(controller);
-      console.log(routeAuth);
-      app.get(routeAuth, theCtrl(passport));
-    });
-  */
-  // Todo ajouter les routes avec app get ./server/routes_auth
-  // Ajouter les controller avec app.get
-
+ 
   // Catch all ot/ Point static path to dist
   app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/index.html'));

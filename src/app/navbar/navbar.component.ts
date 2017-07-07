@@ -32,7 +32,7 @@ export class NavbarComponent implements OnInit {
           let currentUserName = JSON.parse(localStorage.getItem('currentUserName'));
           let currentUserEmail = JSON.parse(localStorage.getItem('currentUserEmailzda'));
           this._sessionService.setLogged(true);
-          let currentUser: IUser = ({username: currentUserName, password: ''});
+          let currentUser: IUser = ({username: currentUserName, email: '', password: ''});
           this._sessionService.setUser(currentUser);
         }
     }else{

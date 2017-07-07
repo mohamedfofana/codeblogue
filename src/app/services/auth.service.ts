@@ -39,7 +39,7 @@ export class AuthService {
                     .map((res: Response) => res)
                     .catch(this.handleError);
   }
-  
+
   register(user) {
     let body = JSON.stringify(user);
     return this._http.post(this.signupUrl, body, this.options)
@@ -65,7 +65,7 @@ export class AuthService {
         localStorage.setItem('currentUserName', JSON.stringify(user.username));
         localStorage.setItem('userLogged', 'true');
         this._sessionService.setLogged(true);
-        let currentUser: IUser = ({username: user.username, password: ''});
+        let currentUser: IUser = ({username: user.username, email: user.email, password: ''});
         this._sessionService.setUser(currentUser);
         this._router.navigate([newRoute]);
         return '';

@@ -8,18 +8,13 @@
 
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav mr-auto">
-      <!-- <li class="nav-item">
-        <a class="nav-link" routerLink='/home'>Home <span class="sr-only">(current)</span></a>
-      </li>
-    -->
-      <li class="nav-item dropdown">
+        <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Jeu
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" routerLink='/article/demineur'>Jeu du démineur</a>
           <a class="dropdown-item" routerLink='/article/morpion'>Jeu du morpion</a>
-          <!--<a class="dropdown-item" [routerLink]="['/articles', {cat: 'Jeu'}]">Plus ...</a>-->
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -29,8 +24,7 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" routerLink='/article/windows'>Windows</a>
           <a class="dropdown-item" routerLink='/article/linux'>Linux</a>
-          <!--<a class="dropdown-item" [routerLink]="['/articles', {cat: 'Système'}]">Plus ...</a>-->
-        </div>
+       </div>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -39,20 +33,8 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" routerLink='/article/sql'>SQL</a>
           <a class="dropdown-item" routerLink='/article/oracle'>Oracle</a>
-          <!--<a class="dropdown-item" [routerLink]="['/articles', {cat: 'Langages'}]">Plus ...</a>-->
         </div>
       </li>
-      <!-- <li class="nav-item">
-        <a class="nav-link" routerLink='/articles'>Voir tout</a>
-      </li>-->
-      <li class="nav-item">
-        <a *ngIf="!isLoggedIn" class="nav-link" routerLink='/signin'>Connexion</a>
-        <a *ngIf="isLoggedIn" class="nav-link" routerLink='/logout'>Déconnexion</a>
-      </li>
-     <!-- <li class="nav-item">
-        <a class="nav-link" routerLink='/contact'>Contact</a>
-      </li>
-      -->
     </ul>
     <div class="col-lg-6" style="margin-top: 7px;">
       <form class="form-horizontal my-2 my-md-0 search-form" [formGroup]="searchForm" role="form" (keyup.enter)="onSubmit()">
@@ -63,5 +45,18 @@
         </div>
       </form>
     </div>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a *ngIf="!isLoggedIn" class="nav-link" routerLink='/signup'>Inscription</a>
+      </li>
+      <li class="nav-item">
+        <a *ngIf="!isLoggedIn" class="nav-link" routerLink='/signin'>Connexion</a>
+        <a *ngIf="isLoggedIn" class="nav-link" routerLink='/logout'>Déconnexion</a>
+      </li>
+     <!-- <li class="nav-item">
+        <a class="nav-link" routerLink='/contact'>Contact</a>
+      </li>
+      -->
+    </ul>
   </div>
 </nav>
