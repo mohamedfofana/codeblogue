@@ -1,16 +1,16 @@
 <div class="jumbotron text-center">
-    <h1><span class="fa fa-lock"></span> Node Authentication</h1>
 
-    <p>Login with:</p>
-    <p>Utiliser ce formulaire pour envoyer des publicités ou des remarques sur le site.</p>
+    <p>Se connecter:</p>
     <div *ngIf="errorLogin" class="alert alert-danger" role="alert">
       {{errorLogin}}.
     </div>
+
+
 <form novalidate [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="form-group row">
-      <label for="email" class="col-sm-2 col-form-label">Email</label>
+      <label for="username" class="col-sm-2 col-form-label">Login</label>
       <div class="col-sm-6">
-        <input type="email" id="email" class="form-control" maxlength="70" placeholder="Email" formControlName="email">
+        <input type="username" id="username" class="form-control" maxlength="70" placeholder="Email" formControlName="username">
       </div>
     </div>      
     <div class="form-group row">
@@ -26,6 +26,7 @@
       </div>
     </div>
   </form>
+<a routerLink="/signup" class="btn btn-danger">Créer un compte</a>
 <a href="/auth/google" class="btn btn-danger"><span class="fa fa-google-plus"></span> Google</a>
 <a href="/auth/facebook" class="btn btn-danger"><span class="fa fa-facebook"></span> Facebook</a>
 <a href="/auth/twitter" class="btn btn-danger"><span class="fa fa-twitter"></span> Twitter</a>

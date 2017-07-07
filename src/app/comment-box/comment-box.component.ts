@@ -85,7 +85,7 @@ export class CommentBoxComponent implements OnInit {
   
   saveComment(): void {
     this.comment.article_titre = this.article.titre;
-    this.comment.auteur = this.user.name;
+    this.comment.auteur = this.user.username;
     this.comment.contenu = this.commentForm.value.contenu;
     this.comment.creation = new Date();
     this.comment.likes = 0;
@@ -99,7 +99,7 @@ export class CommentBoxComponent implements OnInit {
 
   saveReply(comment_auteur: String, comment_creation: Date, elementID: String): void {
     this.reply.article_titre = this.article.titre;
-    this.reply.auteur = this.user.name;
+    this.reply.auteur = this.user.username;
     this.reply.contenu = this.replyForm.value.contenu;
     this.reply.likes = 0;
     this.reply.comment_auteur = comment_auteur;

@@ -76,19 +76,36 @@ db.once('open', function () {
 
   // Chargement des routes auth.
   // process the login form
-  app.post('/api/auth/login', function (req, res, next) {
-    passport.authenticate('local', function (err, user, info) {
+  app.post('/api/auth/signup', function (req, res, next) {
+    passport.authenticate('local-signup', function (err, user, info) {
       if (err) { 
         return next(err); 
       }
       if (!user) { 
-        return res.redirect('/login'); 
+        return res.redirect('/signup'); 
       }
       req.logIn(user, function (err) {
         if (err) { 
           return next(err); 
         }
-        return res.redirect('/' + user.local.name);
+        return res.redirect('/' + user.local.username);
+      });
+    })(req, res, next);
+});
+
+  app.post('/api/auth/signin', function (req, res, next) {
+    passport.authenticate('local-signin', function (err, user, info) {
+      if (err) { 
+        return next(err); 
+      }
+      if (!user) { 
+        return res.redirect('/signin'); 
+      }
+      req.logIn(user, function (err) {
+        if (err) { 
+          return next(err); 
+        }
+        return res.redirect('/' + user.local.username);
       });
     })(req, res, next);
   });

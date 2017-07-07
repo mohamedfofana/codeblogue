@@ -8,15 +8,19 @@ import 'rxjs/add/operator/filter';
 
 import { APP_CONFIG, AppConfig } from '../config/app-config.module';
 
+import { SessionService } from './session.service'
+import { IUser } from './models/user';
+import { Router } from '@angular/router';
+
 @Injectable()
 export class AuthService {
   private url = this.config.apiEndpoint + "auth/google";
-  private loginUrl = this.config.apiEndpoint + "auth/login";
-  private registerUrl = this.config.apiEndpoint + "auth/register";
+  private loginUrl = this.config.apiEndpoint + "auth/signin";
+  private signupUrl = this.config.apiEndpoint + "auth/signup";
   private headers: Headers;
   private options: RequestOptions;
 
-  constructor(private _http: Http, @Inject(APP_CONFIG) private config: AppConfig) { 
+  constructor(private _http: Http, @Inject(APP_CONFIG) private config: AppConfig, private _router: Router, private _sessionService: SessionService) { 
     this.headers = new Headers({ 'Content-Type': 'application/json' });
     this.options = new RequestOptions({ headers: this.headers });
 
@@ -35,23 +39,37 @@ export class AuthService {
                     .map((res: Response) => res)
                     .catch(this.handleError);
   }
-  /*authenticated() {
-    return this.http.get(this._authenticatedApi, <RequestOptionsArgs> {withCredentials: true})
-                    .map((res: Response) => res.json())
+  
+  register(user) {
+    let body = JSON.stringify(user);
+    return this._http.post(this.signupUrl, body, this.options)
+                    .map((res: Response) => res)
                     .catch(this.handleError);
   }
 
-  logout() {
-    return this.http.get(this._logoutApi, <RequestOptionsArgs> {withCredentials: true})
-                    .map((res: Response) => res.json())
-                    .catch(this.handleError);
-  }
-*/
-  register(user) {
-    let body = JSON.stringify(user);
-    return this._http.post(this.registerUrl, body, this.options)
-                    .map((res: Response) => res)
-                    .catch(this.handleError);
+  isLogged(res: Response, user: IUser): string{
+    let newRoute = res.url.split('/')[3];
+    if (newRoute == 'signup'){
+        this._sessionService.setLogged(false);
+        localStorage.removeItem('currentUserName');
+        localStorage.removeItem('userLogged');
+        return 'Login ou mot de passe incorrect';
+    }
+    if (newRoute == 'signin'){
+        this._sessionService.setLogged(false);
+        localStorage.removeItem('currentUserName');
+        localStorage.removeItem('userLogged');
+        return 'Login ou mot de passe incorrect';
+    }else{
+        user.username = res.url.split('/')[3];
+        localStorage.setItem('currentUserName', JSON.stringify(user.username));
+        localStorage.setItem('userLogged', 'true');
+        this._sessionService.setLogged(true);
+        let currentUser: IUser = ({username: user.username, password: ''});
+        this._sessionService.setUser(currentUser);
+        this._router.navigate([newRoute]);
+        return '';
+    }
   }
   private handleError(error: Response) {
     console.error(error);
