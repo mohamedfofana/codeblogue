@@ -116,8 +116,8 @@ db.once('open', function () {
   // Catch all ot/ Point static path to dist
   app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/index.html'));
-  });
-
+  }); 
+  
   // Démarrage du server
   app.listen(PORT, function () {
     console.log('listening on port ' + PORT + '...');

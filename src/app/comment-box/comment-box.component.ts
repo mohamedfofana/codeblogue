@@ -17,6 +17,7 @@ declare var $: any;
 
 @Component({
   selector: 'commentBox',
+  styleUrls: ['./comment-box.component.css'],
   templateUrl: './comment-box.component.html'
 })
 export class CommentBoxComponent implements OnInit {
@@ -49,11 +50,7 @@ export class CommentBoxComponent implements OnInit {
     
     this.initComments();
     this.initReplies();
-    if (this.isLoggedIn){
-      this.showHideComment();
-    }else{
-      $('.commentAddSection').hide();
-    }  
+    this.showHideComment();  
   }
 
   initComments(): void {

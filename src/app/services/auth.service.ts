@@ -68,7 +68,7 @@ export class AuthService {
         this._sessionService.setLogged(true);
         let currentUser: IUser = ({username: user.username, email: user.email, password: ''});
         this._sessionService.setUser(currentUser);
-        this._router.navigate([newRoute]);
+        this._router.navigate(['']);
         return '';
     }
   }
