@@ -1,8 +1,5 @@
 <div class="jumbotron text-center">
     <p>Créer un compte</p>
-    <div *ngIf="errorLogin" class="alert alert-danger" role="alert">
-      {{errorLogin}}.
-    </div>
 <div class="omb_login">
     
 		<div class="row omb_row-sm-offset-3">
@@ -10,20 +7,20 @@
 			    <form class="omb_loginForm" novalidate [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-user"></i></span>
-						<input type="text" class="form-control" maxlength="50" placeholder="Pseudo" formControlName="username">
+						<input type="text" class="form-control" maxlength="50" placeholder="Pseudo" formControlName="username" name="username">
 					</div>
 					<span class="help-block"></span>
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-envelope" style="font-size: 0.7em;"></i></span>
-						<input type="text" class="form-control" maxlength="50" placeholder="Email" formControlName="email">
+						<input type="text" class="form-control" maxlength="50" placeholder="Email" formControlName="email" name="email">
 					</div>
 					<span class="help-block"></span>				
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-						<input  type="password" class="form-control" maxlength="50" formControlName="password" placeholder="Password">
+						<input  type="password" class="form-control" maxlength="50" formControlName="password" placeholder="Password" name="password">
 					</div>
           <div *ngIf="errorLogin" class="alert alert-danger" role="alert">
-            {{errorLogin}}.
+            {{errorLogin}}
           </div>
 					<button class="btn btn-lg btn-primary btn-block" type="submit">Inscription</button>
 				</form>

@@ -39,7 +39,7 @@ export class ContactComponent implements OnInit {
   }
 
    getErrorMessage(): void {
-     for (let control in this.contactForm.controls) {
+    /* for (let control in this.contactForm.controls) {
         for (let propertyName in this.contactForm.controls.nom.errors) {
           console.log(propertyName);
           console.log(this.contactForm.controls.nom.errors.hasOwnProperty(propertyName));
@@ -49,6 +49,7 @@ export class ContactComponent implements OnInit {
           }
         }
      }
+     */
   }
 
 }

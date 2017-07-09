@@ -82,7 +82,7 @@ db.once('open', function () {
         return next(err); 
       }
       if (!user) { 
-        return res.redirect('/signup'); 
+        return res.redirect('/signup/' + info.message); 
       }
       req.logIn(user, function (err) {
         if (err) { 

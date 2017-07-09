@@ -49,17 +49,18 @@ export class AuthService {
 
   isLogged(res: Response, user: IUser): string{
     let newRoute = res.url.split('/')[3];
+    let errorMessage = res.url.split('/')[4];
     if (newRoute == 'signup'){
         this._sessionService.setLogged(false);
         localStorage.removeItem('currentUserName');
         localStorage.removeItem('userLogged');
-        return 'Login ou mot de passe incorrect';
+        return errorMessage;
     }
     if (newRoute == 'signin'){
         this._sessionService.setLogged(false);
         localStorage.removeItem('currentUserName');
         localStorage.removeItem('userLogged');
-        return 'Login ou mot de passe incorrect';
+        return errorMessage;
     }else{
         user.username = res.url.split('/')[3];
         localStorage.setItem('currentUserName', JSON.stringify(user.username));

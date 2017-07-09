@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 
 import { AuthService } from '../services/auth.service'
 import { SessionService } from '../services/session.service'
+import { ValidationService } from '../services/validation.service'
 
 @Component({
   styleUrls: ['./auth.component.css'],
@@ -27,9 +28,24 @@ export class RegisterComponent {
   }
 
   onSubmit(): void {
+    if (!ValidationService.emailValidator(this.registerForm.controls.email.value)){
+      this.errorLogin = "Email invalide. Exemple : pseudo@exmaple.com";
+      return
+    }
+    if (!ValidationService.passwordValidator(this.registerForm.controls.password.value)){
+      this.errorLogin = "Mot de passe invalide. Exemple : au moins 6 caractères et un nombre";
+      return
+    }
     if (this.registerForm.valid){
       this.user = this.registerForm.value;
-      this._authService.register(this.user).subscribe(res => this._authService.isLogged(res, this.user), error => this.errorMessage = <any>error);    
+      this._authService.register(this.user).subscribe(res => 
+                                              {
+                                                let errorField: string = this._authService.isLogged(res, this.user);
+                                                if (errorField == 'email')
+                                                  this.errorLogin = 'Email existant.'
+                                                if (errorField == 'pseudo')
+                                                  this.errorLogin = 'Pseudo existant.'
+                                              }, error => this.errorMessage = <any>error);    
     }
 
   }

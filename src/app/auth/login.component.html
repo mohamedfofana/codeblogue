@@ -23,13 +23,13 @@
 			    <form class="omb_loginForm" novalidate [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-user"></i></span>
-						<input type="text" class="form-control" maxlength="50" placeholder="Pseudo ou Email" formControlName="username">
+						<input type="email" class="form-control" maxlength="50" placeholder="Email" formControlName="email" name="email">
 					</div>
 					<span class="help-block"></span>
 										
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-						<input  type="password" class="form-control" maxlength="50" formControlName="password" placeholder="Password">
+						<input  type="password" class="form-control" maxlength="50" formControlName="password" placeholder="Password" name="password">
 					</div>
           <div *ngIf="errorLogin" class="alert alert-danger" role="alert">
             {{errorLogin}}.
