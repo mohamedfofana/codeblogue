@@ -9,7 +9,6 @@ import { SessionService } from '../services/session.service'
 import { ValidationService } from '../services/validation.service'
 
 @Component({
-  styleUrls: ['./auth.component.css'],
   templateUrl: './login.component.html'
 })
 export class LoginComponent implements OnInit {

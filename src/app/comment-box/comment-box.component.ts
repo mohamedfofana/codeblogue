@@ -17,7 +17,6 @@ declare var $: any;
 
 @Component({
   selector: 'commentBox',
-  styleUrls: ['./comment-box.component.css'],
   templateUrl: './comment-box.component.html'
 })
 export class CommentBoxComponent implements OnInit {
