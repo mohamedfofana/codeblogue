@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { IUser } from '../services/models/user';
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   user: IUser;
 
-  constructor(private _formBuilder: FormBuilder, private _authService: AuthService, private _sessionService: SessionService, private _router: Router) { 
+  constructor(private _formBuilder: FormBuilder, private _authService: AuthService, private _sessionService: SessionService,
+              private _router: Router, private _location: Location) { 
     this.loginForm = this._formBuilder.group({
       email: ['', [Validators.required, Validators.maxLength(50)]],
       password: ['', [Validators.required, Validators.maxLength(70)]]
@@ -26,7 +28,9 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-        
+    if (localStorage.getItem('userLogged') == 'true') {
+        this._location.back();
+    }
   }
 
   onSubmit(): void {

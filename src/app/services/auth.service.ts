@@ -1,4 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
+import { Location } from '@angular/common';
 import { Http, Response, Headers, RequestOptions} from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
@@ -20,7 +21,9 @@ export class AuthService {
   private headers: Headers;
   private options: RequestOptions;
 
-  constructor(private _http: Http, @Inject(APP_CONFIG) private config: AppConfig, private _router: Router, private _sessionService: SessionService) { 
+  constructor(private _http: Http, @Inject(APP_CONFIG) private config: AppConfig, 
+              private _router: Router, private _sessionService: SessionService,
+              private _location: Location) { 
     this.headers = new Headers({ 'Content-Type': 'application/json' });
     this.options = new RequestOptions({ headers: this.headers });
 
@@ -68,7 +71,7 @@ export class AuthService {
         this._sessionService.setLogged(true);
         let currentUser: IUser = ({username: user.username, email: user.email, password: ''});
         this._sessionService.setUser(currentUser);
-        this._router.navigate(['']);
+        this._location.back();
         return '';
     }
   }
