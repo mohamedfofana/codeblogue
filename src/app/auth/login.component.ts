@@ -44,7 +44,13 @@ export class LoginComponent implements OnInit {
     }
     if (this.loginForm.valid){
       this.user = this.loginForm.value;
-      this._authService.login(this.user).subscribe(res => this.errorLogin = this._authService.isLogged(res, this.user), error => this.errorMessage = <any>error);    
+      this._authService.login(this.user).subscribe(res =>{ 
+                                                    let errorField: string = this._authService.isLogged(res, this.user);
+                                                    if (errorField == 'email')
+                                                      this.errorLogin = 'Email inexistant.'
+                                                    if (errorField == 'password')
+                                                      this.errorLogin = 'Mot de passe incorrect.'
+                                                   }, error => this.errorMessage = <any>error);    
     }
   }
 

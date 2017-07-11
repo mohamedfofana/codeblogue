@@ -91,15 +91,15 @@ var UserSchema = new mongoose.Schema({
 	}
 
 });
-// generating a hash
-//UserSchema.methods.generateHash = function(password) {
- //   return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
-//};
+// generating a hash for signup
+UserSchema.methods.generateHash = function(password) {
+   return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+};
 
-// checking if password is valid
-//UserSchema.methods.validPassword = function(password) {
-//    return bcrypt.compareSync(password, this.local.password);
-//};
+// checking if password is valid for login
+UserSchema.methods.validPassword = function(password) {
+   return bcrypt.compareSync(password, this.local.password);
+};
 
 // On declare le model User dans mongoose
 module.exports = mongoose.model('user', UserSchema);; 

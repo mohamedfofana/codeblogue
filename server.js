@@ -99,7 +99,7 @@ db.once('open', function () {
         return next(err); 
       }
       if (!user) { 
-        return res.redirect('/signin'); 
+        return res.redirect('/signin/' + info.message); 
       }
       req.logIn(user, function (err) {
         if (err) { 
