@@ -8,7 +8,7 @@
 
 body {
 	font-family: "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
-	background: url("assets/images/bg.jpg") no-repeat center center fixed;
+	background-color: #e9ebee;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	background-size: cover;
@@ -106,7 +106,7 @@ hr {
 
 /* footer */
 .bg-primary {
- background-color: #000 !important;
+ background-color: white !important;
 }
 
 .bg-circle
@@ -126,7 +126,7 @@ hr {
   height: 50px;
   color:smoke;
   padding: 8px 2px;
-  border: 2px solid;
+  border: none;
   border-color: smoke;
   border-radius: 50%;
 }
@@ -143,9 +143,8 @@ hr {
   outline: none;
 }
 .footer {
-	background: #EDEFF1;
+	background: white;
 	height: auto;
-	padding-bottom: 30px;
 	position: relative;
 	width: 100%;
 	border-bottom: 1px solid #CCCCCC;
@@ -904,4 +903,24 @@ hr {
 /***** long shadows *****/
 .azm-long-shadow {
 	overflow: hidden;
+}
+
+
+hr.style18 { 
+  height: 30px; 
+  max-width: inherit;
+  border-style: solid; 
+  border-color: #8c8b8b; 
+  border-width: 1px 0 0 0; 
+  border-radius: 20px; 
+} 
+hr.style18:before { 
+  display: block; 
+  content: ""; 
+  height: 30px; 
+  margin-top: -31px; 
+  border-style: solid; 
+  border-color: #8c8b8b; 
+  border-width: 0 0 1px 0; 
+  border-radius: 20px; 
 }
