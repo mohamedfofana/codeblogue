@@ -22,11 +22,11 @@ var UserSchema = new mongoose.Schema({
 				type : String,
 				require : true
 			},
-			token: {
+		/*	token: {
 				type : String,
 				require : true
 			},
-			name: {
+		*/	name: {
 				type : String,
 				require : true
 			},
@@ -71,6 +71,16 @@ var UserSchema = new mongoose.Schema({
 				require : true
 			}
 	},
+	github: {
+			id: {
+				type : String,
+				require : true
+			},
+			username: {
+				type : String,
+				require : true
+			}
+	},
 	linkedin: {
 			id: {
 				type : String,
@@ -80,11 +90,7 @@ var UserSchema = new mongoose.Schema({
 				type : String,
 				require : true
 			},
-			name: {
-				type : String,
-				require : true
-			},
-			email: {
+			username: {
 				type : String,
 				require : true
 			}

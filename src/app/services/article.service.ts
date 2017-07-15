@@ -20,12 +20,13 @@ export class ArticleService {
 
   constructor(private _http: Http, @Inject(APP_CONFIG) private config: AppConfig) { 
     this.headers = new Headers({ 'Content-Type': 'application/json' });
+    //this.headers.append('Access-Control-Allow-Origin', '*');
     this.options = new RequestOptions({ headers: this.headers });
 
   };
 
   getArticles(): Observable<IArticle[]> {
-    return this._http.get(this.articleUrl)
+    return this._http.get(this.articleUrl, this.options)
       .map((response: Response) => <IArticle[]>response.json())
       .catch(this.handleError);
 

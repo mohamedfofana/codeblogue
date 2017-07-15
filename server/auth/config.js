@@ -2,27 +2,32 @@
 module.exports = {
 
     'facebookAuth' : {
-        'clientID'      : 'your-secret-clientID-here', // your App ID
-        'clientSecret'  : 'your-client-secret-here', // your App Secret
-        'callbackURL'   : 'http://localhost:8080/auth/facebook/callback'
+        'clientID'      : '1778043482446566', // your App ID
+        'clientSecret'  : '5f2f867783c9dc83f378707778319a41', // your App Secret
+        'callbackURL'   : 'http://localhost:8080/api/auth/facebook/callback'
     },
 
     'twitterAuth' : {
-        'consumerKey'       : 'your-consumer-key-here',
-        'consumerSecret'    : 'your-client-secret-here',
-        'callbackURL'       : 'http://localhost:8080/auth/twitter/callback'
+        'consumerKey'       : 'NmLUL7ks1wuHbAZDFaPI6HboA',
+        'consumerSecret'    : '64dZsgywBcTYE4Wxd5pzE4lc7EveIdSxGBxJB8zLTlNQMzLtDA',
+        'callbackURL'       : 'http://localhost:8080/api/auth/twitter/callback'
     },
 
     'googleAuth' : {
         'clientID'      : '654961222493-6pm64i4lekd32tvnqth3v65rhk393f6l.apps.googleusercontent.com',
         'clientSecret'  : 'x1Wx8sryqDt1-5k1FicLbKP5',
-        'callbackURL'   : 'http://localhost:8080/auth/google/callback'
+        'callbackURL'   : 'http://127.0.0.1:8080/api/auth/google/callback'
     },
 
-    'github' : {
-        'clientID'      : 'your-secret-clientID-here',
-        'clientSecret'  : 'your-client-secret-here',
-        'callbackURL'   : 'http://localhost:8080/auth/google/callback'
+    'githubAuth' : {
+        'clientID'      : 'ac2172c13a37e3d42307',
+        'clientSecret'  : '64fe52e427d7df66f1dd23a72bc801c898142f26',
+        'callbackURL'   : 'http://127.0.0.1:8080/api/auth/github/callback'
+    },
+    'linkedinAuth' : {
+        'clientID'      : 'ac2172c13a37e3d42307',
+        'clientSecret'  : '64fe52e427d7df66f1dd23a72bc801c898142f26',
+        'callbackURL'   : 'http://127.0.0.1:8080/api/auth/linkedin/callback'
     }
 
 };

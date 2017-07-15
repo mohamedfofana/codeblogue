@@ -26,11 +26,10 @@ export class NavbarComponent implements OnInit {
     this.searchForm = this._formBuilder.group({
       searchText: ['', Validators.required]
     });
-
+    //console.log('here');
     if ( localStorage.getItem('userLogged') == 'true'){
         if (!this.isLoggedIn){
-          let currentUserName = JSON.parse(localStorage.getItem('currentUserName'));
-          let currentUserEmail = JSON.parse(localStorage.getItem('currentUserEmailzda'));
+          let currentUserName = localStorage.getItem('currentUserName');
           this._sessionService.setLogged(true);
           let currentUser: IUser = ({username: currentUserName, email: '', password: ''});
           this._sessionService.setUser(currentUser);

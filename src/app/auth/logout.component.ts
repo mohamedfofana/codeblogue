@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-import { Router } from '@angular/router';
 
 import { SessionService } from '../services/session.service'
 
@@ -14,8 +11,8 @@ export class LogoutComponent implements OnInit {
 
   errorMessage: string;
 
-  constructor(private _formBuilder: FormBuilder, private _sessionService: SessionService,
-              private _router: Router, private _location: Location) { }
+  constructor(private _sessionService: SessionService,
+              private _location: Location) { }
 
   ngOnInit() {
     this._sessionService.setLogged(false);
@@ -23,6 +20,8 @@ export class LogoutComponent implements OnInit {
     localStorage.removeItem('currentUserEmail');
     localStorage.removeItem('userLogged');
     this._location.back();
- }
+  }
+
+
 
 }

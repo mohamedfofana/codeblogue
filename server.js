@@ -4,6 +4,7 @@ var express = require('express'),
   bodyParser = require('body-parser'),
   mongoose = require('mongoose'),
   methodOverride = require('method-override'),
+  cors           = require('cors');
   session = require('express-session'),
   morgan = require('morgan'),
   cookieParser = require('cookie-parser'),
@@ -25,36 +26,13 @@ app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser.urlencoded({ extended: true })); // URL encoding replaces unsafe ASCII characters with a "%" followed by two hexadecimal digits.
 app.use(bodyParser.json()); // Intercepte une requête pour lui dire d'utiliser l'encodage json
 app.use(methodOverride('X-HTTP-Method-Override')); // pour accepter Method -Override. Cela permet d'utiliser les methodes http put , ...
-
-
-// required for passport
-app.use(session({ secret: 'memfst' })); // session secret
+app.use(session({ secret: 'memfst', key: 'sid', resave: true, saveUninitialized: true, cookie: { secure: false }}))
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
-
 // CORS Support
-// CORS allows restricted resources (e.g. fonts) on a web page to be requested from another domain outside the domain from which the resource  
-app.use(function (req, res, next) {
-  //console.log(res);
-  res.header('Access-Control-Allow-Origin', '*'); // * signifie tous les domaines peuvent se connecter à notre API
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Origin, Access-Control-Allow-Headers, Access-Control-Allow-Methods, Origin, X-Requested-With, Content-Type, Accept');
-  // intercept OPTIONS method
-  //if ('OPTIONS' == req.method) {
-  //  res.sendStatus(200);
-  //}
-  //else {
-  next();
-  // }
-});
-
-app.use(require('express-session')({
-  resave: false,
-  saveUninitialized: false,
-  secret: 'memfst'
-}));
+app.use(cors());
 
 //On se connecte à mongodb
 mongoose.connect(mongodbServer)
@@ -109,12 +87,57 @@ db.once('open', function () {
       });
     })(req, res, next);
   });
-
+  // route google auth 
   app.get('/api/auth/google', passport.authenticate('google', { scope: "email" }));
-  app.get('/api/auth/google/callback', passport.authenticate('google', { successRedirect: '/', failureRedirect: '/' }));
- 
+  app.get('/api/auth/google/callback', passport.authenticate('google', { failureRedirect: '/login' }),
+    function(req, res) {
+      res.redirect('/auth/success' + req.user.google.name);
+    }
+  );
+  // route facebook auth 
+  app.get('/api/auth/facebook', passport.authenticate('facebook', { scope : ['email'] }));
+
+  app.get('/api/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }),
+    function(req, res) {
+       res.redirect('/auth/success' + req.user.facebook.name);
+    }
+  );
+
+  // route twitter auth 
+app.get('/api/auth/twitter', passport.authenticate('twitter'));
+
+app.get('/api/auth/twitter/callback', passport.authenticate('twitter', { failureRedirect: '/login' }),
+  function(req, res) {
+      console.log('success twitter :' + req.user);
+      // Successful authentication, redirect home.
+    res.redirect('/auth/success' + req.user.twitter.username);
+  });
+
+  // route github auth 
+  app.get('/api/auth/github', passport.authenticate('github', { scope : 'email' }));
+
+app.get('/api/auth/github/callback', 
+  passport.authenticate('github', { failureRedirect: '/login' }),
+  function(req, res) {
+    res.redirect('/auth/success' + req.user.github.username);
+  });
+
+// route github auth 
+/*
+  app.get('/api/auth/linkedin', passport.authenticate('linkedin'),
+  function(req, res){
+    // The request will be redirected to LinkedIn for authentication, so this
+    // function will not be called.
+  });
+app.get('/api/auth/linkedin/callback', 
+  passport.authenticate('linkedin', { failureRedirect: '/login' }),
+  function(req, res) {
+    res.redirect('/auth/success' + req.user.linkedin.username);
+  });
+*/
+
   // Catch all ot/ Point static path to dist
-  app.get('*', (req, res) => {
+   app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/index.html'));
   }); 
   
