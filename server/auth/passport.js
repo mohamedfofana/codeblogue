@@ -3,7 +3,7 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 var TwitterStrategy = require('passport-twitter').Strategy;
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var GitHubStrategy = require('passport-github').Strategy;
-var LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
+//var LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
 
 // load up the user model
 var User = require('../models/User');
@@ -111,14 +111,9 @@ module.exports = function (passport) {
         function (accessToken, refreshToken, profile, done) {
             // asynchronous
             process.nextTick(function () {
-                console.log('request google');
                 User.findOne({ 'google.id': profile.id }, function (err, user) {
-                    //console.log(profile);
-                    //console.log(user);
-                    //console.log(user);
                     if (err)
                         return done(err);
-
                     if (user) {
                         return done(null, user);
                     } else {
@@ -152,13 +147,11 @@ module.exports = function (passport) {
                 User.findOne({ 'facebook.id': profile.id }, function (err, user) {
                     if (err)
                         return done(err);
-                    // if the user is found, then log them in
                     if (user) {
                         return done(null, user); // user found, return that user
                     } else {
                         // if there is no user found with that facebook id, create them
                         var newUser = new User();
-                        // set all of the facebook information in our user model
                         newUser.facebook.id = profile.id; // set the users facebook id                   
                         newUser.facebook.token = token; // we will save the token that facebook provides to the user                    
                         newUser.facebook.name = profile.displayName; // look at the passport user profile to see how names are returned
@@ -187,7 +180,6 @@ module.exports = function (passport) {
                 User.findOne({ 'twitter.id': profile.id }, function (err, user) {
                     if (err)
                         return done(err);
-
                     if (user) {
                         return done(null, user); // user found, return that user
                     } else {
@@ -216,9 +208,7 @@ module.exports = function (passport) {
         function (accessToken, refreshToken, profile, done) {
             // asynchronous
             process.nextTick(function () {
-                console.log('request github');
                 User.findOne({ 'github.id': profile.id }, function (err, user) {
-                    //console.log(profile);
                     if (err)
                         return done(err);
                     if (user) {

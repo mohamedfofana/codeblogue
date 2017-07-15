@@ -20,14 +20,13 @@ export class SocialAuthComponent implements OnInit {
   ngOnInit() {
     this._activatedRoute.params.subscribe((params: Params) => {
         this.group = params['group'];
-        console.log('firing social media request to ' + this.group + '...');
         if(this.group.startsWith('success')){
           let username = this.group.substring(7)
           this._authService.logUser(username);
           this._router.navigate(['home']);
         }
         else{
-          this._authService.registerSocialMediaHref(this.group);    
+          this._authService.registerSocialMedia(this.group);    
         }
       });;
   }

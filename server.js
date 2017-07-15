@@ -108,8 +108,6 @@ app.get('/api/auth/twitter', passport.authenticate('twitter'));
 
 app.get('/api/auth/twitter/callback', passport.authenticate('twitter', { failureRedirect: '/login' }),
   function(req, res) {
-      console.log('success twitter :' + req.user);
-      // Successful authentication, redirect home.
     res.redirect('/auth/success' + req.user.twitter.username);
   });
 

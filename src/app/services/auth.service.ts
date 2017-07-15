@@ -26,20 +26,14 @@ export class AuthService {
     private _location: Location) {
     this.headers = new Headers({ 'Content-Type': 'application/json' });
     this.headers.append('Access-Control-Allow-Origin', '*');
-    //this.headers.append('Access-Control-Allow-Origin', '*');
-    //this.headers.append('Access-Control-Allow-Origin', '*');
-
     this.options = new RequestOptions({ headers: this.headers });
 
   };
 
-  registerSocialMediaHref(group: string): void {
+  registerSocialMedia(group: string): void {
     window.open(this.url + group, '_self');
-    //return this._http.get(this.url + group, this.options)
-    //.map((response: Response) => console.log(response.json()))
-    //.catch(this.handleError);
-
   }
+  /*
   registerSocialMedia(group: string): Observable<any> {
     window.location.href = this.url + group;
     return this._http.get(this.url + group, this.options)
@@ -47,7 +41,7 @@ export class AuthService {
       .catch(this.handleError);
 
   }
-
+*/
   login(user) {
     let body = JSON.stringify(user);
     return this._http.post(this.loginUrl, body, this.options)
