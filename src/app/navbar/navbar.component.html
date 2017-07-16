@@ -36,10 +36,10 @@
         </div>
       </li>
     </ul>
-    <div class="col-lg-6" style="margin-top: 7px;">
+    <div class="col-lg-4" style="margin-top: 7px;">
       <form class="form-horizontal my-2 my-md-0 search-form" [formGroup]="searchForm" role="form" (keyup.enter)="onSubmit()">
           <div class="input-group">
-            <input type="text" class="form-control" formControlName="searchText" size="50">
+            <input type="text" class="form-control" formControlName="searchText" size="40">
             <span class="input-group-btn fa fa-search form-control-feedback">
             </span>
         </div>
@@ -53,10 +53,6 @@
         <a *ngIf="!isLoggedIn" class="nav-link" routerLink='/signin'>Connexion</a>
         <a *ngIf="isLoggedIn" class="nav-link" routerLink='/logout'>Déconnexion</a>
       </li>
-     <!-- <li class="nav-item">
-        <a class="nav-link" routerLink='/contact'>Contact</a>
-      </li>
-      -->
     </ul>
   </div>
 </nav>
