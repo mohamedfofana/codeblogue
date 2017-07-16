@@ -142,13 +142,12 @@ hr {
   text-decoration: none !important;
   outline: none;
 }
-.footer {
+footer {
 	background: white;
 	height: auto;
 	position: relative;
-	width: 100%;
-	border-bottom: 1px solid #CCCCCC;
-	border-top: 1px solid #DDDDDD;
+    width: 100%;
+    margin-top: 20px;
 }
 .footer p {
 	margin: 0;
@@ -906,7 +905,7 @@ hr {
 }
 
 
-hr.style18 { 
+hr.withStyle { 
   height: 30px; 
   max-width: inherit;
   border-style: solid; 
@@ -914,7 +913,7 @@ hr.style18 {
   border-width: 1px 0 0 0; 
   border-radius: 20px; 
 } 
-hr.style18:before { 
+hr.withStyle:before { 
   display: block; 
   content: ""; 
   height: 30px; 
