@@ -1,5 +1,5 @@
 <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top">
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarDropdownMenuLink"
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
     aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -36,7 +36,7 @@
         </div>
       </li>
     </ul>
-    <div class="col-lg-4" style="margin-top: 7px;">
+    <div class="offset-md-3 col-lg-4" style="padding-right:0px;margin-top:7px;">
       <form class="form-horizontal my-2 my-md-0 search-form" [formGroup]="searchForm" role="form" (keyup.enter)="onSubmit()">
           <div class="input-group">
             <input type="text" class="form-control" formControlName="searchText" size="50">
@@ -45,7 +45,7 @@
         </div>
       </form>
     </div>
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav ml-auto">
       <li class="nav-item">
         <a *ngIf="!isLoggedIn" class="nav-link" routerLink='/signup'>Inscription</a>
       </li>
