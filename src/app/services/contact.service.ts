@@ -23,10 +23,10 @@ export class ContactService {
   };
 
 
-  sendMail(contact: IContact): Observable<IContact[]> {
+  sendMail(contact: IContact): Observable<string> {
       console.log("sending email ...");
     return this._http.post(this.contactUrl, contact)
-            .map((response: Response) => <IContact[]> response.json())
+            .map((response: Response) => response.json())
             .catch(this.handleError);
   }
 

@@ -5,7 +5,7 @@ module.exports = function (app, route) {
 
     return function (req, res, next) {
         var data = req.body;
-        console.log(data);
+        //console.log(data);
         // login
         //https://www.google.com/settings/security/lesssecureapps Enabled it but it was not my solution 
         //https://g.co/allowaccess I allowed access from outside for a limited time and this solved my problem.
@@ -42,11 +42,12 @@ module.exports = function (app, route) {
             if (error) {
                 console.log(error);
                 res.status(400);
-                res.json(data);
+                res.json("error");
                 next();
             }
             else {
-                res.json(data);
+                //console.log('success email');
+                res.json("sended");
                 next();
             }
         });

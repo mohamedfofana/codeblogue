@@ -17,6 +17,7 @@ export class ContactComponent implements OnInit {
   contact: IContact;
   errorMessage: string;
   errorContact: string;
+  successContact: string;
 
   constructor(private _formBuilder: FormBuilder, private _router: Router, private _contactService: ContactService) { }
 
@@ -30,13 +31,21 @@ export class ContactComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (!ValidationService.emailValidator(this.contactForm.controls.email.value)){
+    this.errorContact ="";
+    this.successContact ="";
+    if (!ValidationService.emailValidator(this.contactForm.controls.email.value)) {
       this.errorContact = "Email invalide.";
       return
     }
     this.contact = this.contactForm.value;
-    if (this.contactForm.valid){
-      this._contactService.sendMail(this.contact).subscribe(contact => contact, error => {this.errorMessage = <any>error; console.log(this.errorMessage);});
+    if (this.contactForm.valid) {
+      this._contactService.sendMail(this.contact).subscribe(response => {
+        if (response == 'error') {
+          this.errorContact = "Une erreur est survenu lors de l'envoie de l'email.";
+        } else {
+          this.successContact = "Email envoyé.";
+        }
+      }, error => { this.errorMessage = <any>error; console.log(this.errorMessage); });
     }
   }
 }
