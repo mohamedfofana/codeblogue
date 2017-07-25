@@ -80,22 +80,7 @@ var UserSchema = new mongoose.Schema({
 				type : String,
 				require : true
 			}
-	},
-	linkedin: {
-			id: {
-				type : String,
-				require : true
-			},
-			token: {
-				type : String,
-				require : true
-			},
-			username: {
-				type : String,
-				require : true
-			}
 	}
-
 });
 // generating a hash for signup
 UserSchema.methods.generateHash = function(password) {

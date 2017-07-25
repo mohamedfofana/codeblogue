@@ -21,7 +21,7 @@ export const APP_DEV_CONFIG: AppConfig = {
 };
 
 export const APP_PROD_CONFIG: AppConfig = {    
-    apiEndpoint: "http://localhost:8080/api/"
+    apiEndpoint: "http://www.codeblogue.com/api/"
   /*  headers: new Headers({ 'Content-Type': 'application/json' }),
     options: new RequestOptions({ headers: this.headers })     
 */
@@ -30,7 +30,7 @@ export const APP_PROD_CONFIG: AppConfig = {
 @NgModule({
   providers: [{
     provide: APP_CONFIG,
-    useValue: APP_DEV_CONFIG
+    useValue: APP_PROD_CONFIG
   }]
 })
 export class AppConfigModule { }

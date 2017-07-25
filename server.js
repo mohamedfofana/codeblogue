@@ -120,20 +120,6 @@ app.get('/api/auth/github/callback',
     res.redirect('/auth/success' + req.user.github.username);
   });
 
-// route github auth 
-/*
-  app.get('/api/auth/linkedin', passport.authenticate('linkedin'),
-  function(req, res){
-    // The request will be redirected to LinkedIn for authentication, so this
-    // function will not be called.
-  });
-app.get('/api/auth/linkedin/callback', 
-  passport.authenticate('linkedin', { failureRedirect: '/login' }),
-  function(req, res) {
-    res.redirect('/auth/success' + req.user.linkedin.username);
-  });
-*/
-
   // Catch all ot/ Point static path to dist
    app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/index.html'));
