@@ -17,6 +17,7 @@ export class ContactComponent implements OnInit {
   contact: IContact;
   errorMessage: string;
   errorContact: string;
+  pendingContact: boolean = false;
   successContact: string;
 
   constructor(private _formBuilder: FormBuilder, private _router: Router, private _contactService: ContactService) { }
@@ -33,19 +34,22 @@ export class ContactComponent implements OnInit {
   onSubmit(): void {
     this.errorContact ="";
     this.successContact ="";
+    this.pendingContact=true;
     if (!ValidationService.emailValidator(this.contactForm.controls.email.value)) {
       this.errorContact = "Email invalide.";
+      this.pendingContact=false;
       return
     }
     this.contact = this.contactForm.value;
     if (this.contactForm.valid) {
       this._contactService.sendMail(this.contact).subscribe(response => {
         if (response == 'error') {
-          this.errorContact = "Une erreur est survenu lors de l'envoie de l'email.";
+          this.errorContact = "Un problème est survenu lors de l'envoie de l'email.";
         } else {
-          this.successContact = "Email envoyé.";
+          this.successContact = "Email envoyé avec succès.";
         }
-      }, error => { this.errorMessage = <any>error; console.log(this.errorMessage); });
+        this.pendingContact=false;
+      }, error => { this.errorMessage = <any>error; console.log(this.errorMessage); this.pendingContact=false;});
     }
   }
 }
