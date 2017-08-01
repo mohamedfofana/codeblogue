@@ -23,7 +23,6 @@ import { NodemailerfixitComponent } from '../articles-view/nodemailerfixit/nodem
 import { ConsoletipComponent } from '../articles-view/consoletip/consoletip.component';
 import { FiguretipComponent } from '../articles-view/figuretip/figuretip.component';
 
-
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({

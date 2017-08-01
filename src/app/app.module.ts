@@ -27,7 +27,7 @@ import { LoginComponent } from './auth/login.component';
 import { RegisterComponent } from './auth/register.component';
 import { LogoutComponent } from './auth/logout.component';
 import { SocialAuthComponent } from './auth/social-auth.component';
-
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -49,6 +49,7 @@ import { SocialAuthComponent } from './auth/social-auth.component';
     HttpModule,
     RouterModule,
     ArticleModule,
+    SharedModule,
     ReactiveFormsModule,
     AppRoutingModule,
     AppConfigModule

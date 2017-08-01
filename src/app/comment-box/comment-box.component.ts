@@ -10,7 +10,7 @@ import { IUser } from '../services/models/user';
 import { ArticleService } from '../services/article.service';
 import { CommentService } from '../services/comment.service';
 import { ReplyService } from '../services/reply.service';
-import { SessionService } from '../services/session.service'
+import { SessionService } from '../services/session.service';
 
 declare var jquery: any;
 declare var $: any;
@@ -32,6 +32,8 @@ export class CommentBoxComponent implements OnInit {
   commentForm: FormGroup;
   replyForm: FormGroup;
   errorMessage: string;
+  ratingClicked: number;
+  itemIdRatingClicked: number;
 
   constructor(private _articleService: ArticleService, private _commentService: CommentService, 
               private _replyService: ReplyService, private _formBuilder: FormBuilder,
@@ -50,6 +52,11 @@ export class CommentBoxComponent implements OnInit {
     this.initComments();
     this.initReplies();
     this.showHideComment();  
+  }
+  
+  onRatingClicked(message: string): void {
+      console.log(message);
+        alert(message);
   }
 
   initComments(): void {
