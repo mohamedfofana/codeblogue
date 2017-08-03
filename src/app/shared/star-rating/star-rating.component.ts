@@ -1,4 +1,6 @@
-import { Component, Input, Output, OnChanges, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, OnChanges, EventEmitter } from '@angular/core';
+
+import { IArticle } from '../../services/models/article';
 
 @Component({
     selector : 'star-rating',
@@ -6,19 +8,25 @@ import { Component, Input, Output, OnChanges, EventEmitter } from '@angular/core
     styleUrls : ['./star-rating.component.css']
 })
 
-export class StarRatingComponent implements OnChanges{
+export class StarRatingComponent implements OnChanges, OnInit {
     starwidth : number;
     @Input()  rates : number;
     @Input()  raters : number;
-    // Permet de notifier le composant mère de la modification du rating
-    @Output() ratingClicked : EventEmitter<string> = new EventEmitter<string>();
+    @Input() article: IArticle;
 
-    ngOnChanges(): void {
-        this.starwidth = this.rates * 160/(this.raters * 5); // 160 = taille max fieldset rating
+    // Permet de notifier le composant mère de la modification du rating
+    @Output() ratingClicked : EventEmitter<number> = new EventEmitter<number>();
+    //inpustName:string;
+    ngOnInit() {
+      //this.inpustName = this.itemId + '_rating';
     }
 
-    onClick(): void {
-        this.ratingClicked.emit(`The rating ${this.rates} was clicked`);
+    ngOnChanges(): void {
+        //this.starwidth = this.rates * 160/(this.raters * 5); // 160 = taille max fieldset rating
+    }
+
+    onClick(item: number): void {
+        this.ratingClicked.emit(item);
     }
 
 }

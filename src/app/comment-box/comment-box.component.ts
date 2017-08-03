@@ -21,6 +21,7 @@ declare var $: any;
 })
 export class CommentBoxComponent implements OnInit {
   @Input() article: IArticle;
+  dbArticle: IArticle; // to get the article in the db. the current article in session may not be the current db article
   comments: IComment[];
   comment: IComment;
   user: IUser;
@@ -32,8 +33,7 @@ export class CommentBoxComponent implements OnInit {
   commentForm: FormGroup;
   replyForm: FormGroup;
   errorMessage: string;
-  ratingClicked: number;
-  itemIdRatingClicked: number;
+  rate: number;
 
   constructor(private _articleService: ArticleService, private _commentService: CommentService, 
               private _replyService: ReplyService, private _formBuilder: FormBuilder,
@@ -48,15 +48,25 @@ export class CommentBoxComponent implements OnInit {
     });
     this._sessionService.userLogged$.subscribe(logged => this.isLoggedIn = logged);
     this._sessionService.currentUser$.subscribe(user => this.user = user);
-    
+
+    this.rate = Math.floor(this.article.rates/this.article.raters);
+
     this.initComments();
     this.initReplies();
     this.showHideComment();  
   }
   
-  onRatingClicked(message: string): void {
-      console.log(message);
-        alert(message);
+  onRatingClicked(rating: number): void {
+    //console.log("the rating " + rating + " was clicked.");
+    this._articleService.getArticleByTitle(this.article.titre).subscribe(article => 
+            { 
+              this.dbArticle = article[0];
+              this.dbArticle.rates += rating;
+              this.dbArticle.raters += 1;
+              this.rate = Math.floor(this.dbArticle.rates/this.dbArticle.raters);
+              this._articleService.updateArticle(this.dbArticle).subscribe(result => console.log(result), error => this.errorMessage = <any>error);
+            }
+            , error => this.errorMessage = <any>error);
   }
 
   initComments(): void {

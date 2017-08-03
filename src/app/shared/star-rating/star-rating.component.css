@@ -1,14 +1,8 @@
-.crop {
-    overflow: hidden;
-}
-/************Form Star*************/
-
 /***************************
 Pulls the stars container to the left
 ***************************/
 .rating {
     float:left;
-    width: 160px;
 }
 /***************************
 Hides the radio buttons
@@ -27,7 +21,7 @@ Default stars styles
     padding:0.1em;
     overflow:hidden;
     white-space:nowrap;
-    /*cursor:pointer;*/
+    cursor:pointer;
     font-size:200%;
     line-height:1.2;
     color:#ddd;
@@ -47,17 +41,15 @@ Colour for the applied rating stars
 /***************************
 Colour for hovered stars when increasing the rating
 ***************************/
-/*.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover,
 .rating:not(:checked) > label:hover ~ label {
     color: gold;
-}*/
+}
 /***************************
 Colour for hovered stars when decreasing the rating
 ***************************/
-/*
 .rating > input:checked ~ label:hover,
 .rating > input:checked ~ label:hover ~ label,
 .rating > label:hover ~ input:checked ~ label {
     color: #ea0;
 }
-*/

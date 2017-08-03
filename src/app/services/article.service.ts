@@ -32,6 +32,14 @@ export class ArticleService {
 
   }
 
+  updateArticle(article: IArticle): Observable<IArticle[]> {
+    let body = JSON.stringify(article);
+    return this._http.put(this.articleUrl + '/'+article._id, body, this.options)
+      .map((response: Response) => <IArticle[]>response.json())
+      .catch(this.handleError);
+
+  }
+
   likeArticle(article: IArticle): Observable<IArticle[]> {
     let body = JSON.stringify(article);
     return this._http.put(this.articleUrl + '/'+article._id, body, this.options)
@@ -43,6 +51,12 @@ export class ArticleService {
   getTopNArticles(num: Number): Observable<IArticle[]> {
     return this._http.get(this.articleUrl, { params: { limit: num, sort: '-views' } })
       .map((response: Response) => <IArticle[]>response.json())
+      .catch(this.handleError);
+  }
+
+  getArticleByTitle(title: String): Observable<IArticle> {
+    return this._http.get(this.articleUrl, { params: { titre: title } })
+      .map((response: Response) => <IArticle>response.json())
       .catch(this.handleError);
   }
 

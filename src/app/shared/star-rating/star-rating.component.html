@@ -1,33 +1,31 @@
-<div class="crop" [style.width.px]="starwidth" [title]="rating">
-       <fieldset class="rating">
+  <fieldset class="rating">
     <input type="radio" 
         value="5" 
-        name="item_5"
-        checked="checked" />
-    <label title="Rocks!">5 stars</label>
+        name="inpustName"
+        [checked]="rates===5" />
+    <label title="Rocks!" (click)='onClick(5)'>5 stars</label>
 
     <input type="radio" 
         value="4" 
-        name="item_4"
-        checked="checked" />
-    <label title="Pretty good">4 stars</label>
+        name="inpustName"
+        [checked]="rates===4" />
+    <label title="Pretty good" (click)='onClick(4)'>4 stars</label>
 
     <input type="radio" 
         value="3" 
-        name="item_3"
-        checked="checked" />
-    <label title="Meh">3 stars</label>
+        name="inpustName"
+        [checked]="rates===3" />
+    <label title="Meh" (click)='onClick(3)'>3 stars</label>
 
     <input type="radio" 
         value="2" 
-        name="item_2"
-        checked="checked" />
-    <label title="Kinda bad">2 stars</label>
+        name="inpustName"
+        [checked]="rates===2" />
+    <label title="Kinda bad" (click)='onClick(2)'>2 stars</label>
 
     <input type="radio" 
         value="1" 
-        name="item_1"
-        checked="checked" />
-    <label title="Sucks big time">1 star</label>
+        name="inpustName"
+        [checked]="rates===1" />
+    <label title="Sucks big time" (click)='onClick(1)'>1 star</label>
 </fieldset>
-</div>

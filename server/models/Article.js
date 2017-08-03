@@ -46,6 +46,16 @@ var ArticleSchema = new mongoose.Schema({
 		require : false,
 		default : 0
 	},
+	rates: {
+		type : Number,
+		require : false,
+		default : 0
+	},
+	raters: {
+		type : Number,
+		require : false,
+		default : 0
+	},
 	category: {
 		type : String,
 		require : false,
