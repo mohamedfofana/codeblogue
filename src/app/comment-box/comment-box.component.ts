@@ -57,10 +57,9 @@ export class CommentBoxComponent implements OnInit {
   }
   
   onRatingClicked(rating: number): void {
-    //console.log("the rating " + rating + " was clicked.");
-    this._articleService.getArticleByTitle(this.article.titre).subscribe(article => 
+    this._articleService.getArticleByUrl(this.article.url).subscribe(article => 
             { 
-              this.dbArticle = article[0];
+             this.dbArticle = article[0];
               this.dbArticle.rates += rating;
               this.dbArticle.raters += 1;
               this.rate = Math.floor(this.dbArticle.rates/this.dbArticle.raters);
