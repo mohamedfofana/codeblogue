@@ -1,0 +1,39 @@
+/***************************
+Pulls the stars container to the left
+***************************/
+.rating-rate {
+    float:left;
+}
+/***************************
+Hides the radio buttons
+***************************/
+.rating-rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+    clip:rect(0,0,0,0);
+}
+/***************************
+Default stars styles
+***************************/
+.rating-rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    padding:0.1em;
+    overflow:hidden;
+    white-space:nowrap;
+    font-size:100%;
+    line-height:1.2;
+    color:#ddd;
+}
+/***************************
+Adds the star symbol to the labels
+***************************/
+.rating-rate:not(:checked) > label:before {
+    content: '★ ';
+}
+/***************************
+Colour for the applied rating stars
+***************************/
+.rating-rate > input:checked ~ label {
+    color: #f70;
+}

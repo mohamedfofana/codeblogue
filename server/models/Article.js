@@ -46,6 +46,11 @@ var ArticleSchema = new mongoose.Schema({
 		require : false,
 		default : 0
 	},
+	rate: {
+		type : Number,
+		require : false,
+		default : 0
+	},
 	rates: {
 		type : Number,
 		require : false,

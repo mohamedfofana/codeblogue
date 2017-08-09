@@ -1,5 +1,5 @@
 <br>
-<star-rating [article]='article' [rates]='rate' (ratingClicked)='onRatingClicked($event)'></star-rating>
+<star-rating [rate]='article.rate' (ratingClicked)='onRatingClicked($event)'></star-rating>
 <div class="text right">
   <br>
   <br>
@@ -8,7 +8,9 @@
   <div class="row">
   <!-- Formulaire de commentaire-->
   <div class="comments-container">
+    <div class="col-sm-12">
         <h3>Commentaires({{numComments + numReplies}})</h3>
+    </div>
       <p *ngIf='ratingClicked'>The Item {{itemIdRatingClicked}} has been given {{ratingClicked}} stars</p>
     <div class="commentAddSection" id="commentAddSection">
       <form class="form-horizontal" [formGroup]="commentForm" (ngSubmit)="saveComment()">

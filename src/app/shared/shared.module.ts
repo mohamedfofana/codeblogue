@@ -3,14 +3,16 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { StarRatingComponent } from './star-rating/star-rating.component';
+import { StarRatingRateComponent } from './star-rating/star-rating-rate.component';
 
 @NgModule({
-    declarations: [ StarRatingComponent ],
+    declarations: [ StarRatingComponent, StarRatingRateComponent ],
     imports: [ CommonModule, FormsModule ],
     exports: [
         CommonModule,
         FormsModule,
-        StarRatingComponent
+        StarRatingComponent,
+        StarRatingRateComponent
     ]
 })
 export class SharedModule { }

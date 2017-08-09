@@ -62,8 +62,10 @@ export class CommentBoxComponent implements OnInit {
              this.dbArticle = article[0];
               this.dbArticle.rates += rating;
               this.dbArticle.raters += 1;
-              this.rate = Math.floor(this.dbArticle.rates/this.dbArticle.raters);
-              this._articleService.updateArticle(this.dbArticle).subscribe(result => console.log(result), error => this.errorMessage = <any>error);
+              this.dbArticle.rate = Math.floor(this.dbArticle.rates/this.dbArticle.raters);
+              //this.rate = Math.floor(this.dbArticle.rates/this.dbArticle.raters);
+              this.article.rate = this.dbArticle.rate;
+              this._articleService.updateArticle(this.dbArticle).subscribe(result => result, error => this.errorMessage = <any>error);
             }
             , error => this.errorMessage = <any>error);
   }

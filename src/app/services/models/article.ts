@@ -9,6 +9,7 @@ export interface IArticle {
 	visible: Boolean;
 	views: number;
 	likes: number;
+	rate: number;
 	rates: number;
 	raters: number;
 	category: String;

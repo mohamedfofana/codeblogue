@@ -24,10 +24,10 @@
     <div class="well">
         <h4>Tops articles</h4>
         <div class="row margin-bootom-10" *ngFor="let article of articles">
-            <div class="col-md-2 no-right-padding ">
-                <div class="pvbox kformat">{{article.likes}}<br/></div>
+            <div class="col-md-12 no-right-padding ">
+                <star-rating-rate [rate]='article.rate'></star-rating-rate>&nbsp;&nbsp;
+                <a routerLink="/article/{{article.url}}">{{article.titre}}</a>
             </div>
-            <div class="col-md-3 no-right-padding "><a routerLink="/article/{{article.url}}">{{article.titre}}</a></div>
         </div>
     </div>
 </div>
