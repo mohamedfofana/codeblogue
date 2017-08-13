@@ -2,8 +2,8 @@
 module.exports = {
 
     'facebookAuth' : {
-        'clientID'      : '1778043482446566', // your App ID
-        'clientSecret'  : '5f2f867783c9dc83f378707778319a41', // your App Secret
+        'clientID'      : '1778043482446566',
+        'clientSecret'  : '5f2f867783c9dc83f378707778319a41',
         'callbackURL'   : 'http://www.codeblogue.com/api/auth/facebook/callback'
     },
 

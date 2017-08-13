@@ -1,7 +1,6 @@
-// On importe mongoose comme il sera utiliser
 var mongoose = require('mongoose');
 var bcrypt   = require('bcrypt-nodejs');
-	//exports  = module.exports = {};
+
 var UserSchema = new mongoose.Schema({ 
 	local: {
 			username: {
@@ -22,11 +21,7 @@ var UserSchema = new mongoose.Schema({
 				type : String,
 				require : true
 			},
-		/*	token: {
-				type : String,
-				require : true
-			},
-		*/	name: {
+			name: {
 				type : String,
 				require : true
 			},
