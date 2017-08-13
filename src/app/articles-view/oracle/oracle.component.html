@@ -6,7 +6,7 @@ Afficher les index compte oracle<br/>
 <pre class="with-style-pre"><code class="with-style-code">
 SELECT table_name, index_name 
 FROM all_indexes 
-WHERE index_name like 'index%' ORder by table_name, index_name ;
+WHERE index_name like 'index%' order by table_name, index_name ;
 </code></pre>
 <figuretip description="Afficher la taille en Ko occupé par l'index index_name" content="select sum(bytes)/1024 from dba_segments where segment_name='index_name';"></figuretip>
 Trouver le sid et le serial de la requête que l'on souhaite arrêter<br/>
