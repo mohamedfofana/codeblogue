@@ -3,8 +3,8 @@ var restful = require('node-restful');
 module.exports = function(app, route){
 	// On ajoute les methode REST au controller
 	var rest = restful.model(
-		'comment',
-		app.models.comment
+		'iname',
+		app.models.article
 		).methods(['get','put','post']);
 
 	// On sauvegarde le service rest dans l'application

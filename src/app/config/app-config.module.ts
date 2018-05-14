@@ -30,7 +30,7 @@ export const APP_PROD_CONFIG: AppConfig = {
 @NgModule({
   providers: [{
     provide: APP_CONFIG,
-    useValue: APP_PROD_CONFIG
+    useValue: APP_DEV_CONFIG
   }]
 })
 export class AppConfigModule { }

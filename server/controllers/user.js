@@ -5,7 +5,7 @@ module.exports = function(app, route){
 	var rest = restful.model(
 		'user',
 		app.models.user
-		).methods(['get','put','post','delete']);
+		).methods(['get','put','post']);
 
 	// On sauvegarde le service rest dans l'application
 	rest.register(app, route);

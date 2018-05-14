@@ -2,15 +2,15 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
-import { IArticle } from '../services/models/article';
-import { IComment } from '../services/models/comment';
-import { IReply } from '../services/models/reply';
-import { IUser } from '../services/models/user';
+import { IArticle } from '../../services/models/article';
+import { IComment } from '../../services/models/comment';
+import { IReply } from '../../services/models/reply';
+import { IUser } from '../../services/models/user';
 
-import { ArticleService } from '../services/article.service';
-import { CommentService } from '../services/comment.service';
-import { ReplyService } from '../services/reply.service';
-import { SessionService } from '../services/session.service';
+import { ArticleService } from '../../services/article.service';
+import { CommentService } from '../../services/comment.service';
+import { ReplyService } from '../../services/reply.service';
+import { SessionService } from '../../services/session.service';
 
 declare var jquery: any;
 declare var $: any;
@@ -48,9 +48,9 @@ export class CommentBoxComponent implements OnInit {
     });
     this._sessionService.userLogged$.subscribe(logged => this.isLoggedIn = logged);
     this._sessionService.currentUser$.subscribe(user => this.user = user);
-
-    this.rate = Math.floor(this.article.rates/this.article.raters);
-
+    if(this.article.raters>0){
+      this.rate = Math.floor(this.article.rates/this.article.raters);
+    }
     this.initComments();
     this.initReplies();
     this.showHideComment();  

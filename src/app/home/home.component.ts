@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   constructor(private _articleService: ArticleService) { }
 
   ngOnInit(): void {
-      this._articleService.getTopNArticles(2).subscribe(articles => this.articles = articles, error => this.errorMessage = <any>error);
+      this._articleService.getTopNArticles(5).subscribe(articles => this.articles = articles, error => this.errorMessage = <any>error);
   }
 
 }

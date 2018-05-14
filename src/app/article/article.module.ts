@@ -5,11 +5,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { ArticleComponent } from './article.component';
 import { ArticleRoutingModule } from './article-routing.module';
-import { ArticleFilterPipe } from './article-filter.pipe';
-import { ReplyFilterPipe } from '../pipes/replyFilter';
 import { ArticleDetailGuard } from '../article-detail/article-detail-guard.service';
 import { ArticleDetailComponent } from '../article-detail/article-detail.component';
-import { CommentBoxComponent } from '../comment-box/comment-box.component';
+import { CommentBoxComponent } from '../widget/comment-box/comment-box.component';
 import { DemineurComponent } from '../articles-view/demineur/demineur.component';
 import { MorpionComponent } from '../articles-view/morpion/morpion.component';
 import { WindowsComponent } from '../articles-view/windows/windows.component';
@@ -22,6 +20,7 @@ import { CarouselComponent } from '../articles-view/carousel/carousel.component'
 import { NodemailerfixitComponent } from '../articles-view/nodemailerfixit/nodemailerfixit.component';
 import { ConsoletipComponent } from '../articles-view/consoletip/consoletip.component';
 import { FiguretipComponent } from '../articles-view/figuretip/figuretip.component';
+import { HeaderArticleComponent } from '../widget/header-article/header-article.component';
 
 import { SharedModule } from '../shared/shared.module';
 
@@ -42,8 +41,7 @@ import { SharedModule } from '../shared/shared.module';
         NodemailerfixitComponent,
         ConsoletipComponent,
         FiguretipComponent,
-        ArticleFilterPipe,
-        ReplyFilterPipe
+        HeaderArticleComponent
     ],
     imports: [
         HttpModule,

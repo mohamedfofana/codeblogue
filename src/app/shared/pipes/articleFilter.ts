@@ -1,6 +1,6 @@
 import { PipeTransform, Pipe } from '@angular/core';
 
-import { IArticle } from '../services/models/article';
+import { IArticle } from '../../services/models/article';
 
 @Pipe({
     name: 'articleFilter'

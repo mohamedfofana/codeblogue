@@ -1,0 +1,31 @@
+<div class="col-sm p-3" style="padding:0px;">
+<article class="post hentry">
+    <header class="entry-header entry-header-index">
+    <h2 class="post-title entry-title">
+    <a routerLink='/article/{{article.url}}' title='{{article.titre}}'>
+      {{article.titre}}
+    </a>
+    </h2>
+    <div class="entry-meta">
+    <span class="posted-on"><i class="fa fa-calendar-o"></i>
+    <abbr class="published updated" title='{{article.creation}}'>{{article.creation | dateFilter}}</abbr></span>
+    <span class="byline" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><i class="fa fa-user"></i> <span itemprop="name">{{article.auteur}}</span></span>
+    <span class="comments-link"><i class="fa fa-comments-o"></i>
+    <span>{{nbComments + nbReplies}}</span>
+    <span class="hamburger hamburger-admin-comments"></span>Commentaires</span>
+    </div>
+    </header>
+    <div class="post-body entry-content">
+      <div><img width="120" height="110" src="assets/images/{{article.imageUrl}}" alt="" class="pbtthumbimg">
+        <div>{{article.description}}</div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <footer class="entry-footer">Tag : 
+      <span *ngFor="let tag of article.tags">
+            <a class="labelpost" routerLink='' rel="tag"><i>{{tag}}</i></a>&nbsp;
+      </span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;<a class="readmore" routerLink='/article/{{article.url}}'>Plus ...</a></span>
+    </footer>
+    </article>
+  </div>

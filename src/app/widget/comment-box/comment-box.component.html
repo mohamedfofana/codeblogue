@@ -31,7 +31,7 @@
 		          </div>
             </div>
           </div>
-          <button *ngIf="isLoggedIn" type="submit" class="btn btn-success commentSubmit green pull-right" id="commentSubmit" [disabled]="commentForm.invalid"><i class="fa fa-share"></i> Publier</button>
+          <button *ngIf="isLoggedIn" type="submit" class="btn btn-secondary commentSubmit pull-right" id="commentSubmit" [disabled]="commentForm.invalid"><i class="fa fa-share"></i> Publier</button>
         </div>
       </form>
     </div>
@@ -77,7 +77,7 @@
                     </div>
                   </div>
                 <div class="col-md-offset-3 col-sm-12">
-                  <button type="submit" *ngIf="isLoggedIn" class="btn btn-success replySubmit green float-right" id="replySubmit" [disabled]="replyForm.invalid"><i class="fa fa-share"></i> Publier</button>
+                  <button type="submit" *ngIf="isLoggedIn" class="btn btn-secondary replySubmit float-right" id="replySubmit" [disabled]="replyForm.invalid"><i class="fa fa-share"></i> Publier</button>
                 </div>
               </div>
             </form>

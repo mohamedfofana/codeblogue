@@ -1,0 +1,15 @@
+<header class="entry-header entry-header-index">
+    <h2 class="post-title entry-title">
+      <a routerLink='/article/{{article.url}}' title='{{article.titre}}'>
+        <span class="intro-text text-center">{{article.titre}}</span>
+      </a>
+    </h2>
+    <div class="entry-meta">
+      <span class="posted-on"><i class="fa fa-calendar-o"></i>
+      <abbr class="published updated" title='{{article.creation}}'>{{article.creation | dateFilter}}</abbr></span>
+      <span class="byline" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><i class="fa fa-user"></i> <span itemprop="name">{{article.auteur}}</span></span>
+      <span class="comments-link"><i class="fa fa-comments-o"></i>
+      <span>{{nbComments}}</span>
+      <span class="hamburger hamburger-admin-comments"></span>Commentaires</span>
+    </div>
+</header>

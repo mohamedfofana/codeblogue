@@ -1,30 +1,25 @@
-<h2 class="intro-text text-center">Astuces Oracle
-</h2>
-<hr>
-<figuretip description="Visualiser l’espace libre de la sga" content="select * from v$sgastat where name like '%free%';"></figuretip>
+<header-article [article]='article' [nbComments]="nbComments"></header-article>
+
+<figuretip description="Visualiser l’espace libre de la sga" content="SELECT * FROM v$sgastat WHERE name like '%free%';"></figuretip>
 Afficher les index compte oracle<br/>
-<pre class="with-style-pre"><code class="with-style-code">
-SELECT table_name, index_name 
+<pre class="with-style-pre"><code class="with-style-code">SELECT table_name, index_name 
 FROM all_indexes 
-WHERE index_name like 'index%' order by table_name, index_name ;
+WHERE index_name like 'index%' ORDER BY table_name, index_name ;
 </code></pre>
-<figuretip description="Afficher la taille en Ko occupé par l'index index_name" content="select sum(bytes)/1024 from dba_segments where segment_name='index_name';"></figuretip>
+<figuretip description="Afficher la taille en Ko occupé par l'index index_name" content="SELECT sum(bytes)/1024 FROM dba_segments WHERE segment_name='index_name';"></figuretip>
 Trouver le sid et le serial de la requête que l'on souhaite arrêter<br/>
-<pre class="with-style-pre"><code class="with-style-code">
-select sesion.sid, sesion.username, optimizer_mode, hash_value,address, cpu_time, 
+<pre class="with-style-pre"><code class="with-style-code">SELECT sesion.sid, sesion.username, optimizer_mode, hash_value,address, cpu_time, 
 elapsed_time, sql_text, serial# 
-from v$sqlarea sqlarea, v$session sesion 
-where sesion.sql_hash_value = sqlarea.hash_value and sesion.sql_address = sqlarea.address 
-and sesion.username is not null;
+FROM v$sqlarea sqlarea, v$session sesion 
+WHERE sesion.sql_hash_value = sqlarea.hash_value and sesion.sql_address = sqlarea.address 
+AND sesion.username is not null;
 </code></pre>
 Trouver le sid et le serial de la requête que l'on souhaite arrêter<br/>
-<pre class="with-style-pre"><code class="with-style-code">
-SELECT s.inst_id,s.sid,s.serial#,p.spid,s.username, s.program FROM gv$session s JOIN gv$process p ON p.addr=s.paddr AND p.inst_id=s.inst_id  WHERE  s.type != 'BACKGROUND' and s.sid=’xxxx’;
+<pre class="with-style-pre"><code class="with-style-code">SELECT s.inst_id,s.sid,s.serial#,p.spid,s.username, s.program FROM gv$session s JOIN gv$process p ON p.addr=s.paddr AND p.inst_id=s.inst_id  WHERE  s.type != 'BACKGROUND' and s.sid=’xxxx’;
 </code></pre>
 <figuretip description="Arrêter une session lancer par une requête" content="ALTER SYSTEM KILL SESSION 'sid,serial';"></figuretip>
 Rechercher un index dans la table des index<br/>
-<pre class="with-style-pre"><code class="with-style-code">
-SELECT c.index_owner, i.index_name, DECODE(i.uniqueness, 'UNIQUE', 'YES', 'NO') UNIQUENESS, 
+<pre class="with-style-pre"><code class="with-style-code">SELECT c.index_owner, i.index_name, DECODE(i.uniqueness, 'UNIQUE', 'YES', 'NO') UNIQUENESS, 
 c.column_name, c.column_position, UNIQUENESS, c.column_name, c.column_position, i.tablespace_name 
 FROM dba_ind_columns c,dba_indexes i 
 WHERE i.index_name = c.index_name AND i.table_owner = c.table_owner 
@@ -32,8 +27,7 @@ AND i.index_name like '%index_name%'
 ORDER BY c.index_owner, i.index_name, c.column_position;
 </code></pre>
 Connaitre la taille de tous les tablespace<br/>
-<pre class="with-style-pre"><code class="with-style-code">
-SELECT /* + RULE */  df.tablespace_name "Tablespace",
+<pre class="with-style-pre"><code class="with-style-code">SELECT /* + RULE */  df.tablespace_name "Tablespace",
        df.bytes / (1024 * 1024) "Size (MB)",
        SUM(fs.bytes) / (1024 * 1024) "Free (MB)",
        Nvl(Round(SUM(fs.bytes) * 100 / df.bytes),1) "% Free",

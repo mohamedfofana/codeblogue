@@ -1,12 +1,12 @@
-<h2 class="intro-text text-center">Configuration de Nodemailer et OAuth 2.0
-</h2>
-<hr>
+<header-article [article]='article' [nbComments]="nbComments"></header-article>
+
 Nodemailer est un module node js qui permet d’envoyer des mails.
 Dans ce contexte, nodemailer sera configuré pour envoyer des mails via le serveur gmail.
 Gmail demande une autorisation pour pouvoir utiliser son server.<br/>
 Le module xoauth2 permet de s’authentifier sur le serveur gmail afin de pouvoir envoyer un mail à partir d’une adresse électronique gmail.
 <br/>
-<h4>Enregistrement deu site sur Google API Console</h4>
+<br/>
+<h5>Enregistrement deu site sur Google API Console</h5>
 <dl class="dl-horizontal">
    <dd>
       - Connecter vous sur le compte gmail dans le navigateur et ouvrer le lien Google APIs Console.
@@ -37,7 +37,7 @@ Le module xoauth2 permet de s’authentifier sur le serveur gmail afin de pouvoi
 Après ces opérations un Id client et un code secret client seront créés.
 <br/>
 <br/>
-<h4>Obtention de refreshtoken et de accesstoken</h4>
+<h5>Obtention de refreshtoken et de accesstoken</h5>
 <p>
 Pour obtenir les token pour OAuth connecter vous à la page : <a href="https://developers.google.com/oauthplayground">https://developers.google.com/oauthplayground</a>.
 </p>

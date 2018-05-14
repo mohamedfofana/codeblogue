@@ -1,32 +1,63 @@
 <div class="row">
-    <!-- Side Widget Well -->
     <div class="well">
-        <h6><a routerLink='/article/carousel'>Créer un carousel avec M.E.A.N Stack 1</a></h6>
-        <p>Création d'un carousel sous forme de directive directive .</p>
+    <div class="item-content">
+        <div class="item-thumbnail">
+            <a routerLink='/article/carousel' target="_blank">
+            <img alt="" border="0" height="72" src="assets/images/carousel.png" width="72">
+            </a>
+        </div>
+        <div class="item-title"><a routerLink='/article/carousel' class="intro-text-a">Création d'un carousel sous forme de directive directive.</a></div>
+        <div class="item-snippet"></div>
+    </div>
+    </div>
+</div>
+<div class="row">
+    <div class="well">
+        <div class="item-content">
+            <div class="item-thumbnail">
+                <a routerLink='/article/nodemailerfixit' target="_blank">
+                <img alt="" border="0" height="72" src="assets/images/oAuth.png" width="72">
+                </a>
+            </div>
+            <div class="item-title"><a routerLink='/article/nodemailerfixit' class="intro-text-a">Configuration de Nodemailer et OAuth. Nodemailer est un module de node js qui permet d’envoyer des mails. OAuth permet d'établir et de sécuriser la connexion.</a></div>
+            <div class="item-snippet"></div>
+        </div>
+    </div>
+    </div>
+<div class="row">
+    <div class="well">
+            <div class="item-content">
+                <div class="item-thumbnail">
+                    <a routerLink='/article/nodemailer' target="_blank">
+                    <img alt="" border="0" height="72" src="assets/images/nodemailer.png" width="72">
+                    </a>
+                </div>
+                <div class="item-title"><a routerLink='/article/nodemailer' class="intro-text-a">Exemple de script d'envoie de mail avec nodemailer et OAuth sur un serveur node Js.</a></div>
+                <div class="item-snippet"></div>
+            </div>
+    </div>
+</div>
+<div class="row">
+    <div class="well">
+        <div class="item-content">
+            <div class="item-thumbnail">
+                <a routerLink='/article/grunt' target="_blank">
+                <img alt="" border="0" height="72" src="assets/images/grunt.jpeg" width="72">
+                </a>
+            </div>
+            <div class="item-title"><a routerLink='/article/grunt' class="intro-text-a">Installation de Grunt dans un server node js avec un workaround pour l'erreur sur le module compass.</a></div>
+            <div class="item-snippet"></div>
+        </div>
     </div>
 </div>
 <div class="row">
     <!-- Side Widget Well -->
-    <div class="well">
-        <h6><a routerLink='/article/nodemailerfixit'>Configuration de Nodemailer et OAuth</a></h6>
-        <p>Nodemailer est un module de node js qui permet d’envoyer des mails. OAuth permet d'établir et de sécuriser la connexion.</p>
-    </div>
-</div>
-<div class="row">
-    <!-- Side Widget Well -->
-    <div class="well">
-        <h6><a routerLink='/article/nodemailer'>Envoi de mail avec Nodemailer</a></h6>
-        <p>Exemple de script d'envoie de mail avec nodemailer et OAuth sur un serveur node Js.</p>
-    </div>
-</div>
-<div class="row">
-    <!-- Side Widget Well -->
-    <div class="well">
+    <div class="well-no-border">
         <h4>Tops articles</h4>
         <div class="row margin-bootom-10" *ngFor="let article of articles">
             <div class="col-md-12 no-right-padding ">
                 <star-rating-rate [rate]='article.rate'></star-rating-rate>&nbsp;&nbsp;
-                <a routerLink="/article/{{article.url}}">{{article.titre}}</a>
+                <a class="text-link" routerLink="/article/{{article.url}}">{{article.titre}}</a>
             </div>
         </div>
     </div>
