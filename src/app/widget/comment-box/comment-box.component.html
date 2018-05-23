@@ -31,7 +31,9 @@
 		          </div>
             </div>
           </div>
-          <button *ngIf="isLoggedIn" type="submit" class="btn btn-secondary commentSubmit pull-right" id="commentSubmit" [disabled]="commentForm.invalid"><i class="fa fa-share"></i> Publier</button>
+          <div class="col-md-offset-3 col-sm-12">
+            <button *ngIf="isLoggedIn" type="submit" class="btn btn-secondary commentSubmit pull-right" id="commentSubmit" [disabled]="commentForm.invalid"><i class="fa fa-share"></i> Publier</button>
+          </div>  
         </div>
       </form>
     </div>

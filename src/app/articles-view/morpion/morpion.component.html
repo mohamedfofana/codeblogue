@@ -1,16 +1,12 @@
 <header-article [article]='article' [nbComments]="nbComments"></header-article>
 
-Pré-requis<br/>
+<h5>Pré-requis</h5>
 <div class="clearfix">
   <img src="assets/images/panelMorpion.png" alt="..." class="pull-right img-rounded">
-  <p>  Il y a neuf positions possibles.
-	Chaque joueur dispose de trois pions de même couleur.
-	Pour poser un pion, il faut cliquer dessus et cliquer sur une case vide.
-	Pour changer un pion de position, cliquer sur le pion et cliquer sur la position.
-	On peut déplacer un pion sur toutes les lignes qui partent de cette position.</p>
+  <p>{{article.description}}</p>
 </div> 
 <br/> 
-Principe :
+<h5>Principe</h5>
 <p>
 	Le jeu se joue avec deux joueurs. Chacun choisit une couleur ou une forme.<br/>
 	Le premier joueur pose son pion et le second joueur pose le sien. Et ainsi de suite jusqu'à ce que chacun ait posé
@@ -29,11 +25,11 @@ Le joueur qui pose ces trois pions sur une ligne droite à gagner.
       </div>
 </div>
 <br>
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+<div id="carouselMorpionIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    <li data-target="#carouselMorpionIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselMorpionIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselMorpionIndicators" data-slide-to="2"></li>
   </ol>
   <div class="carousel-inner" role="listbox">
     <div class="carousel-item active">
@@ -46,11 +42,11 @@ Le joueur qui pose ces trois pions sur une ligne droite à gagner.
       <img class="d-block img-fluid" src="assets/images/panelMorpion3.png" alt="Third slide">
     </div>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+  <a class="carousel-control-prev" href="#carouselMorpionIndicators" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
   </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+  <a class="carousel-control-next" href="#carouselMorpionIndicators" role="button" data-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>

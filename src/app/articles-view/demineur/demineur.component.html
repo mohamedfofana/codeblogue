@@ -1,11 +1,9 @@
 <header-article [article]='article' [nbComments]="nbComments"></header-article>
 
-Pré-requis<br/>
+<h5>Pré-requis</h5><br/>
 <div class="clearfix">
   <img src="assets/images/panelDemineurInit.png" alt="..." class="pull-right img-rounded">
-  <p>  Le menu Jeu contient les sous menus Nouveau et Quitter.  
-    Le nombre de bombes est affiché ainsi qu'un timer.
-    Le bouton play/stop permet de démarrer ou de redémarrer une partie.</p>
+  <p>{{article.description}}</p>
 </div> 
 <br/> 
 <div class="card">
@@ -18,12 +16,12 @@ Pré-requis<br/>
 
 <br/>
 
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+<div id="carouselDemineurIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+    <li data-target="#carouselDemineurIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselDemineurIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselDemineurIndicators" data-slide-to="2"></li>
+    <li data-target="#carouselDemineurIndicators" data-slide-to="3"></li>
   </ol>
   <div class="carousel-inner" role="listbox">
     <div class="carousel-item active">
@@ -39,11 +37,11 @@ Pré-requis<br/>
       <img class="d-block img-fluid" src="assets/images/panelDemineurPerdu.png">
     </div>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button">
+  <a class="carousel-control-prev" href="#carouselDemineurIndicators" role="button">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
   </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+  <a class="carousel-control-next" href="#carouselDemineurIndicators" role="button" data-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
