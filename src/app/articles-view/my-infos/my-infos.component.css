@@ -1,0 +1,246 @@
+.profile-desc{
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fcfcfc+0,f7f7f7+50,fefefe+100 */
+background: rgb(252,252,252); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(252,252,252,1) 0%, rgba(247,247,247,1) 50%, rgba(254,254,254,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(252,252,252,1) 0%,rgba(247,247,247,1) 50%,rgba(254,254,254,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(252,252,252,1) 0%,rgba(247,247,247,1) 50%,rgba(254,254,254,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#fefefe',GradientType=0 ); /* IE6-9 */
+border-radius: .1875rem;
+}
+a {
+    color: #f96332;
+}
+.m-t-5{
+    margin-top: 5px;   
+}
+.card {
+    background: #fff;
+    transition: .5s;
+    border: 0;
+    border-radius: .1875rem;
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    box-shadow: none;
+}
+.card .body {
+    font-size: 14px;
+    color: #424242;
+    padding: 20px;
+    font-weight: 400;
+}
+.profile-page .profile-header {
+    position: relative
+}
+
+.profile-page .profile-header .profile-image img {
+    border-radius: 50%;
+    width: 140px;
+    border: 3px solid #fff;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
+}
+
+.profile-page .profile-header .social-icon a {
+    margin: 0 5px
+}
+
+.profile-page .profile-sub-header {
+    min-height: 60px;
+    width: 100%
+}
+
+.profile-page .profile-sub-header ul.box-list {
+    display: inline-table;
+    table-layout: fixed;
+    width: 100%;
+    background: #eee
+}
+
+.profile-page .profile-sub-header ul.box-list li {
+    border-right: 1px solid #e0e0e0;
+    display: table-cell;
+    list-style: none
+}
+
+.profile-page .profile-sub-header ul.box-list li:last-child {
+    border-right: none
+}
+
+.profile-page .profile-sub-header ul.box-list li a {
+    display: block;
+    padding: 15px 0;
+    color: #424242
+}
+
+
+/*********************************/
+.nav-tabs {
+	border: none;
+	margin: 1%;
+}
+.nav-item {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f9f9f9+0,cecece+100 */
+background: rgb(249,249,249); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(249,249,249,1) 0%, rgba(206,206,206,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(249,249,249,1) 0%,rgba(206,206,206,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(249,249,249,1) 0%,rgba(206,206,206,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', endColorstr='#cecece',GradientType=0 ); /* IE6-9 */
+    border: 1px solid #fff;
+    border-radius: 5px;
+    padding: 3px;
+}
+.nav>li>a {
+    color: #444;
+}
+.nav>li>a.active {
+    color:white;;
+}
+.nav-link.active{
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#6b6b6b+0,a5a5a5+100 */
+background: rgb(107,107,107); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(107,107,107,1) 0%, rgba(165,165,165,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(107,107,107,1) 0%,rgba(165,165,165,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(107,107,107,1) 0%,rgba(165,165,165,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6b6b6b', endColorstr='#a5a5a5',GradientType=0 ); /* IE6-9 */
+}
+/*page styling*/
+.bs-callout {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color:rgb(107,107,107);;
+    border-image: none;
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 1px 1px 1px 5px;
+	/*margin-bottom: 5px;*/
+    padding: 5px;
+}
+.bs-right-panel{
+	padding: 10px;
+	width:100%;
+	float:none;
+	text-align:center;
+	/*margin:0 auto;*/
+}
+.bs-right-panel img{
+	width:100%;
+	margin:0;
+	padding:0;
+	
+}
+.bs-callout:last-child {
+    margin-bottom: 0px;
+}
+.bs-callout h4,
+.bs-callout h5,
+.bs-callout h6 {
+    margin-bottom: 1px;
+}
+
+.bs-callout-danger {
+    border-left-color: rgb(107,107,107);;
+}
+
+.envTech,
+.bs-callout-danger h4,
+.bs-callout-danger h5,
+.bs-callout-danger h6{
+    color:#d9534f;
+}
+
+.header-title {
+    color: #fff;
+}
+.title-thin {
+	font-weight: 300;
+}
+.service-item {
+	margin-bottom: 30px;
+}
+.envTech {
+    font-weight: 600;
+}
+section{
+	padding:0;
+}
+section .section-title{
+	text-align:center;
+	color:#007b5e;
+	margin-bottom:50px;
+	text-transform:uppercase;
+}
+#sectionComp{
+	background:#ffffff;
+}
+#sectionComp .card{
+	padding: 1rem!important;
+	border: none;
+	margin-bottom:1rem;
+	-webkit-transition: .5s all ease;
+	-moz-transition: .5s all ease;
+	transition: .5s all ease;
+	-webkit-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+	-moz-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+	box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+}
+
+#sectionComp .card .card-block{
+	padding-left: 50px;
+    position: relative;
+}
+#sectionComp .card .card-block a{
+	color: #007b5e !important;
+	font-weight:700;
+	text-decoration:none;
+}
+#sectionComp .card .card-block a i{
+	display:none;
+	
+}
+#sectionComp .card:hover .card-block a i{
+	display:inline-block;
+	font-weight:700;
+	
+}
+#sectionComp .card .card-block:before{
+	font-family: FontAwesome;
+    position: absolute;
+    font-size: 39px;
+    color: #d9534f;
+    left: 0;
+	-webkit-transition: -webkit-transform .2s ease-in-out;
+    transition:transform .2s ease-in-out;
+}
+#sectionComp .card .block-methods:before{
+    content: "\f0ae";
+}
+#sectionComp .card .block-tools:before{
+    content: "\f085";
+}
+#sectionComp .card .block-frameworks:before{
+    content: "\f20e";
+}
+#sectionComp .card .block-solution:before{
+    content: "\f209";
+}
+#sectionComp .card .block-lang:before{
+    content: "\f1ab";
+}
+#sectionComp .card .block-database:before{
+    content: "\f1c0";
+}
+#sectionComp .card .block-system:before{
+    content: "\f108";
+}
+#sectionComp .card .block-version:before{
+    content: "\f27d";
+}
+#sectionComp .card:hover .card-block:before{
+	-webkit-transform: rotate(360deg);
+	transform: rotate(360deg);	
+	-webkit-transition: .5s all ease;
+	-moz-transition: .5s all ease;
+	transition: .5s all ease;
+}

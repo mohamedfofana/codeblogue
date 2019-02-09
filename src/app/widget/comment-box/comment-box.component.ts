@@ -103,7 +103,6 @@ export class CommentBoxComponent implements OnInit {
     this.comment.contenu = this.commentForm.value.contenu;
     this.comment.creation = new Date();
     this.comment.likes = 0;
-    console.log(this.commentForm.value.auteur);
     this._commentService.saveComment(this.comment).subscribe(
       result => this.initComments(),
       error => this.errorMessage = <any>error

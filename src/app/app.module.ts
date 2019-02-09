@@ -20,6 +20,7 @@ import { ValidationService } from './services/validation.service';
 import { ResultSearchComponent } from './search/result-search/result-search.component';
 import { ResultItemComponent } from './search/result-item/result-item.component';
 import { LoginComponent } from './auth/login.component';
+
 import { RegisterComponent } from './auth/register.component';
 import { LogoutComponent } from './auth/logout.component';
 import { SocialAuthComponent } from './auth/social-auth.component';

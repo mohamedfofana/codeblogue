@@ -8,7 +8,7 @@ import { ArticleService } from '../services/article.service';
   templateUrl: './article-detail.component.html'
 })
 
-export class ArticleDetailComponent implements OnInit, OnChanges {
+export class ArticleDetailComponent implements OnInit {
 
   articleTitle: string = "";
   url: string;
@@ -23,10 +23,6 @@ export class ArticleDetailComponent implements OnInit, OnChanges {
   ngOnInit(): void {  
       // subscribe permet de souscrire au parmètre de l'url. dès que la variable change la méthode associée est appelée
       this._route.params.subscribe(params => this.getArticle(params['url']));
-  }
-
-  ngOnChanges(): void {
-    console.log("onChange");
   }
 
   getArticle(url: string): void {

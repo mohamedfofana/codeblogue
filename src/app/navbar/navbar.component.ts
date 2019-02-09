@@ -26,7 +26,6 @@ export class NavbarComponent implements OnInit {
     this.searchForm = this._formBuilder.group({
       searchText: ['', Validators.required]
     });
-    //console.log('here');
     if ( localStorage.getItem('userLogged') == 'true'){
         if (!this.isLoggedIn){
           let currentUserName = localStorage.getItem('currentUserName');

@@ -1,5 +1,14 @@
 <header-article [article]='article' [nbComments]="nbComments"></header-article>
-
+<consoletip description="Nohup est une commande Unix permettant de lancer un processus qui restera actif même après la déconnexion de l'utilisateur l'ayant initiée. Combiné à l'esperluette qui permet le lancement en arrière-plan, nohup permet donc de créer des processus s'exécutant de manière transparente sans être dépendants de l'utilisateur" command="nohup"></consoletip>
+<consoletip description="Afficher les résultats de requête avec les les valeurs nulles en dernier" command="order by column desc nulls last"></consoletip>
+<br/>
+<figuretip description="Afficher les erreurs sqlplus" content="select * from user_errors where name = 'table_name' and owner='base_name' order by line;"></figuretip>
+Faire une requête sur la date<br/>
+<pre class="with-style-pre"><code class="with-style-code">SELECT to_char(column_date, 'DD/MM/YYYY HH24:MI:SS') 
+FROM table_date 
+WHERE column_date&gt;=TO_DATE('11/FEB/2016 00:00:00','DD/MM/YYYY HH24:MI:SS') 
+AND column_date&lt;TO_DATE('11/FEB/2016 11:00:00','DD/MM/YYYY HH24:MI:SS');  
+</code></pre>
 <figuretip description="Visualiser l’espace libre de la sga" content="SELECT * FROM v$sgastat WHERE name like '%free%';"></figuretip>
 Afficher les index compte oracle<br/>
 <pre class="with-style-pre"><code class="with-style-code">SELECT table_name, index_name 
@@ -26,31 +35,5 @@ WHERE i.index_name = c.index_name AND i.table_owner = c.table_owner
 AND i.index_name like '%index_name%' 
 ORDER BY c.index_owner, i.index_name, c.column_position;
 </code></pre>
-Connaitre la taille de tous les tablespace<br/>
-<pre class="with-style-pre"><code class="with-style-code">SELECT /* + RULE */  df.tablespace_name "Tablespace",
-       df.bytes / (1024 * 1024) "Size (MB)",
-       SUM(fs.bytes) / (1024 * 1024) "Free (MB)",
-       Nvl(Round(SUM(fs.bytes) * 100 / df.bytes),1) "% Free",
-       Round((df.bytes - SUM(fs.bytes)) * 100 / df.bytes) "% Used"
-  FROM dba_free_space fs,
-       (SELECT tablespace_name,SUM(bytes) bytes
-          FROM dba_data_files
-         GROUP BY tablespace_name) df
- WHERE fs.tablespace_name (+)  = df.tablespace_name
- GROUP BY df.tablespace_name,df.bytes
-UNION ALL
-SELECT /* + RULE */ df.tablespace_name tspace,
-       fs.bytes / (1024 * 1024),
-       SUM(df.bytes_free) / (1024 * 1024),
-       Nvl(Round((SUM(fs.bytes) - df.bytes_used) * 100 / fs.bytes), 1),
-       Round((SUM(fs.bytes) - df.bytes_free) * 100 / fs.bytes)
-  FROM dba_temp_files fs,
-       (SELECT tablespace_name,bytes_free,bytes_used
-          FROM v$temp_space_header
-         GROUP BY tablespace_name,bytes_free,bytes_used) df
- WHERE fs.tablespace_name (+)  = df.tablespace_name
- GROUP BY df.tablespace_name,fs.bytes,df.bytes_free,df.bytes_used
- ORDER BY 4 DESC;
- </code></pre>
 
  <commentBox [article]="article"></commentBox>
