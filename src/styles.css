@@ -157,6 +157,15 @@ hr {
   border-radius: 50%;
 }
 
+.bg-square-outline
+{
+  width: 40px;
+  height: 40px;
+  color:smoke;
+  padding:5px 1px 5px 0px;
+  border: none;
+  border-color: smoke;
+}
 
 .bg-circle a, a:hover, .media a:focus
 {

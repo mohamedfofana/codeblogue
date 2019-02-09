@@ -11,8 +11,8 @@ var express = require('express'),
   passport = require('passport'),
   flash = require('connect-flash'),
   _ = require('lodash'),
-  mongodbServer = 'mongodb://localhost:27017/codeblogue',
-  //mongodbServer = 'mongodb://admin:memfst87cdblg@ds219832.mlab.com:19832/codeblogue';
+  //mongodbServer = 'mongodb://localhost:27017/codeblogue',
+  mongodbServer = 'mongodb://admin:memfst87cdblg@ds219832.mlab.com:19832/codeblogue';
   path = require('path'),
   PORT = 8080;
 
