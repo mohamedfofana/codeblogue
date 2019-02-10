@@ -4,6 +4,11 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-footer',
   templateUrl: './footer.component.html'
 })
-export class FooterComponent {
+export class FooterComponent  implements OnInit{
+  copyRights: string = ""; 
+  ngOnInit() {
+    var currentYear = new Date().getUTCFullYear();
+    this.copyRights = "Copyright © "+currentYear+" All rights reserved.";
+  }
 
 }

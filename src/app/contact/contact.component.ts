@@ -42,6 +42,7 @@ export class ContactComponent implements OnInit {
     }
     this.contact = this.contactForm.value;
     if (this.contactForm.valid) {
+      console.log(this.contact);
       this._contactService.sendMail(this.contact).subscribe(response => {
         if (response == 'error') {
           this.errorContact = "Un problème est survenu lors de l'envoie de l'email.";
@@ -49,7 +50,11 @@ export class ContactComponent implements OnInit {
           this.successContact = "Email envoyé avec succès.";
         }
         this.pendingContact=false;
-      }, error => { this.errorMessage = <any>error; console.log(this.errorMessage); this.pendingContact=false;});
+      }, error => { this.errorMessage = <any>error; 
+                    this.errorContact = "Un problème est survenu lors de l'envoie de l'email.";
+                    console.log(this.errorMessage); 
+                    this.pendingContact=false;
+                  });
     }
   }
 }

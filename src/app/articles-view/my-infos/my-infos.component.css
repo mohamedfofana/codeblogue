@@ -237,6 +237,9 @@ section .section-title{
 #sectionComp .card .block-version:before{
     content: "\f27d";
 }
+.block-mail:before{
+    content: "\f199";
+}
 #sectionComp .card:hover .card-block:before{
 	-webkit-transform: rotate(360deg);
 	transform: rotate(360deg);	
