@@ -26,7 +26,6 @@ a {
 .card .body {
     font-size: 14px;
     color: #424242;
-    padding: 20px;
     font-weight: 400;
 }
 .profile-page .profile-header {
@@ -236,9 +235,6 @@ section .section-title{
 }
 #sectionComp .card .block-version:before{
     content: "\f27d";
-}
-.block-mail:before{
-    content: "\f199";
 }
 #sectionComp .card:hover .card-block:before{
 	-webkit-transform: rotate(360deg);
