@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit{
   registerForm: FormGroup;
   user: IUser;
 
-  constructor(private _formBuilder: FormBuilder, private _authService: AuthService, private _sessionService: SessionService, 
+  constructor(private _formBuilder: FormBuilder, private _authService: AuthService, 
               private _router: Router, private _location: Location) { 
     this.registerForm = this._formBuilder.group({
       email: ['', [Validators.required, Validators.maxLength(50)]],

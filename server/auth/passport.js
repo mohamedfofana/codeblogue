@@ -1,9 +1,7 @@
 var User = require('../models/User');
 var local = require('./local');
 var github = require('./github');
-var facebook = require('./facebook');
 var twitter = require('./twitter');
-var google = require('./google');
 
 module.exports = function (passport) {
     // used to serialize the user for the session
@@ -19,7 +17,5 @@ module.exports = function (passport) {
 
     local(passport);
     github(passport);
-    facebook(passport);
     twitter(passport);
-    google(passport);
 };

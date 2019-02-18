@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
@@ -8,46 +8,38 @@ import 'rxjs/add/operator/filter';
 
 import { APP_CONFIG, AppConfig } from '../config/app-config.module';
 
-import { IArticle } from './models/article';
-import { IComment } from './models/comment';
 import { IReply } from './models/reply';
+import { GenericService } from './generic.service';
 
 @Injectable()
-export class ReplyService {
+export class ReplyService extends GenericService{
   private replyUrl = this.config.apiEndpoint + "reply";
   private headers: Headers;
-  private options: RequestOptions;
+  private options;
 
-  constructor(private _http: Http, @Inject(APP_CONFIG) private config: AppConfig) { 
-    this.headers = new Headers({ 'Content-Type': 'application/json' });
-    this.options = new RequestOptions({ headers: this.headers });
+  constructor(private _http: HttpClient, @Inject(APP_CONFIG) private config: AppConfig) { 
+    super();
+    this.options = this.config.options;
 
   }
 
-  getRepliesByArticle(titre: String): Observable<IReply[]> {
-    return this._http.get(this.replyUrl, {params: {article_titre: titre, sort: '-creation'}})
-      .map((response: Response) => <IReply[]>response.json())
+  getRepliesByArticle(titre: String){
+    let httpParams = new HttpParams().set('article_titre', titre.toString()).set('sort', '-creation');
+    return this._http.get<IReply[]>(this.replyUrl, {params: httpParams})
       .catch(this.handleError);
 
   }
   
-  likeReply(reply: IReply): Observable<IReply[]> {
+  likeReply(reply: IReply) {
     let body = JSON.stringify(reply);
-    return this._http.put(this.replyUrl + '/'+reply._id, body, this.options)
-      .map((response: Response) => <IReply[]>response.json())
+    return this._http.put<IReply>(this.replyUrl + '/'+reply._id, body, this.options)
       .catch(this.handleError);
 
   }
 
-  saveReply(reply: IReply): Observable<IReply[]> {
-    return this._http.post(this.replyUrl, reply)
-      .map((response: Response) => <IReply[]>response.json())
+  saveReply(reply: IReply) {
+    return this._http.post<IReply[]>(this.replyUrl, reply)
       .catch(this.handleError);
 
-  }
-
-  private handleError(error: Response) {
-    console.error(error);
-    return Observable.throw(error.json().error || 'Server error');
   }
 }

@@ -1,11 +1,6 @@
 <div class="row justify-content-center">
     <div class="well">
         <div class="d-inline-block">
-                <div class="bg-circle-outline d-inline-block" style="background-color:#3b5998">
-                  <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.codeblogue.com" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
-    ><i class="fa fa-2x fa-fw fa-facebook text-white"></i>
-            </a>
-                </div>
                 <div class="bg-circle-outline d-inline-block" style="background-color:#4099FF">
                   <a href="https://twitter.com/share?url=https://www.codeblogue.com&text=Visitez ce site web&hashtags=codeblogue" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
     class="twitter-share-button">
@@ -29,7 +24,7 @@
             <img alt="" border="0" height="72" src="assets/images/carousel.png" width="72">
             </a>
         </div>
-        <div class="item-title"><a routerLink='/article/carousel' class="intro-text-a">Création d'un carousel sous forme de directive avec AngularJs 1.4.0.</a></div>
+        <div class="item-title"><a routerLink='/article/carousel' class="intro-text-a link-text-color">Création d'un carousel sous forme de directive avec AngularJs 1.4.0.</a></div>
         <div class="item-snippet"></div>
     </div>
     </div>
@@ -42,7 +37,7 @@
                 <img alt="" border="0" height="72" src="assets/images/oAuth.png" width="72">
                 </a>
             </div>
-            <div class="item-title"><a routerLink='/article/nodemailerfixit' class="intro-text-a">Configuration de Nodemailer et OAuth. Nodemailer est un module de NodeJs qui permet d’envoyer des mails. OAuth permet d'établir et de sécuriser la connexion.</a></div>
+            <div class="item-title"><a routerLink='/article/nodemailerfixit' class="intro-text-a link-text-color">Configuration de Nodemailer et OAuth. Nodemailer est un module de NodeJs qui permet d’envoyer des mails. OAuth permet d'établir et de sécuriser la connexion.</a></div>
             <div class="item-snippet"></div>
         </div>
     </div>
@@ -55,7 +50,7 @@
                     <img alt="" border="0" height="72" src="assets/images/nodemailer.png" width="72">
                     </a>
                 </div>
-                <div class="item-title"><a routerLink='/article/nodemailer' class="intro-text-a">Exemple de script d'envoi de mail avec nodemailer et OAuth sur un serveur NodeJs.</a></div>
+                <div class="item-title"><a routerLink='/article/nodemailer' class="intro-text-a link-text-color">Exemple de script d'envoi de mail avec nodemailer et OAuth sur un serveur NodeJs.</a></div>
                 <div class="item-snippet"></div>
             </div>
     </div>
@@ -68,7 +63,7 @@
                 <img alt="" border="0" height="72" src="assets/images/grunt.jpeg" width="72">
                 </a>
             </div>
-            <div class="item-title"><a routerLink='/article/grunt' class="intro-text-a">Installation de Grunt dans un server node js avec un workaround pour l'erreur sur le module compass.</a></div>
+            <div class="item-title"><a routerLink='/article/grunt' class="intro-text-a link-text-color">Installation de Grunt dans un server node js avec un workaround pour l'erreur sur le module compass.</a></div>
             <div class="item-snippet"></div>
         </div>
     </div>
@@ -80,7 +75,7 @@
         <div class="row margin-bootom-10" *ngFor="let article of articles">
             <div class="col-md-12 no-right-padding ">
                 <star-rating-rate [rate]='article.rate'></star-rating-rate>&nbsp;&nbsp;
-                <a class="text-link" routerLink="/article/{{article.url}}">{{article.titre}}</a>
+                <a class="text-link link-text-color" routerLink="/article/{{article.url}}">{{article.titre}}</a>
             </div>
         </div>
     </div>

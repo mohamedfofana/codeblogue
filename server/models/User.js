@@ -16,20 +16,6 @@ var UserSchema = new mongoose.Schema({
 				require : true
 			}
 	},
-	google: {
-			id: {
-				type : String,
-				require : true
-			},
-			name: {
-				type : String,
-				require : true
-			},
-			email: {
-				type : String,
-				require : true
-			}
-	},
 	twitter: {
 			id: {
 				type : String,
@@ -44,24 +30,6 @@ var UserSchema = new mongoose.Schema({
 				require : true
 			},
 			username: {
-				type : String,
-				require : true
-			}
-	},
-	facebook: {
-			id: {
-				type : String,
-				require : true
-			},
-			token: {
-				type : String,
-				require : true
-			},
-			name: {
-				type : String,
-				require : true
-			},
-			email: {
 				type : String,
 				require : true
 			}

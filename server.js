@@ -61,13 +61,14 @@ db.once('open', function () {
         return next(err); 
       }
       if (!user) { 
-        return res.redirect('/signup/' + info.message); 
+        console.log("info"+JSON.stringify(info));
+        return res.send(JSON.stringify({step:"signout",type:"error", error:info.message})); 
       }
       req.logIn(user, function (err) {
         if (err) { 
           return next(err); 
         }
-        return res.redirect('/' + user.local.username);
+        return res.send(JSON.stringify({step:"signout",type:"success", user:user}));
       });
     })(req, res, next);
 });
@@ -77,32 +78,18 @@ db.once('open', function () {
       if (err) { 
         return next(err); 
       }
-      if (!user) { 
-        return res.redirect('/signin/' + info.message); 
+      if (!user) {  
+        console.log("signin error " + user);
+        return res.send(JSON.stringify({step:"signin",type:"error", error:info.message})); 
       }
       req.logIn(user, function (err) {
         if (err) { 
           return next(err); 
         }
-        return res.redirect('/' + user.local.username);
+        return res.send(JSON.stringify({step:"signin",type:"success", user:user}));
       });
     })(req, res, next);
   });
-  // route google auth 
-  app.get('/api/auth/google', passport.authenticate('google', { scope: "email" }));
-  app.get('/api/auth/google/callback', passport.authenticate('google', { failureRedirect: '/login' }),
-    function(req, res) {
-      res.redirect('/auth/success' + req.user.google.name);
-    }
-  );
-  // route facebook auth 
-  app.get('/api/auth/facebook', passport.authenticate('facebook', { scope : ['email'] }));
-
-  app.get('/api/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }),
-    function(req, res) {
-       res.redirect('/auth/success' + req.user.facebook.name);
-    }
-  );
 
   // route twitter auth 
 app.get('/api/auth/twitter', passport.authenticate('twitter'));

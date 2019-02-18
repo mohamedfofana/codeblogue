@@ -1,6 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
+import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
@@ -9,28 +8,19 @@ import 'rxjs/add/operator/filter';
 import { APP_CONFIG, AppConfig } from '../config/app-config.module';
 
 import { IContact } from './models/contact';
+import { GenericService } from './generic.service';
 
 @Injectable()
-export class ContactService {
-  private contactUrl = this.config.apiEndpoint + "contact"
-  private headers: Headers;
-  private options: RequestOptions;
+export class ContactService extends GenericService{
+  private contactUrl = this.config.apiEndpoint + "contact";
 
-  constructor(private _http: Http, @Inject(APP_CONFIG) private config: AppConfig) { 
-    this.headers = new Headers({ 'Content-Type': 'application/json' });
-    this.options = new RequestOptions({ headers: this.headers });
-
+  constructor(private _http: HttpClient, @Inject(APP_CONFIG) private config: AppConfig) { 
+    super();
   };
 
 
-  sendMail(contact: IContact): Observable<string> {
+  sendMail(contact: IContact) {
     return this._http.post(this.contactUrl, contact)
-            .map((response: Response) => response.json())
             .catch(this.handleError);
-  }
-
-  private handleError(error: Response) {
-    console.error(error);
-    return Observable.throw(error.json().error || 'Server error');
   }
 }

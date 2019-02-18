@@ -1,6 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
@@ -8,46 +7,37 @@ import 'rxjs/add/operator/filter';
 
 import { APP_CONFIG, AppConfig } from '../config/app-config.module';
 
-import { IArticle } from './models/article';
 import { IComment } from './models/comment';
-import { IReply } from './models/reply';
+import { GenericService } from './generic.service';
 
 @Injectable()
-export class CommentService {
+export class CommentService extends GenericService{
   private commentUrl = this.config.apiEndpoint + "comment";
-  private headers: Headers;
-  private options: RequestOptions;
+  private options;
 
-  constructor(private _http: Http, @Inject(APP_CONFIG) private config: AppConfig) { 
-    this.headers = new Headers({ 'Content-Type': 'application/json' });
-    this.options = new RequestOptions({ headers: this.headers });
+  constructor(private _http: HttpClient, @Inject(APP_CONFIG) private config: AppConfig) { 
+    super();
+    this.options = this.config.options;
 
   }
 
-  getCommentsByArticle(titre: String): Observable<IComment[]> {
-    return this._http.get(this.commentUrl, {params: {article_titre: titre, sort: '-creation'}})
-      .map((response: Response) => <IComment[]>response.json())
+  getCommentsByArticle(titre: String) {
+    let httpParams = new HttpParams().set('article_titre', titre.toString()).set('sort', '-creation');
+    return this._http.get<IComment[]>(this.commentUrl, {params: httpParams})
       .catch(this.handleError);
 
   }
   
-  saveComment(comment: IComment): Observable<IComment[]> {
-    return this._http.post(this.commentUrl, comment)
-      .map((response: Response) => <IComment[]>response.json())
+  saveComment(comment: IComment) {
+    return this._http.post<IComment>(this.commentUrl, comment)
       .catch(this.handleError);
 
   }
   
-  likeComment(comment: IComment): Observable<IComment[]> {
+  likeComment(comment: IComment) {
     let body = JSON.stringify(comment);
-    return this._http.put(this.commentUrl + '/' + comment._id, body, this.options)
-      .map((response: Response) => <IComment[]>response.json())
+    return this._http.put<IComment[]>(this.commentUrl + '/' + comment._id, body, this.options)
       .catch(this.handleError);
 
-  }
-
-  private handleError(error: Response) {
-    console.error(error);
-    return Observable.throw(error.json().error || 'Server error');
   }
 }

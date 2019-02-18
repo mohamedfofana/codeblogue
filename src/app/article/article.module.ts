@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { ArticleRoutingModule } from './article-routing.module';
@@ -42,7 +42,7 @@ import { SharedModule } from '../shared/shared.module';
         HeaderArticleComponent
     ],
     imports: [
-        HttpModule,
+        HttpClientModule,
         RouterModule,
         SharedModule,
         ReactiveFormsModule,
