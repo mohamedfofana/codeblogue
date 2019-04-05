@@ -1,6 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
@@ -14,13 +13,9 @@ import { GenericService } from './generic.service';
 @Injectable()
 export class ReplyService extends GenericService{
   private replyUrl = this.config.apiEndpoint + "reply";
-  private headers: Headers;
-  private options;
 
-  constructor(private _http: HttpClient, @Inject(APP_CONFIG) private config: AppConfig) { 
+  constructor(private _http: HttpClient, @Inject(APP_CONFIG) private config: AppConfig) {
     super();
-    this.options = this.config.options;
-
   }
 
   getRepliesByArticle(titre: String){
@@ -29,10 +24,10 @@ export class ReplyService extends GenericService{
       .catch(this.handleError);
 
   }
-  
+
   likeReply(reply: IReply) {
     let body = JSON.stringify(reply);
-    return this._http.put<IReply>(this.replyUrl + '/'+reply._id, body, this.options)
+    return this._http.put<IReply>(this.replyUrl + '/'+reply._id, body, this.config.options)
       .catch(this.handleError);
 
   }

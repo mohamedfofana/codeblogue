@@ -19,15 +19,15 @@ export class RegisterComponent implements OnInit{
   registerForm: FormGroup;
   user: IUser;
 
-  constructor(private _formBuilder: FormBuilder, private _authService: AuthService, 
-              private _router: Router, private _location: Location) { 
+  constructor(private _formBuilder: FormBuilder, private _authService: AuthService,
+              private _router: Router, private _location: Location) {
     this.registerForm = this._formBuilder.group({
       email: ['', [Validators.required, Validators.maxLength(50)]],
       username: ['', [Validators.required, Validators.maxLength(50)]],
       password: ['', [Validators.required, Validators.maxLength(70)]]
     });
   }
-  
+
   ngOnInit() {
     if (localStorage.getItem('userLogged') == 'true') {
         this._location.back();
@@ -45,14 +45,14 @@ export class RegisterComponent implements OnInit{
     }
     if (this.registerForm.valid){
       this.user = this.registerForm.value;
-      this._authService.register(this.user).subscribe(res => 
+      this._authService.register(this.user).subscribe(res =>
                                               {
                                                 let errorField: string = this._authService.isLogged(res, this.user);
                                                 if (errorField == 'email')
                                                   this.errorLogin = 'Email existant.'
                                                 if (errorField == 'pseudo')
                                                   this.errorLogin = 'Pseudo existant.'
-                                              }, error => this.errorMessage = <any>error);    
+                                              }, error => this.errorMessage = <any>error);
     }
 
   }

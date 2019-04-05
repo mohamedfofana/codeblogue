@@ -16,7 +16,7 @@ export class RightMenuComponent implements OnInit {
 
   ngOnInit() {
     this.nTopArticles = 7;
-    this._articleService.getTopNArticles(this.nTopArticles).subscribe(articles => this.articles = articles, error => this.handleError(error));
+    // this._articleService.getTopNArticles(this.nTopArticles).subscribe(articles => this.articles = articles, error => this.handleError(error));
   }
   private handleError(error: Response) {
     console.error(error);

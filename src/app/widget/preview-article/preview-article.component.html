@@ -1,18 +1,18 @@
 <div class="col-sm p-3" style="padding:0px;">
 <article class="post hentry">
     <header class="entry-header entry-header-index">
-    <h2 class="post-title entry-title link-text-color">
-    <a routerLink='/article/{{article.url}}' title='{{article.titre}}'>
+    <h2 class="post-title entry-title ">
+    <a class="link-text-color" routerLink='/article/{{article.url}}' title='{{article.titre}}'>
       {{article.titre}}
     </a>
     </h2>
     <div class="entry-meta">
     <span class="posted-on"><i class="fa fa-calendar-o"></i>
     <abbr class="published updated" title='{{article.creation}}'>{{article.creation | dateFilter}}</abbr></span>
-    <span class="byline" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><i class="fa fa-user"></i> <span itemprop="name">{{article.auteur}}</span></span>
+    <span class="byline" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><i class="fa fa-user"></i> <span itemprop="name"> {{article.auteur}}</span></span>
     <span class="comments-link"><i class="fa fa-comments-o"></i>
-    <span>{{nbComments + nbReplies}}</span>
-    <span class="hamburger hamburger-admin-comments"></span>Commentaires</span>
+    <span> {{nbComments + nbReplies}}</span>
+    <span class="hamburger hamburger-admin-comments"></span> Commentaires</span>
     </div>
     </header>
     <div class="post-body entry-content">

@@ -1,23 +1,29 @@
 <div class="text-center p-5 m-0">
 		<form class="omb_loginForm" novalidate [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-				<h5 class="omb_authTitle">Se connecter avec</h5>
-				<div class="row col-offset-3 col-sm-offset-4 omb_socialButtons">
-					<div class="col-xs-12 col-sm-12">
+				<div class="row omb_loginOr">
+						<div class="col-md-1"></div>
+						<div class="col-md-9">
+							<h5 class="omb_authTitle">Se connecter avec</h5>
+						</div>
+					</div>
+				<div class="row comb_socialButtons">
+					<div class="col-md-1"></div>
+					<div class="col-md-9">
 							<a routerLink="/auth/twitter" class="btn azm-social azm-size-48 azm-r-square azm-twitter"><i class="fa fa-twitter"></i></a>
 							<a routerLink="/auth/github"  class="btn azm-social azm-size-48 azm-r-square azm-github"><i class="fa fa-github"></i></a>
 					</div>
 				</div>
 		
-				<div class="row omb_row-sm-offset-3 omb_loginOr">
-					<div class="col-xs-12 col-sm-6">
-						<hr class="omb_hrOr">
+				<div class="row omb_loginOr">
+					<div class="col-md-1"></div>
+					<div class="col-md-9">
 						<span class="omb_spanOr">ou</span>
 					</div>
 				</div>
 			<div class="row">
 				<div class="col-md-1"></div>
 				<div class="col-md-9">
-					<h2>Connexion</h2>
+					<h5 class="omb_authTitle">Connexion</h5>
 				</div>
 			</div>
 			<div class="row" *ngIf="errorMessage">
@@ -94,13 +100,16 @@
 			<div class="row" style="padding-top: 1rem">
 				<div class="col-md-1">
 				</div>
-				<div class="col-md-5 p-1">
+				<!-- <div class="col-md-5 p-1">
 					<a class="btn-link" routerLink="/password/reset">Mot de passe oublié ?</a>
 				</div>
 				<div class="col-md-5 p-1">
 					<a class="btn-link" routerLink="/signup"> <span class="fa fa-user-plus"></span> Créer un compte</a>
-				</div>
-				<div class="col-md-1">
+				</div> -->
+				<div class="col-md-9">
+						<a class="btn-link" routerLink="/signup"> <span class="fa fa-user-plus"></span> Créer un compte</a>
+					</div>
+				<div class="col-md-2">
 					</div>
 			</div>
 		</form>

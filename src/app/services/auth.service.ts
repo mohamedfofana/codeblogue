@@ -45,10 +45,10 @@ export class AuthService {
   }
 
   logUser(username: string, email?: string): void {
-    localStorage.setItem('currentUserName', username);
+    let currentUser: IUser = { username: username, email: '', password: '' };
+    localStorage.setItem('currentUser', JSON.stringify(currentUser));
     localStorage.setItem('userLogged', 'true');
     this._sessionService.setLogged(true);
-    let currentUser: IUser = ({ username: username, email: '', password: '' });
     this._sessionService.setUser(currentUser);
   }
 
@@ -56,13 +56,11 @@ export class AuthService {
     if (res.type == 'error') {
       this._sessionService.setLogged(false);
       localStorage.removeItem('currentUser');
-      localStorage.removeItem('currentUserEmail');
       localStorage.removeItem('userLogged');
       return res.error;
-    } 
+    }
     if (res.type == 'success') {
-      localStorage.setItem('currentUser', JSON.stringify(res.user));
-      localStorage.setItem('currentUserEmail', JSON.stringify(res.user.email));
+      localStorage.setItem('currentUser', JSON.stringify({username:res.user.username, email: res.user.email}));
       localStorage.setItem('userLogged', 'true');
       this._sessionService.setLogged(true);
       this._sessionService.setUser(res.user);

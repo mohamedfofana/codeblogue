@@ -30,14 +30,14 @@ export class LoginComponent implements OnInit {
       this._location.back();
     }
   }
-  inputChange(data, controlName:string): void {    
+  inputChange(data, controlName:string): void {
     this.loginForm.patchValue({controlName: data.target.value});
   }
 
   isFieldValid(field: string) {
     return !this.loginForm.get(field).valid && this.loginForm.get(field).touched;
   }
-  
+
   displayFieldCss(field: string) {
     return {
       'is-invalid': this.isFieldValid(field)
@@ -62,7 +62,6 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.user = this.loginForm.value;
       this._authService.login(this.user).subscribe(res => {
-        console.log(res);
         let errorField: string = this._authService.isLogged(res, this.user);
         if (errorField == 'email')
           this.errorLogin = 'Email inexistant.'

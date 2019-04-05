@@ -16,8 +16,7 @@ export class LogoutComponent implements OnInit {
 
   ngOnInit() {
     this._sessionService.setLogged(false);
-    localStorage.removeItem('currentUserName');
-    localStorage.removeItem('currentUserEmail');
+    localStorage.removeItem('currentUser');
     localStorage.removeItem('userLogged');
     this._location.back();
   }

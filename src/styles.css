@@ -14,8 +14,8 @@ body {
 	background-size: cover;
 	-o-background-size: cover;
     font-size: 16px;
-    color: rgba(0,0,0,.64)!important;
-    fill: rgba(0,0,0,.64)!important;
+    color: rgba(0,0,0,.54)!important;
+    fill: rgba(0,0,0,.54)!important;
     padding-top: 35px;
 }
 
@@ -30,8 +30,8 @@ body {
     fill: rgba(0,0,0,.84)!important;
 }
 .global-text-color{
-    color: rgba(0,0,0,.64)!important;
-    fill: rgba(0,0,0,.64)!important;
+    color: rgba(0,0,0,.54)!important;
+    fill: rgba(0,0,0,.54)!important;
 }
 a:hover{
     opacity: 0.7;
@@ -341,9 +341,11 @@ footer {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-
-.navbar-nav > li > a, .navbar-brand {
-    padding-top:11px !important; 
+.navbar-brand {
+    padding-bottom:0 !important;
+}
+.navbar-nav > li > a{
+    padding-top:15px !important; 
     padding-bottom:0 !important;
     height: 48px;
 }
@@ -367,14 +369,7 @@ footer {
   background-color: #FFFFFF;
   border: none;
 }
-.well:after {
-    content: " ";
-    margin: 20px auto;
-    width:  100px;
-    height: 2px;
-    background: #E5E5E5;
-    display: block;
-}
+
 .header-font {
   font-weight: 400;
   font-size: 0.8em;
@@ -406,9 +401,6 @@ footer {
   width: 32px;
   height: 32px;
   background-color: #fff;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
-  border-radius: 25px;
-  border: 1px solid #ccc;
 }
 .search-form .input-group input.form-control {
   /* margin-left: -25px; */
@@ -442,6 +434,7 @@ footer {
 .search-form .input-group span.form-control-feedback {
   position: absolute;
   left: 9px;
+  bottom: 0.5px;
   display: block;
   width: 34px;
   height: 34px;
@@ -1099,12 +1092,7 @@ a.readmore:hover{background:#333;color:#fff;}
     width: 120px;
     height: 110px;
 }
-.text-link{
-    color: #349ec4;
-}
-.text-color {
-    color: #444;
-}
+
 .btn{
     border-radius: 0.1rem;
     background: #000;

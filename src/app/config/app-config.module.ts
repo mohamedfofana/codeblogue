@@ -5,17 +5,20 @@ export let APP_CONFIG = new InjectionToken("app.config");
 
 export class AppConfig {
     apiEndpoint: string;
+    authOptions: any;
     options: any;
-    
+
 }
 
-export const APP_DEV_CONFIG: AppConfig = {    
+export const APP_DEV_CONFIG: AppConfig = {
     apiEndpoint: "http://localhost:8080/api/",
-    options: ({ headers: new HttpHeaders({ 'Content-Type': 'application/json' })}) 
-};
+    authOptions: ({ headers: new HttpHeaders({ 'Content-Type': 'application/json' }).append('Access-Control-Allow-Origin', '*')}),
+    options: ({ headers: new HttpHeaders({ 'Content-Type': 'application/json' })})
+  };
 
-export const APP_PROD_CONFIG: AppConfig = {    
+  export const APP_PROD_CONFIG: AppConfig = {
     apiEndpoint: "https://www.codeblogue.com/api/",
+    authOptions: ({ headers: new HttpHeaders({ 'Content-Type': 'application/json' }).append('Access-Control-Allow-Origin', '*')}),
     options: ({ headers: new HttpHeaders({ 'Content-Type': 'application/json' })})
 };
 

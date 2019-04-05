@@ -9,7 +9,7 @@ import { ArticleService } from '../services/article.service';
 })
 
 export class HomeComponent implements OnInit {
-  articles: IArticle[]; 
+  articles: IArticle[];
   errorMessage: string;
   constructor(private _articleService: ArticleService) { }
 

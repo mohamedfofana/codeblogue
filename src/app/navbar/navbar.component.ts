@@ -16,7 +16,7 @@ export class NavbarComponent implements OnInit {
   searchText: String;
   isLoggedIn: boolean = false;
 
-  constructor(private _formBuilder: FormBuilder, private _sessionService: SessionService, private _router: Router) { 
+  constructor(private _formBuilder: FormBuilder, private _sessionService: SessionService, private _router: Router) {
     this._sessionService.userLogged$.subscribe( isLoggedIn => {
         this.isLoggedIn = isLoggedIn;
       });
@@ -28,9 +28,8 @@ export class NavbarComponent implements OnInit {
     });
     if ( localStorage.getItem('userLogged') == 'true'){
         if (!this.isLoggedIn){
-          let currentUserName = localStorage.getItem('currentUserName');
           this._sessionService.setLogged(true);
-          let currentUser: IUser = ({username: currentUserName, email: '', password: ''});
+          let currentUser: IUser = JSON.parse(localStorage.getItem('currentUser'));
           this._sessionService.setUser(currentUser);
         }
     }else{

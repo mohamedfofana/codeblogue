@@ -13,12 +13,9 @@ import { GenericService } from './generic.service';
 @Injectable()
 export class CommentService extends GenericService{
   private commentUrl = this.config.apiEndpoint + "comment";
-  private options;
 
-  constructor(private _http: HttpClient, @Inject(APP_CONFIG) private config: AppConfig) { 
+  constructor(private _http: HttpClient, @Inject(APP_CONFIG) private config: AppConfig) {
     super();
-    this.options = this.config.options;
-
   }
 
   getCommentsByArticle(titre: String) {
@@ -27,16 +24,16 @@ export class CommentService extends GenericService{
       .catch(this.handleError);
 
   }
-  
+
   saveComment(comment: IComment) {
     return this._http.post<IComment>(this.commentUrl, comment)
       .catch(this.handleError);
 
   }
-  
+
   likeComment(comment: IComment) {
     let body = JSON.stringify(comment);
-    return this._http.put<IComment[]>(this.commentUrl + '/' + comment._id, body, this.options)
+    return this._http.put<IComment[]>(this.commentUrl + '/' + comment._id, body, this.config.options)
       .catch(this.handleError);
 
   }

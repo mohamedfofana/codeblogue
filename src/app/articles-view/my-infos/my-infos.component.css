@@ -1,10 +1,4 @@
 .profile-desc{
-/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fcfcfc+0,f7f7f7+50,fefefe+100 */
-/* background: rgb(252,252,252); Old browsers */
-/* background: -moz-linear-gradient(top, rgba(252,252,252,1) 0%, rgba(247,247,247,1) 50%, rgba(254,254,254,1) 100%); FF3.6-15 */
-/* background: -webkit-linear-gradient(top, rgba(252,252,252,1) 0%,rgba(247,247,247,1) 50%,rgba(254,254,254,1) 100%); Chrome10-25,Safari5.1-6 */
-/* background: linear-gradient(to bottom, rgba(252,252,252,1) 0%,rgba(247,247,247,1) 50%,rgba(254,254,254,1) 100%); W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-/* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#fefefe',GradientType=0 ); IE6-9 */
 border-radius: .1875rem;
 }
 a {
