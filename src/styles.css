@@ -21,7 +21,7 @@ body {
 
     /* color: #007bff; */
  a{
-    color: rgba(0,0,0,.54);
+    color: rgba(0,0,0,.64);
         text-decoration: none;
     background-color: transparent;
 }
@@ -35,6 +35,7 @@ body {
 }
 a:hover{
     opacity: 0.7;
+    text-decoration: underline;
 }
 .container {
 	background-color: white;
@@ -204,7 +205,7 @@ footer {
     margin-top: 20px;
 
     box-shadow: 0 4px 12px 0 rgba(0,0,0,.05)!important;
-    
+
 }
 .footer p {
 	margin: 0;
@@ -276,8 +277,8 @@ footer {
    .navbar {
         border-radius: 0;
         width:100%;
-        
-           
+
+
     }
 
     .navbar-header {
@@ -293,9 +294,9 @@ footer {
 /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#4c4c4c+0,595959+12,666666+25,474747+39,2c2c2c+50,2b2b2b+76,111111+100,1c1c1c+100,000000+100,131313+100,1c1c1c+101&0.94+0,0.94+57 */
 /* FF3.6-15 */
 /* background: -moz-linear-gradient(top, rgba(76,76,76,0.94) 0%, rgba(89,89,89,0.94) 12%, rgba(102,102,102,0.94) 25%, rgba(71,71,71,0.94) 39%, rgba(44,44,44,0.94) 50%, rgba(44,44,44,0.94) 57%, rgba(43,43,43,0.94) 76%, rgba(19,19,19,0.94) 100%, rgba(28,28,28,0.94) 101%); */
-/* Chrome10-25,Safari5.1-6 */ 
+/* Chrome10-25,Safari5.1-6 */
 /* background: -webkit-linear-gradient(top, rgba(76,76,76,0.94) 0%,rgba(89,89,89,0.94) 12%,rgba(102,102,102,0.94) 25%,rgba(71,71,71,0.94) 39%,rgba(44,44,44,0.94) 50%,rgba(44,44,44,0.94) 57%,rgba(43,43,43,0.94) 76%,rgba(19,19,19,0.94) 100%,rgba(28,28,28,0.94) 101%); */
-/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ 
+/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 /* background: linear-gradient(to bottom, rgba(76,76,76,0.94) 0%,rgba(89,89,89,0.94) 12%,rgba(102,102,102,0.94) 25%,rgba(71,71,71,0.94) 39%,rgba(44,44,44,0.94) 50%,rgba(44,44,44,0.94) 57%,rgba(43,43,43,0.94) 76%,rgba(19,19,19,0.94) 100%,rgba(28,28,28,0.94) 101%);  */
 /* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f04c4c4c', endColorstr='#f01c1c1c',GradientType=0 ); IE6-9 */
         /* background: rgb(81, 87, 88); */
@@ -308,7 +309,7 @@ footer {
         padding-left: 0px;
         color:white;
     }
-   
+
    .nav-tabs-carousel>li>a {
         padding: 15px;
     }
@@ -345,7 +346,7 @@ footer {
     padding-bottom:0 !important;
 }
 .navbar-nav > li > a{
-    padding-top:15px !important; 
+    padding-top:15px !important;
     padding-bottom:0 !important;
     height: 48px;
 }
@@ -359,8 +360,8 @@ footer {
     background-color: transparent;
     color: white;
 }
-.navbar-inverse .navbar-nav > .active > a, 
- .navbar-inverse .navbar-nav > .active > a:hover, 
+.navbar-inverse .navbar-nav > .active > a,
+ .navbar-inverse .navbar-nav > .active > a:hover,
  .navbar-inverse .navbar-nav > .active > a:focus {
            color: white;
  }
@@ -370,6 +371,15 @@ footer {
   border: none;
 }
 
+.no-border {
+border: none;
+}
+.no-margin {
+  margin: 0;
+}
+.no-padding {
+  padding: 0;
+}
 .header-font {
   font-weight: 400;
   font-size: 0.8em;
@@ -398,19 +408,25 @@ footer {
 .search-form .input-group {
   float: right !important;
   transition: all 0.35s, border-radius 0s;
-  width: 32px;
+  width: 100%;
   height: 32px;
   background-color: #fff;
 }
 .search-form .input-group input.form-control {
   /* margin-left: -25px; */
-  border:none;
-  background: transparent;
+  border:1 px solid rgba(0,0,0,.64);
+  background: #FCFCFC;
   box-shadow: none;
   display:block;
   padding: 1rem 2rem;
 }
+.input-group > .form-control:focus {
+  z-index: 0;
+}
 
+.search-form .input-group input.form-control{
+  border-radius: 0.25rem;
+}
 .search-form .input-group input.form-control::-webkit-input-placeholder {
   display: none;
 }
@@ -425,23 +441,17 @@ footer {
 .search-form .input-group input.form-control:-ms-input-placeholder {
   display: none;
 }
-.search-form .input-group:hover,
-.search-form .input-group.hover {
-  width: 100%;
-  border-radius: 25px 25px 25px 25px;
-}
 
 .search-form .input-group span.form-control-feedback {
   position: absolute;
   left: 9px;
-  bottom: 0.5px;
   display: block;
   width: 34px;
   height: 34px;
   line-height: 34px;
   color: rgba(0,0,0,.54)!important;
   fill: rgba(0,0,0,.54)!important;
-  font-size: 14px;
+  font-size: 1.2em;
 }
 
 
@@ -455,10 +465,10 @@ footer {
 .search-result .col-md-7 { position: relative; }
 .search-result h3 { font: 500 normal 1.375em "Roboto",Arial,Verdana,sans-serif; margin-top: 0 !important; margin-bottom: 10px !important; }
 .search-result h3 > a, .search-result i { color: #248dc1 !important; }
-.search-result p { font: normal normal 1.125em "Roboto",Arial,Verdana,sans-serif; } 
+.search-result p { font: normal normal 1.125em "Roboto",Arial,Verdana,sans-serif; }
 
 /* Gestion du section de commentaire */
- 
+
 /*Comment List styles*/
 .comment-list .row {
   margin-bottom: 0px;
@@ -541,7 +551,7 @@ footer {
 /** Debut Ajout commentaire */
 .commentAddSection {
    width: auto;
-   
+
 }
 .replyAddSection {
     margin-top: 20px;
@@ -580,7 +590,7 @@ footer {
 
 .comments-list {
 	margin-top: 10px;
-    padding: 0;
+  padding: 2%;
 	position: relative;
 }
 
@@ -599,7 +609,7 @@ footer {
 }
 
 .reply-list {
-	padding-left: 88px;
+	padding-left: 50px;
 	clear: both;
 	margin-top: 15px;
 }
@@ -607,7 +617,7 @@ footer {
  * Avatar
  ---------------------------*/
 .comments-list .comment-avatar {
-	width: 65px;
+	width: 12%;
 	height: 65px;
 	position: relative;
 	z-index: 99;
@@ -628,7 +638,7 @@ footer {
 }
 
 .reply-list .comment-avatar {
-	width: 50px;
+	width: 10%;
 	height: 50px;
 }
 
@@ -643,7 +653,7 @@ footer {
  * Caja del Comentario
  ---------------------------*/
 .comments-list .comment-box {
-	width: 680px;
+	width: 98%;
 	float: right;
 	position: relative;
 	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
@@ -671,7 +681,7 @@ footer {
 }
 
 .reply-list .comment-box {
-	width: 610px;
+	width: 90%;
 }
 .comment-box .comment-head {
 	background: #FCFCFC;
@@ -778,14 +788,14 @@ footer {
     text-align: center;
 	line-height: 300%;
 }
-	
+
 .omb_login .omb_socialButtons a {
 	color: white;
 	opacity:0.9;
 }
 .omb_login .omb_socialButtons a:hover {
     color: white;
-	opacity:1;    	
+	opacity:1;
 }
 .omb_login .omb_socialButtons .omb_btn-facebook {background: #3b5998;}
 .omb_login .omb_socialButtons .omb_btn-twitter {background: #00aced;}
@@ -816,7 +826,7 @@ footer {
 	background-color: white;
 	width: 3em;
 	text-align: center;
-}			
+}
 
 .omb_login .omb_loginForm .input-group.i {
 	width: 2em;
@@ -825,12 +835,12 @@ footer {
     color: red;
 }
 
-	
+
 @media (min-width: 768px) {
     .omb_login .omb_forgotPwd {
         text-align: right;
 		margin-top:10px;
- 	}		
+ 	}
 }
 /******************************************************/
 /********************* Icons **************************/
@@ -975,23 +985,23 @@ footer {
 }
 
 
-hr.withStyle { 
-  height: 30px; 
+hr.withStyle {
+  height: 30px;
   max-width: inherit;
-  border-style: solid; 
-  border-color: #8c8b8b; 
-  border-width: 1px 0 0 0; 
-  border-radius: 20px; 
-} 
-hr.withStyle:before { 
-  display: block; 
-  content: ""; 
-  height: 30px; 
-  margin-top: -31px; 
-  border-style: solid; 
-  border-color: #8c8b8b; 
-  border-width: 0 0 1px 0; 
-  border-radius: 20px; 
+  border-style: solid;
+  border-color: #8c8b8b;
+  border-width: 1px 0 0 0;
+  border-radius: 20px;
+}
+hr.withStyle:before {
+  display: block;
+  content: "";
+  height: 30px;
+  margin-top: -31px;
+  border-style: solid;
+  border-color: #8c8b8b;
+  border-width: 0 0 1px 0;
+  border-radius: 20px;
 }
 /* Center the loader */
 #loader {
@@ -1031,18 +1041,18 @@ hr.withStyle:before {
 }
 
 @-webkit-keyframes animatebottom {
-  from { bottom:-100px; opacity:0 } 
+  from { bottom:-100px; opacity:0 }
   to { bottom:0px; opacity:1 }
 }
 
-@keyframes animatebottom { 
-  from{ bottom:-100px; opacity:0 } 
+@keyframes animatebottom {
+  from{ bottom:-100px; opacity:0 }
   to{ bottom:0; opacity:1 }
 }
-.clear, .cleaner { 
-    clear: both; 
-    height: 0; 
-    overflow: hidden; 
+.clear, .cleaner {
+    clear: both;
+    height: 0;
+    overflow: hidden;
 }
 
 pre{
@@ -1096,7 +1106,7 @@ a.readmore:hover{background:#333;color:#fff;}
 .btn{
     border-radius: 0.1rem;
     background: #000;
-    text-transform: uppercase; 
+    text-transform: uppercase;
     color: white;
     border:transparent;
     line-height: 1.4;

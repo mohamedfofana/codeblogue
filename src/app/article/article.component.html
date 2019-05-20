@@ -1,0 +1,10 @@
+<header class="entry-header entry-header-index">
+  <h2 class="post-title entry-title link-text-color">
+    <span class="intro-text  link-text-color text-center">Articles</span>
+  </h2>
+  <div class="entry-meta"></div>
+</header>
+
+<div *ngFor="let article of articles">
+  <item-article [article]="article"></item-article>
+</div>

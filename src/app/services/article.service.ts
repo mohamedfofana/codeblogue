@@ -44,6 +44,12 @@ export class ArticleService extends GenericService {
       .catch(this.handleError);
   }
 
+  getVisibleArticles() {
+    let httpParams = new HttpParams().set('visible', "true");
+    return this._http.get<IArticle[]>(this.articleUrl, { params: httpParams})
+      .catch(this.handleError);
+  }
+
   getArticleByTitle(title: String){
     let httpParams = new HttpParams().set('titre', title.toString());
     return this._http.get<IArticle[]>(this.articleUrl, { params: httpParams})

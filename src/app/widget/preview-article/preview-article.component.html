@@ -8,8 +8,8 @@
     </h2>
     <div class="entry-meta">
     <span class="posted-on"><i class="fa fa-calendar-o"></i>
-    <abbr class="published updated" title='{{article.creation}}'>{{article.creation | dateFilter}}</abbr></span>
-    <span class="byline" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><i class="fa fa-user"></i> <span itemprop="name"> {{article.auteur}}</span></span>
+    <abbr class="published updated" title='{{article.creation}}'> {{article.creation | dateFilter}}</abbr></span>
+    <span class="byline" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><i class="fa fa-user"></i> <span itemprop="name"> {{article.author}}</span></span>
     <span class="comments-link"><i class="fa fa-comments-o"></i>
     <span> {{nbComments + nbReplies}}</span>
     <span class="hamburger hamburger-admin-comments"></span> Commentaires</span>
@@ -21,7 +21,7 @@
       </div>
       <div class="clear"></div>
     </div>
-    <footer class="entry-footer">Tag : 
+    <footer class="entry-footer">Tag :
       <span *ngFor="let tag of article.tags">
             <a class="labelpost" routerLink='' rel="tag"><i>{{tag}}</i></a>&nbsp;
       </span>

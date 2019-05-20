@@ -1,8 +1,8 @@
 // On importe mongoose comme il sera utiliser
 var mongoose = require('mongoose');
 	//exports  = module.exports = {};
-var ReplySchema = new mongoose.Schema({ 	
-	auteur: {
+var ReplySchema = new mongoose.Schema({
+	author: {
 		type : String,
 		require : true
 	},
@@ -13,13 +13,13 @@ var ReplySchema = new mongoose.Schema({
 	article_titre: {
 		type : String,
 		require : true
-	},	
+	},
 	comment_creation: {
 		type : Date,
 		require : false,
 		default : Date.now
-	},		
-	comment_auteur: {
+	},
+	comment_author: {
 		type : String,
 		require : false,
 		default : 0
@@ -28,7 +28,7 @@ var ReplySchema = new mongoose.Schema({
 		type : Date,
 		require : false,
 		default : Date.now
-	},		
+	},
 	likes: {
 		type : Number,
 		require : false,
@@ -36,4 +36,4 @@ var ReplySchema = new mongoose.Schema({
 	}
 });
 // On declare le model User dans mongoose
-module.exports = ReplySchema; 
+module.exports = ReplySchema;

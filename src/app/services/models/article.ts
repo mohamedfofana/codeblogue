@@ -1,6 +1,6 @@
 export interface IArticle {
 	_id: number;
-    auteur: String;
+  author: String;
 	titre: String;
 	description: String;
 	url: String;

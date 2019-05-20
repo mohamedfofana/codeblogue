@@ -1,11 +1,11 @@
 .profile-desc{
 border-radius: .1875rem;
 }
-a {
+/* a {
     color: #f96332;
-}
+} */
 .m-t-5{
-    margin-top: 5px;   
+    margin-top: 5px;
 }
 .card {
     background: #fff;
@@ -121,7 +121,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6b6b6b', end
 	width:100%;
 	margin:0;
 	padding:0;
-	
+
 }
 .bs-callout:last-child {
     margin-bottom: 0px;
@@ -190,12 +190,12 @@ section .section-title{
 }
 #sectionComp .card .card-block a i{
 	display:none;
-	
+
 }
 #sectionComp .card:hover .card-block a i{
 	display:inline-block;
 	font-weight:700;
-	
+
 }
 #sectionComp .card .card-block:before{
 	font-family: FontAwesome;
@@ -232,7 +232,7 @@ section .section-title{
 }
 #sectionComp .card:hover .card-block:before{
 	-webkit-transform: rotate(360deg);
-	transform: rotate(360deg);	
+	transform: rotate(360deg);
 	-webkit-transition: .5s all ease;
 	-moz-transition: .5s all ease;
 	transition: .5s all ease;

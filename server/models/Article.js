@@ -1,8 +1,8 @@
 // On importe mongoose comme il sera utiliser
 var mongoose = require('mongoose');
 	//exports  = module.exports = {};
-var ArticleSchema = new mongoose.Schema({ 	
-	auteur: {
+var ArticleSchema = new mongoose.Schema({
+	author: {
 		type : String,
 		require : true
 	},
@@ -21,7 +21,7 @@ var ArticleSchema = new mongoose.Schema({
 	url: {
 		type : String,
 		require : true
-	},		
+	},
 	tags: {
 		type : [String],
 		require : true
@@ -35,7 +35,7 @@ var ArticleSchema = new mongoose.Schema({
 		type : Boolean,
 		require : false,
 		default: true
-	},	
+	},
 	views: {
 		type : Number,
 		require : false,
@@ -73,4 +73,4 @@ var ArticleSchema = new mongoose.Schema({
 	}
 });
 // On declare le model User dans mongoose
-module.exports = ArticleSchema; 
+module.exports = ArticleSchema;

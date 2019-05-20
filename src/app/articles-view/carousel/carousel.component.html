@@ -1,21 +1,21 @@
 <header-article [article]='article' [nbComments]="nbComments"></header-article>
-
-<p>Le carousel de boostrap permet de visualiser plusieurs images sur un slide.<br/>
+<p><img alt="" border="0" height="72" src="assets/images/carousel.png" width="72">
+Le carousel de boostrap permet de visualiser plusieurs images sur un slide.<br/>
 J'ai crée un carousel sous forme de directive AngularJs.<br/>
 L'environnement utilisé pour la création est une application à page unique M.E.A.N. Stack avec ces propriétés: Bootstrap 3.2.0, AngularJs 1.4.0.</p>
-La procédure de création est : 
+La procédure de création est :
 <br/>
 <br/>
 <h5>- Définition des directives dans le module principale de l'application</h5>
-<pre class="with-style-pre"><code class="with-style-code">angular.module('myApp')  
-  .directive('mycarousel', function () {{ '{' }}  
-   return {{ '{' }}  
-    templateUrl: 'views/templates/mycarousel.html',  
-    restrict: 'E',  
-    scope: {{ '{' }}  
-     carouselOptions: '='  
-    }  
-   };  
+<pre class="with-style-pre"><code class="with-style-code">angular.module('myApp')
+  .directive('mycarousel', function () {{ '{' }}
+   return {{ '{' }}
+    templateUrl: 'views/templates/mycarousel.html',
+    restrict: 'E',
+    scope: {{ '{' }}
+     carouselOptions: '='
+    }
+   };
   })
   .directive('carouseldatatarget', function () {{ '{' }}
     return {{ '{' }}
@@ -25,16 +25,16 @@ La procédure de création est :
         numTarget: '@'
       }
     };
-  }); 
+  });
 </code></pre>
 <br/>
 <h5>- Contenu du template html principal</h5>
 <pre class="with-style-pre"><code class="with-style-code">&lt;div id=&quot;thecarousel&quot; class=&quot;carousel slide&quot;&gt;
   &lt;!-- Indicators --&gt;
   &lt;ol class=&quot;carousel-indicators hidden-xs&quot;&gt;
-    &lt;li data-target=&quot;#thecarousel&quot; data-slide-to=&quot;0&quot; class=&quot;active&quot;&gt;&lt;/li&gt;            
+    &lt;li data-target=&quot;#thecarousel&quot; data-slide-to=&quot;0&quot; class=&quot;active&quot;&gt;&lt;/li&gt;
     &lt;div ng-repeat=&quot;numImg in carouselOptions.nbImg&quot;&gt;
-      &lt;carouseldatatarget num-target=&quot;{{ '{' }}{{ '{' }}numImg}}&quot;&gt;&lt;/carouseldatatarget&gt;       
+      &lt;carouseldatatarget num-target=&quot;{{ '{' }}{{ '{' }}numImg}}&quot;&gt;&lt;/carouseldatatarget&gt;
     &lt;/div&gt;
 &lt;/ol&gt;
 
@@ -43,7 +43,7 @@ La procédure de création est :
    &lt;div class=&quot;item active&quot;&gt;&lt;img class=&quot;img-responsive&quot; src=&quot;{{ '{' }}{{ '{' }}carouselOptions.firstImg}}&quot; alt=&quot;&quot;&gt;&lt;/div&gt;
    &lt;div class=&quot;item&quot; ng-repeat=&quot;imgSrc in carouselOptions.srcs&quot;&gt;
       &lt;img class=&quot;img-responsive&quot; src=&quot;{{ '{' }}{{ '{' }}imgSrc}}&quot; alt=&quot;&quot;&gt;
-   &lt;/div&gt;  
+   &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;!-- Controls --&gt;
@@ -105,7 +105,7 @@ La succession des images ne se faisait pas correctement. Ce script permet d'acti
 </code></pre>
 <br/>
 <h5>- Code d'appel de la directive dans la page</h5>
-<pre class="with-style-pre"><code class="with-style-code">&lt;mycarousel carousel-options="ctrl.carouselOptions"&gt;&lt;/mycarousel&gt; 
+<pre class="with-style-pre"><code class="with-style-code">&lt;mycarousel carousel-options="ctrl.carouselOptions"&gt;&lt;/mycarousel&gt;
 </code></pre>
 
 <commentBox [article]="article"></commentBox>

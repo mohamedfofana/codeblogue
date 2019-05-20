@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IArticle } from '../../services/models/article';
 import { ArticleService } from '../../services/article.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-result-search',
@@ -16,12 +17,12 @@ constructor(private _articleService: ArticleService, private _route: ActivatedRo
 
   ngOnInit() {
      this._route.params.subscribe(params => {
-       this.doInit(params['q']); 
+       this.doInit(params['q']);
     });
   }
 
    doInit(searchText: string): void {
      this.searchText = searchText;
-     this._articleService.getArticleByText(this.searchText).subscribe(articles => this.articles = articles, error => this.errorMessage = <any>error);
+     this._articleService.getArticleByText(this.searchText).pipe(take(1)).subscribe(articles => this.articles = articles, error => this.errorMessage = <any>error);
   }
 }

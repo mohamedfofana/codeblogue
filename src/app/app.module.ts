@@ -13,7 +13,6 @@ import { ArticleService } from './services/article.service';
 import { CommentService } from './services/comment.service';
 import { ReplyService } from './services/reply.service';
 import { ContactService } from './services/contact.service';
-import { AuthService } from './services/auth.service';
 import { SessionService } from './services/session.service';
 import { ValidationService } from './services/validation.service';
 
@@ -60,7 +59,7 @@ import { PreviewArticleComponent } from './widget/preview-article/preview-articl
     AppRoutingModule,
     AppConfigModule
   ],
-  providers: [ArticleService, AuthService, SessionService, CommentService, ReplyService, ContactService, ValidationService],
+  providers: [ArticleService, SessionService, CommentService, ReplyService, ContactService, ValidationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

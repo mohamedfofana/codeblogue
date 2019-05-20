@@ -25,7 +25,7 @@ export const APP_DEV_CONFIG: AppConfig = {
 @NgModule({
   providers: [{
     provide: APP_CONFIG,
-    useValue: APP_DEV_CONFIG
+    useValue: APP_PROD_CONFIG
   }]
 })
 export class AppConfigModule { }

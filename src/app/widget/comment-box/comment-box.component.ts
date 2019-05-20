@@ -35,35 +35,36 @@ export class CommentBoxComponent implements OnInit {
   errorMessage: string;
   rate: number;
 
-  constructor(private _articleService: ArticleService, private _commentService: CommentService, 
+  constructor(private _articleService: ArticleService, private _commentService: CommentService,
               private _replyService: ReplyService, private _formBuilder: FormBuilder,
-              private _sessionService: SessionService) { }
+) { }
 
   ngOnInit() {
     this.commentForm = this._formBuilder.group({
+      author: ['', [Validators.required, Validators.maxLength(50)]],
+      email: '',
       contenu: ['', [Validators.required, Validators.maxLength(1000)]]
     });
     this.replyForm = this._formBuilder.group({
+      author: ['', [Validators.required, Validators.maxLength(50)]],
+      email: '',
       contenu: ['', [Validators.required, Validators.maxLength(1000)]]
     });
-    this._sessionService.userLogged$.subscribe(logged => this.isLoggedIn = logged);
-    this._sessionService.currentUser$.subscribe(user => this.user = user);
     if(this.article.raters>0){
       this.rate = Math.floor(this.article.rates/this.article.raters);
     }
     this.initComments();
     this.initReplies();
-    this.showHideComment();  
+    this.showHideComment();
   }
-  
+
   onRatingClicked(rating: number): void {
-    this._articleService.getArticleByUrl(this.article.url).subscribe(article => 
-            { 
+    this._articleService.getArticleByUrl(this.article.url).subscribe(article =>
+            {
              this.dbArticle = article[0];
               this.dbArticle.rates += rating;
               this.dbArticle.raters += 1;
               this.dbArticle.rate = Math.floor(this.dbArticle.rates/this.dbArticle.raters);
-              //this.rate = Math.floor(this.dbArticle.rates/this.dbArticle.raters);
               this.article.rate = this.dbArticle.rate;
               this._articleService.updateArticle(this.dbArticle).subscribe(result => result, error => this.errorMessage = <any>error);
             }
@@ -96,10 +97,11 @@ export class CommentBoxComponent implements OnInit {
     this._replyService.getRepliesByArticle(this.article.titre)
       .subscribe(replies => this.loadReplies(replies), error => this.errorMessage = <any>error);
   }
-  
+
   saveComment(): void {
     this.comment.article_titre = this.article.titre;
-    this.comment.auteur = this.user.username;
+    this.comment.author = this.commentForm.value.author;
+    this.comment.email = this.commentForm.value.email;
     this.comment.contenu = this.commentForm.value.contenu;
     this.comment.creation = new Date();
     this.comment.likes = 0;
@@ -110,12 +112,13 @@ export class CommentBoxComponent implements OnInit {
     this.showHideComment();
   }
 
-  saveReply(comment_auteur: String, comment_creation: Date, elementID: String): void {
+  saveReply(comment_author: String, comment_creation: Date, elementID: String): void {
     this.reply.article_titre = this.article.titre;
-    this.reply.auteur = this.user.username;
+    this.reply.author = this.replyForm.value.author;
+    this.reply.email = this.replyForm.value.email;
     this.reply.contenu = this.replyForm.value.contenu;
     this.reply.likes = 0;
-    this.reply.comment_auteur = comment_auteur;
+    this.reply.comment_author = comment_author;
     this.reply.comment_creation = comment_creation;
 
     this._replyService.saveReply(this.reply).subscribe(
@@ -150,21 +153,19 @@ export class CommentBoxComponent implements OnInit {
 
   showHideComment(): void {
     $('textarea.commentTextArea').val('');
-    $('textarea.commentTextArea').attr('rows', 1); 
+    $('textarea.commentTextArea').attr('rows', 1);
     $('button.commentSubmit').hide();
     $('#commentSubmit').prop('disabled', true);
+    $('button.commentSubmit').show();
 
     $('textarea.commentTextArea').focus(function () {
       $(this).attr('rows', 5);
-      $('button.commentSubmit').show();
     });
 
     $('textarea.commentTextArea').blur(function () {
       if ($(this).val().length == 0) {
         $(this).attr('rows', 1);
-        $('button.commentSubmit').hide();
       } else {
-        $('button.commentSubmit').show();
       }
 
     });

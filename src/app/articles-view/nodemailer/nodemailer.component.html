@@ -1,56 +1,56 @@
 <header-article [article]='article' [nbComments]="nbComments"></header-article>
-
+<img alt="" border="0" height="72" src="assets/images/nodemailer.png" width="72">
 <consoletip description="Installer nodemailer" command="npm install nodemailer --save"></consoletip>
 <consoletip description="Installer xoauth2" command="npm install xoauth2 --save"></consoletip>
 
 <br/>
 <pre class="with-style-pre"><code class="with-style-code">
- var nodemailer = require('nodemailer');  
- var xoauth2 = require('xoauth2');  
- module.exports = function(app, route){{ '{' }}  
- return function(req, res, next){{ '{' }}  
-   var data = req.body;  
-   // login  
-   var transporter = nodemailer.createTransport({{ '{' }}  
-     service: 'gmail',  
-     auth: {{ '{' }}  
-       xoauth2: xoauth2.createXOAuth2Generator({{ '{' }}  
-         user: 'adresse_origine',  
-         clientId: 'client_id',  
-         clientSecret: 'client_secret',  
-         refreshToken: 'refreshtoken'  
-       })  
-     }  
-   });  
-   var message = {{ '{' }}  
-       from: 'adresse_origine', // sender address  
-       to: 'adresse_destinataire', // list of receivers  
-       subject: data.objet, // Subject line  
-       text: data.contenu, // plaintext body  
-       html: '&lt;b&gt;Contact Nom&lt;/b&gt;: ' + data.nom + '&lt;br/&gt;&lt;b&gt;Contact Email&lt;/b&gt;: ' + data.email + '&lt;br/&gt;&lt;b&gt;Contact Sujet&lt;/b&gt;: ' + data.objet + '&lt;br/&gt;&lt;br/&gt;' + data.contenu // html body  
-   }  
-   if(typeof data.objet !== 'undefined' &amp;&amp; typeof data.objet !== 'undefined' &amp;&amp; typeof data.nom !== 'undefined' &amp;&amp; typeof data.contenu !== 'undefined'){{ '{' }}  
-     // send mail with defined transport object  
-     transporter.sendMail(message, function(error, info){{ '{' }}  
-       if(error){{ '{' }}  
-         console.log(error);  
-         res.status(400);  
-         res.json(data);        
-         next();  
-       }    
-       else{{ '{' }}  
-         res.json(data);        
-         next();  
-       }     
-     });  
-   }  
-   else{{ '{' }}  
-     res.status(400);  
-     res.json(data);        
-     next();  
-   }  
- };  
- };  
+ var nodemailer = require('nodemailer');
+ var xoauth2 = require('xoauth2');
+ module.exports = function(app, route){{ '{' }}
+ return function(req, res, next){{ '{' }}
+   var data = req.body;
+   // login
+   var transporter = nodemailer.createTransport({{ '{' }}
+     service: 'gmail',
+     auth: {{ '{' }}
+       xoauth2: xoauth2.createXOAuth2Generator({{ '{' }}
+         user: 'adresse_origine',
+         clientId: 'client_id',
+         clientSecret: 'client_secret',
+         refreshToken: 'refreshtoken'
+       })
+     }
+   });
+   var message = {{ '{' }}
+       from: 'adresse_origine', // sender address
+       to: 'adresse_destinataire', // list of receivers
+       subject: data.objet, // Subject line
+       text: data.contenu, // plaintext body
+       html: '&lt;b&gt;Contact Nom&lt;/b&gt;: ' + data.nom + '&lt;br/&gt;&lt;b&gt;Contact Email&lt;/b&gt;: ' + data.email + '&lt;br/&gt;&lt;b&gt;Contact Sujet&lt;/b&gt;: ' + data.objet + '&lt;br/&gt;&lt;br/&gt;' + data.contenu // html body
+   }
+   if(typeof data.objet !== 'undefined' &amp;&amp; typeof data.objet !== 'undefined' &amp;&amp; typeof data.nom !== 'undefined' &amp;&amp; typeof data.contenu !== 'undefined'){{ '{' }}
+     // send mail with defined transport object
+     transporter.sendMail(message, function(error, info){{ '{' }}
+       if(error){{ '{' }}
+         console.log(error);
+         res.status(400);
+         res.json(data);
+         next();
+       }
+       else{{ '{' }}
+         res.json(data);
+         next();
+       }
+     });
+   }
+   else{{ '{' }}
+     res.status(400);
+     res.json(data);
+     next();
+   }
+ };
+ };
 </code></pre>
 
 <br/>
