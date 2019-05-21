@@ -37,11 +37,11 @@
         <li>
           <div class="comment-main-level">
             <!-- Avatar -->
-            <!-- <div class="comment-avatar"><img src="assets/images/unknown-user.png" alt=""></div> -->
+            <div class="comment-avatar"><h6 class="comment-name">@{{comment.author}}</h6></div>
             <!-- Contenedor del Comentario -->
             <div class="comment-box">
               <div class="comment-head">
-                <h6 class="comment-name">{{comment.author}}</h6>
+                <!-- <h6 class="comment-name">{{comment.author}}</h6> -->
                 <span>{{comment.creation | date: "medium"}}</span>
                 <i class="fa fa-heart" aria-hidden="true" (click)="likeComment(comment)"> {{comment.likes}}</i>
                 <i class="fa fa-reply" (click)="showHideReply('replyNum' + comment._id)"></i>
@@ -76,14 +76,13 @@
           </div>
           <!-- Replies -->
           <div *ngIf='replies'>
-            <ul class="comments-list reply-list" style="padding:0">
+            <ul class="comments-list reply-list" style="padding-left: 80px;;">
               <li *ngFor="let reply of replies | replyFilter:comment.author:comment.creation">
                   <!-- Avatar -->
-                  <!-- <div class="comment-avatar"><img src="assets/images/unknown-user.png" alt=""></div> -->
+                  <div class="comment-avatar"><h6 class="comment-name">@{{reply.author}}</h6></div>
                   <!-- Contenedor del Comentario -->
                   <div class="comment-box">
                     <div class="comment-head">
-                      <h6 class="comment-name">{{reply.author}}</h6>
                       <span>{{reply.creation | date: "medium"}}</span>
                       <i class="fa fa-heart" (click)="likeReply(reply)"> {{reply.likes}}</i>
                     </div>
