@@ -15,13 +15,16 @@ import { GruntComponent } from '../articles-view/grunt/grunt.component';
 import { NodemailerComponent } from '../articles-view/nodemailer/nodemailer.component';
 import { CarouselComponent } from '../articles-view/carousel/carousel.component';
 import { NodemailerfixitComponent } from '../articles-view/nodemailerfixit/nodemailerfixit.component';
-import { ConsoletipComponent } from '../articles-view/consoletip/consoletip.component';
-import { FiguretipComponent } from '../articles-view/figuretip/figuretip.component';
+import { ConsoletipComponent } from '../directives/consoletip/consoletip.component';
+import { FiguretipComponent } from '../directives/figuretip/figuretip.component';
 import { HeaderArticleComponent } from '../widget/header-article/header-article.component';
+
 
 import { SharedModule } from '../shared/shared.module';
 import { ArticleComponent } from './article.component';
 import { ItemArticleComponent } from 'app/widget/item-article/item-article.component';
+import { FibonacciComponent } from 'app/articles-view/fibonacci/fibonacci.component';
+import { GithubGistComponent } from 'app/directives/github-gist-embed/github-gist-embed';
 
 @NgModule({
     declarations: [
@@ -39,6 +42,8 @@ import { ItemArticleComponent } from 'app/widget/item-article/item-article.compo
         ConsoletipComponent,
         FiguretipComponent,
         HeaderArticleComponent,
+        FibonacciComponent,
+        GithubGistComponent,
         ItemArticleComponent
     ],
     imports: [

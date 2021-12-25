@@ -46,11 +46,11 @@
     "passport-local": "^1.0.0",
     "passport-twitter": "^1.0.4",
     "rxjs": "^6.4.0",
+    "rxjs-compat": "^6.0.0-rc.0",
     "tether": "^1.4.5",
     "tslib": "^1.9.0",
     "xoauth2": "^1.2.0",
-    "zone.js": "^0.8.29",
-    "rxjs-compat": "^6.0.0-rc.0"
+    "zone.js": "^0.8.29"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.13.0",

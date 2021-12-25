@@ -47,7 +47,7 @@ import { PreviewArticleComponent } from './widget/preview-article/preview-articl
     RightMenuComponent,
     ResultSearchComponent,
     ResultItemComponent,
-    PreviewArticleComponent
+    PreviewArticleComponent,
   ],
   imports: [
     BrowserModule,

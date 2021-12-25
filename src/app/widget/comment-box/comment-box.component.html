@@ -76,7 +76,7 @@
           </div>
           <!-- Replies -->
           <div *ngIf='replies'>
-            <ul class="comments-list reply-list" style="padding-left: 80px;;">
+            <ul class="comments-list reply-list" style="padding-left: 80px;">
               <li *ngFor="let reply of replies | replyFilter:comment.author:comment.creation">
                   <!-- Avatar -->
                   <div class="comment-avatar"><h6 class="comment-name">@{{reply.author}}</h6></div>

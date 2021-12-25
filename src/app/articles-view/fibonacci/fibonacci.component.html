@@ -1,0 +1,29 @@
+<header-article [article]='article' [nbComments]="nbComments"></header-article>
+Plusieurs méthodes existes pour implémenter la suite de Fibonacci en Java.
+<br/>
+<br/>
+<h3><u>Solution itérative</u></h3>
+<br/>
+<gh-gist [gistId]="'8481919eca084f7bd8f330f59eb8df6b'"></gh-gist>
+<br/>
+
+<h3><u>Utiliser la récursivité</u></h3>
+<gh-gist [gistId]="'e002e68e0579e2a8c5374a434e3b02a0'"></gh-gist>
+<p>Cette solution n'est pas optimale car beaucoup d'appel intermédiaires sont fait pour calculer un nombre Fibonacci. De plus, chaque appel intermédiaire peut être recalculé. Quand le nombre très grand, on peut avoir des fuites de mémoires. 
+</p>
+<br/>
+<u>Exemple :</u> Fibonacci(4)
+<br/>
+<img src="assets/images/fibonacci-tree-4.gif" alt="..." class="img-rounded">
+<br/>
+
+<p>La complexité est exponentielle O(2<sup>n</sup>). Chaque étape sur l'arbre d'appel peut être exécutée plusieurs fois. </p>
+
+<h3><u>En programmation dynamique</u></h3>
+<br/>
+<gh-gist [gistId]="'9d5a907e5fb35c405242409486986348'"></gh-gist>
+<br/>
+<p>Cette méthode consiste à mémoriser chaque nombre de fibonacci calculé  et le réutiliser à chaque fois que le programme le redemande. Il nous permet d'économiser de la mémoire et d'améliorer le temps d'exécution. 
+La complexité devient O(n). Chaque étape est traitée une seule fois.</p>
+
+<commentBox [article]="article"></commentBox>
